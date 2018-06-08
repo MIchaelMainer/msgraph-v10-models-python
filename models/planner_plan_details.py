@@ -8,6 +8,7 @@
 from __future__ import unicode_literals
 from ..model.planner_user_ids import PlannerUserIds
 from ..model.planner_category_descriptions import PlannerCategoryDescriptions
+from ..model.planner_plan_context_details_collection import PlannerPlanContextDetailsCollection
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -59,4 +60,26 @@ class PlannerPlanDetails(OneDriveObjectBase):
     @category_descriptions.setter
     def category_descriptions(self, val):
         self._prop_dict["categoryDescriptions"] = val
+
+    @property
+    def context_details(self):
+        """
+        Gets and sets the contextDetails
+        
+        Returns: 
+            :class:`PlannerPlanContextDetailsCollection<onedrivesdk.model.planner_plan_context_details_collection.PlannerPlanContextDetailsCollection>`:
+                The contextDetails
+        """
+        if "contextDetails" in self._prop_dict:
+            if isinstance(self._prop_dict["contextDetails"], OneDriveObjectBase):
+                return self._prop_dict["contextDetails"]
+            else :
+                self._prop_dict["contextDetails"] = PlannerPlanContextDetailsCollection(self._prop_dict["contextDetails"])
+                return self._prop_dict["contextDetails"]
+
+        return None
+
+    @context_details.setter
+    def context_details(self, val):
+        self._prop_dict["contextDetails"] = val
 

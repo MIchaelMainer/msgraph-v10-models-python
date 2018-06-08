@@ -10,6 +10,7 @@ from ..model.identity_set import IdentitySet
 from ..model.quota import Quota
 from ..model.sharepoint_ids import SharepointIds
 from ..model.system_facet import SystemFacet
+from ..model.item_activity import ItemActivity
 from ..model.drive_item import DriveItem
 from ..model.list import List
 from ..one_drive_object_base import OneDriveObjectBase
@@ -125,6 +126,19 @@ class Drive(OneDriveObjectBase):
     @system.setter
     def system(self, val):
         self._prop_dict["system"] = val
+
+    @property
+    def activities(self):
+        """Gets and sets the activities
+        
+        Returns: 
+            :class:`ActivitiesCollectionPage<onedrivesdk.request.activities_collection.ActivitiesCollectionPage>`:
+                The activities
+        """
+        if "activities" in self._prop_dict:
+            return ActivitiesCollectionPage(self._prop_dict["activities"])
+        else:
+            return None
 
     @property
     def items(self):

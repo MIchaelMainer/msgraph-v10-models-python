@@ -7,7 +7,11 @@
 
 from __future__ import unicode_literals
 from ..model.email_address import EmailAddress
+from ..model.website import Website
+from ..model.phone import Phone
 from ..model.physical_address import PhysicalAddress
+from ..model.date import Date
+from ..model.followup_flag import FollowupFlag
 from ..model.extension import Extension
 from ..model.single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 from ..model.multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
@@ -287,6 +291,19 @@ class Contact(OneDriveObjectBase):
             return None
 
     @property
+    def websites(self):
+        """Gets and sets the websites
+        
+        Returns: 
+            :class:`WebsitesCollectionPage<onedrivesdk.request.websites_collection.WebsitesCollectionPage>`:
+                The websites
+        """
+        if "websites" in self._prop_dict:
+            return WebsitesCollectionPage(self._prop_dict["websites"])
+        else:
+            return None
+
+    @property
     def im_addresses(self):
         """
         Gets and sets the imAddresses
@@ -395,24 +412,6 @@ class Contact(OneDriveObjectBase):
         self._prop_dict["profession"] = val
 
     @property
-    def business_home_page(self):
-        """
-        Gets and sets the businessHomePage
-        
-        Returns:
-            str:
-                The businessHomePage
-        """
-        if "businessHomePage" in self._prop_dict:
-            return self._prop_dict["businessHomePage"]
-        else:
-            return None
-
-    @business_home_page.setter
-    def business_home_page(self, val):
-        self._prop_dict["businessHomePage"] = val
-
-    @property
     def assistant_name(self):
         """
         Gets and sets the assistantName
@@ -449,124 +448,30 @@ class Contact(OneDriveObjectBase):
         self._prop_dict["manager"] = val
 
     @property
-    def home_phones(self):
-        """
-        Gets and sets the homePhones
+    def phones(self):
+        """Gets and sets the phones
         
-        Returns:
-            str:
-                The homePhones
+        Returns: 
+            :class:`PhonesCollectionPage<onedrivesdk.request.phones_collection.PhonesCollectionPage>`:
+                The phones
         """
-        if "homePhones" in self._prop_dict:
-            return self._prop_dict["homePhones"]
+        if "phones" in self._prop_dict:
+            return PhonesCollectionPage(self._prop_dict["phones"])
         else:
             return None
 
-    @home_phones.setter
-    def home_phones(self, val):
-        self._prop_dict["homePhones"] = val
-
     @property
-    def mobile_phone(self):
-        """
-        Gets and sets the mobilePhone
+    def postal_addresses(self):
+        """Gets and sets the postalAddresses
         
-        Returns:
-            str:
-                The mobilePhone
+        Returns: 
+            :class:`PostalAddressesCollectionPage<onedrivesdk.request.postal_addresses_collection.PostalAddressesCollectionPage>`:
+                The postalAddresses
         """
-        if "mobilePhone" in self._prop_dict:
-            return self._prop_dict["mobilePhone"]
+        if "postalAddresses" in self._prop_dict:
+            return PostalAddressesCollectionPage(self._prop_dict["postalAddresses"])
         else:
             return None
-
-    @mobile_phone.setter
-    def mobile_phone(self, val):
-        self._prop_dict["mobilePhone"] = val
-
-    @property
-    def business_phones(self):
-        """
-        Gets and sets the businessPhones
-        
-        Returns:
-            str:
-                The businessPhones
-        """
-        if "businessPhones" in self._prop_dict:
-            return self._prop_dict["businessPhones"]
-        else:
-            return None
-
-    @business_phones.setter
-    def business_phones(self, val):
-        self._prop_dict["businessPhones"] = val
-
-    @property
-    def home_address(self):
-        """
-        Gets and sets the homeAddress
-        
-        Returns: 
-            :class:`PhysicalAddress<onedrivesdk.model.physical_address.PhysicalAddress>`:
-                The homeAddress
-        """
-        if "homeAddress" in self._prop_dict:
-            if isinstance(self._prop_dict["homeAddress"], OneDriveObjectBase):
-                return self._prop_dict["homeAddress"]
-            else :
-                self._prop_dict["homeAddress"] = PhysicalAddress(self._prop_dict["homeAddress"])
-                return self._prop_dict["homeAddress"]
-
-        return None
-
-    @home_address.setter
-    def home_address(self, val):
-        self._prop_dict["homeAddress"] = val
-
-    @property
-    def business_address(self):
-        """
-        Gets and sets the businessAddress
-        
-        Returns: 
-            :class:`PhysicalAddress<onedrivesdk.model.physical_address.PhysicalAddress>`:
-                The businessAddress
-        """
-        if "businessAddress" in self._prop_dict:
-            if isinstance(self._prop_dict["businessAddress"], OneDriveObjectBase):
-                return self._prop_dict["businessAddress"]
-            else :
-                self._prop_dict["businessAddress"] = PhysicalAddress(self._prop_dict["businessAddress"])
-                return self._prop_dict["businessAddress"]
-
-        return None
-
-    @business_address.setter
-    def business_address(self, val):
-        self._prop_dict["businessAddress"] = val
-
-    @property
-    def other_address(self):
-        """
-        Gets and sets the otherAddress
-        
-        Returns: 
-            :class:`PhysicalAddress<onedrivesdk.model.physical_address.PhysicalAddress>`:
-                The otherAddress
-        """
-        if "otherAddress" in self._prop_dict:
-            if isinstance(self._prop_dict["otherAddress"], OneDriveObjectBase):
-                return self._prop_dict["otherAddress"]
-            else :
-                self._prop_dict["otherAddress"] = PhysicalAddress(self._prop_dict["otherAddress"])
-                return self._prop_dict["otherAddress"]
-
-        return None
-
-    @other_address.setter
-    def other_address(self, val):
-        self._prop_dict["otherAddress"] = val
 
     @property
     def spouse_name(self):
@@ -621,6 +526,86 @@ class Contact(OneDriveObjectBase):
     @children.setter
     def children(self, val):
         self._prop_dict["children"] = val
+
+    @property
+    def wedding_anniversary(self):
+        """
+        Gets and sets the weddingAnniversary
+        
+        Returns: 
+            :class:`Date<onedrivesdk.model.date.Date>`:
+                The weddingAnniversary
+        """
+        if "weddingAnniversary" in self._prop_dict:
+            if isinstance(self._prop_dict["weddingAnniversary"], OneDriveObjectBase):
+                return self._prop_dict["weddingAnniversary"]
+            else :
+                self._prop_dict["weddingAnniversary"] = Date(self._prop_dict["weddingAnniversary"])
+                return self._prop_dict["weddingAnniversary"]
+
+        return None
+
+    @wedding_anniversary.setter
+    def wedding_anniversary(self, val):
+        self._prop_dict["weddingAnniversary"] = val
+
+    @property
+    def gender(self):
+        """
+        Gets and sets the gender
+        
+        Returns:
+            str:
+                The gender
+        """
+        if "gender" in self._prop_dict:
+            return self._prop_dict["gender"]
+        else:
+            return None
+
+    @gender.setter
+    def gender(self, val):
+        self._prop_dict["gender"] = val
+
+    @property
+    def is_favorite(self):
+        """
+        Gets and sets the isFavorite
+        
+        Returns:
+            bool:
+                The isFavorite
+        """
+        if "isFavorite" in self._prop_dict:
+            return self._prop_dict["isFavorite"]
+        else:
+            return None
+
+    @is_favorite.setter
+    def is_favorite(self, val):
+        self._prop_dict["isFavorite"] = val
+
+    @property
+    def flag(self):
+        """
+        Gets and sets the flag
+        
+        Returns: 
+            :class:`FollowupFlag<onedrivesdk.model.followup_flag.FollowupFlag>`:
+                The flag
+        """
+        if "flag" in self._prop_dict:
+            if isinstance(self._prop_dict["flag"], OneDriveObjectBase):
+                return self._prop_dict["flag"]
+            else :
+                self._prop_dict["flag"] = FollowupFlag(self._prop_dict["flag"])
+                return self._prop_dict["flag"]
+
+        return None
+
+    @flag.setter
+    def flag(self, val):
+        self._prop_dict["flag"] = val
 
     @property
     def extensions(self):

@@ -6,6 +6,7 @@
 '''
 
 from __future__ import unicode_literals
+from ..model.physical_address_type import PhysicalAddressType
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -13,6 +14,44 @@ class PhysicalAddress(OneDriveObjectBase):
 
     def __init__(self, prop_dict={}):
         self._prop_dict = prop_dict
+
+    @property
+    def type(self):
+        """
+        Gets and sets the type
+        
+        Returns: 
+            :class:`PhysicalAddressType<onedrivesdk.model.physical_address_type.PhysicalAddressType>`:
+                The type
+        """
+        if "type" in self._prop_dict:
+            if isinstance(self._prop_dict["type"], OneDriveObjectBase):
+                return self._prop_dict["type"]
+            else :
+                self._prop_dict["type"] = PhysicalAddressType(self._prop_dict["type"])
+                return self._prop_dict["type"]
+
+        return None
+
+    @type.setter
+    def type(self, val):
+        self._prop_dict["type"] = val
+    @property
+    def post_office_box(self):
+        """Gets and sets the postOfficeBox
+        
+        Returns: 
+            str:
+                The postOfficeBox
+        """
+        if "postOfficeBox" in self._prop_dict:
+            return self._prop_dict["postOfficeBox"]
+        else:
+            return None
+
+    @post_office_box.setter
+    def post_office_box(self, val):
+        self._prop_dict["postOfficeBox"] = val
 
     @property
     def street(self):

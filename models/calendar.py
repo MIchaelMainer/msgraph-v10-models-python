@@ -60,6 +60,42 @@ class Calendar(OneDriveObjectBase):
         self._prop_dict["color"] = val
 
     @property
+    def hex_color(self):
+        """
+        Gets and sets the hexColor
+        
+        Returns:
+            str:
+                The hexColor
+        """
+        if "hexColor" in self._prop_dict:
+            return self._prop_dict["hexColor"]
+        else:
+            return None
+
+    @hex_color.setter
+    def hex_color(self, val):
+        self._prop_dict["hexColor"] = val
+
+    @property
+    def is_default_calendar(self):
+        """
+        Gets and sets the isDefaultCalendar
+        
+        Returns:
+            bool:
+                The isDefaultCalendar
+        """
+        if "isDefaultCalendar" in self._prop_dict:
+            return self._prop_dict["isDefaultCalendar"]
+        else:
+            return None
+
+    @is_default_calendar.setter
+    def is_default_calendar(self, val):
+        self._prop_dict["isDefaultCalendar"] = val
+
+    @property
     def change_key(self):
         """
         Gets and sets the changeKey
@@ -112,6 +148,42 @@ class Calendar(OneDriveObjectBase):
     @can_view_private_items.setter
     def can_view_private_items(self, val):
         self._prop_dict["canViewPrivateItems"] = val
+
+    @property
+    def is_shared(self):
+        """
+        Gets and sets the isShared
+        
+        Returns:
+            bool:
+                The isShared
+        """
+        if "isShared" in self._prop_dict:
+            return self._prop_dict["isShared"]
+        else:
+            return None
+
+    @is_shared.setter
+    def is_shared(self, val):
+        self._prop_dict["isShared"] = val
+
+    @property
+    def is_shared_with_me(self):
+        """
+        Gets and sets the isSharedWithMe
+        
+        Returns:
+            bool:
+                The isSharedWithMe
+        """
+        if "isSharedWithMe" in self._prop_dict:
+            return self._prop_dict["isSharedWithMe"]
+        else:
+            return None
+
+    @is_shared_with_me.setter
+    def is_shared_with_me(self, val):
+        self._prop_dict["isSharedWithMe"] = val
 
     @property
     def can_edit(self):

@@ -16,6 +16,23 @@ class RolePermission(OneDriveObjectBase):
         self._prop_dict = prop_dict
 
     @property
+    def actions(self):
+        """Gets and sets the actions
+        
+        Returns: 
+            str:
+                The actions
+        """
+        if "actions" in self._prop_dict:
+            return self._prop_dict["actions"]
+        else:
+            return None
+
+    @actions.setter
+    def actions(self, val):
+        self._prop_dict["actions"] = val
+
+    @property
     def resource_actions(self):
         """
         Gets and sets the resourceActions

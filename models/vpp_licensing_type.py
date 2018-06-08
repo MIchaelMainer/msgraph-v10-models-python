@@ -15,6 +15,40 @@ class VppLicensingType(OneDriveObjectBase):
         self._prop_dict = prop_dict
 
     @property
+    def support_user_licensing(self):
+        """Gets and sets the supportUserLicensing
+        
+        Returns: 
+            bool:
+                The supportUserLicensing
+        """
+        if "supportUserLicensing" in self._prop_dict:
+            return self._prop_dict["supportUserLicensing"]
+        else:
+            return None
+
+    @support_user_licensing.setter
+    def support_user_licensing(self, val):
+        self._prop_dict["supportUserLicensing"] = val
+
+    @property
+    def support_device_licensing(self):
+        """Gets and sets the supportDeviceLicensing
+        
+        Returns: 
+            bool:
+                The supportDeviceLicensing
+        """
+        if "supportDeviceLicensing" in self._prop_dict:
+            return self._prop_dict["supportDeviceLicensing"]
+        else:
+            return None
+
+    @support_device_licensing.setter
+    def support_device_licensing(self, val):
+        self._prop_dict["supportDeviceLicensing"] = val
+
+    @property
     def supports_user_licensing(self):
         """Gets and sets the supportsUserLicensing
         

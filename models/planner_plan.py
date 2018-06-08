@@ -7,6 +7,7 @@
 
 from __future__ import unicode_literals
 from ..model.identity_set import IdentitySet
+from ..model.planner_plan_context_collection import PlannerPlanContextCollection
 from ..model.planner_task import PlannerTask
 from ..model.planner_bucket import PlannerBucket
 from ..model.planner_plan_details import PlannerPlanDetails
@@ -94,6 +95,28 @@ class PlannerPlan(OneDriveObjectBase):
     @title.setter
     def title(self, val):
         self._prop_dict["title"] = val
+
+    @property
+    def contexts(self):
+        """
+        Gets and sets the contexts
+        
+        Returns: 
+            :class:`PlannerPlanContextCollection<onedrivesdk.model.planner_plan_context_collection.PlannerPlanContextCollection>`:
+                The contexts
+        """
+        if "contexts" in self._prop_dict:
+            if isinstance(self._prop_dict["contexts"], OneDriveObjectBase):
+                return self._prop_dict["contexts"]
+            else :
+                self._prop_dict["contexts"] = PlannerPlanContextCollection(self._prop_dict["contexts"])
+                return self._prop_dict["contexts"]
+
+        return None
+
+    @contexts.setter
+    def contexts(self, val):
+        self._prop_dict["contexts"] = val
 
     @property
     def tasks(self):

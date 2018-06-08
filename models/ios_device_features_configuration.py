@@ -6,9 +6,12 @@
 '''
 
 from __future__ import unicode_literals
+from ..model.ios_web_content_filter_base import IosWebContentFilterBase
 from ..model.ios_home_screen_item import IosHomeScreenItem
 from ..model.ios_home_screen_page import IosHomeScreenPage
 from ..model.ios_notification_settings import IosNotificationSettings
+from ..model.ios_single_sign_on_settings import IosSingleSignOnSettings
+from ..model.ios_certificate_profile_base import IosCertificateProfileBase
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -34,6 +37,28 @@ class IosDeviceFeaturesConfiguration(OneDriveObjectBase):
     @asset_tag_template.setter
     def asset_tag_template(self, val):
         self._prop_dict["assetTagTemplate"] = val
+
+    @property
+    def content_filter_settings(self):
+        """
+        Gets and sets the contentFilterSettings
+        
+        Returns: 
+            :class:`IosWebContentFilterBase<onedrivesdk.model.ios_web_content_filter_base.IosWebContentFilterBase>`:
+                The contentFilterSettings
+        """
+        if "contentFilterSettings" in self._prop_dict:
+            if isinstance(self._prop_dict["contentFilterSettings"], OneDriveObjectBase):
+                return self._prop_dict["contentFilterSettings"]
+            else :
+                self._prop_dict["contentFilterSettings"] = IosWebContentFilterBase(self._prop_dict["contentFilterSettings"])
+                return self._prop_dict["contentFilterSettings"]
+
+        return None
+
+    @content_filter_settings.setter
+    def content_filter_settings(self, val):
+        self._prop_dict["contentFilterSettings"] = val
 
     @property
     def lock_screen_footnote(self):
@@ -91,4 +116,48 @@ class IosDeviceFeaturesConfiguration(OneDriveObjectBase):
             return NotificationSettingsCollectionPage(self._prop_dict["notificationSettings"])
         else:
             return None
+
+    @property
+    def single_sign_on_settings(self):
+        """
+        Gets and sets the singleSignOnSettings
+        
+        Returns: 
+            :class:`IosSingleSignOnSettings<onedrivesdk.model.ios_single_sign_on_settings.IosSingleSignOnSettings>`:
+                The singleSignOnSettings
+        """
+        if "singleSignOnSettings" in self._prop_dict:
+            if isinstance(self._prop_dict["singleSignOnSettings"], OneDriveObjectBase):
+                return self._prop_dict["singleSignOnSettings"]
+            else :
+                self._prop_dict["singleSignOnSettings"] = IosSingleSignOnSettings(self._prop_dict["singleSignOnSettings"])
+                return self._prop_dict["singleSignOnSettings"]
+
+        return None
+
+    @single_sign_on_settings.setter
+    def single_sign_on_settings(self, val):
+        self._prop_dict["singleSignOnSettings"] = val
+
+    @property
+    def identity_certificate_for_client_authentication(self):
+        """
+        Gets and sets the identityCertificateForClientAuthentication
+        
+        Returns: 
+            :class:`IosCertificateProfileBase<onedrivesdk.model.ios_certificate_profile_base.IosCertificateProfileBase>`:
+                The identityCertificateForClientAuthentication
+        """
+        if "identityCertificateForClientAuthentication" in self._prop_dict:
+            if isinstance(self._prop_dict["identityCertificateForClientAuthentication"], OneDriveObjectBase):
+                return self._prop_dict["identityCertificateForClientAuthentication"]
+            else :
+                self._prop_dict["identityCertificateForClientAuthentication"] = IosCertificateProfileBase(self._prop_dict["identityCertificateForClientAuthentication"])
+                return self._prop_dict["identityCertificateForClientAuthentication"]
+
+        return None
+
+    @identity_certificate_for_client_authentication.setter
+    def identity_certificate_for_client_authentication(self, val):
+        self._prop_dict["identityCertificateForClientAuthentication"] = val
 

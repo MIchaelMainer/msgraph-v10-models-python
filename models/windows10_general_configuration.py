@@ -6,15 +6,21 @@
 '''
 
 from __future__ import unicode_literals
+from ..model.sign_in_assistant_options import SignInAssistantOptions
 from ..model.diagnostic_data_submission_mode import DiagnosticDataSubmissionMode
+from ..model.ink_access_setting import InkAccessSetting
 from ..model.edge_cookie_policy import EdgeCookiePolicy
+from ..model.configuration_usage import ConfigurationUsage
 from ..model.defender_detected_malware_actions import DefenderDetectedMalwareActions
 from ..model.weekly_schedule import WeeklySchedule
 from ..model.defender_monitor_file_activity import DefenderMonitorFileActivity
+from ..model.defender_potentially_unwanted_app_action import DefenderPotentiallyUnwantedAppAction
 from ..model.defender_prompt_for_sample_submission import DefenderPromptForSampleSubmission
 from ..model.defender_scan_type import DefenderScanType
 from ..model.time_of_day import TimeOfDay
 from ..model.defender_cloud_block_level_type import DefenderCloudBlockLevelType
+from ..model.defender_schedule_scan_day import DefenderScheduleScanDay
+from ..model.defender_submit_samples_consent_type import DefenderSubmitSamplesConsentType
 from ..model.required_password_type import RequiredPasswordType
 from ..model.state_management_setting import StateManagementSetting
 from ..model.windows_start_menu_app_list_visibility_type import WindowsStartMenuAppListVisibilityType
@@ -24,6 +30,8 @@ from ..model.windows_spotlight_enablement_settings import WindowsSpotlightEnable
 from ..model.windows10_network_proxy_server import Windows10NetworkProxyServer
 from ..model.safe_search_filter_type import SafeSearchFilterType
 from ..model.edge_search_engine_base import EdgeSearchEngineBase
+from ..model.windows_assigned_access_profile import WindowsAssignedAccessProfile
+from ..model.windows_privacy_data_access_control_item import WindowsPrivacyDataAccessControlItem
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -31,6 +39,172 @@ class Windows10GeneralConfiguration(OneDriveObjectBase):
 
     def __init__(self, prop_dict={}):
         self._prop_dict = prop_dict
+
+    @property
+    def enable_automatic_redeployment(self):
+        """
+        Gets and sets the enableAutomaticRedeployment
+        
+        Returns:
+            bool:
+                The enableAutomaticRedeployment
+        """
+        if "enableAutomaticRedeployment" in self._prop_dict:
+            return self._prop_dict["enableAutomaticRedeployment"]
+        else:
+            return None
+
+    @enable_automatic_redeployment.setter
+    def enable_automatic_redeployment(self, val):
+        self._prop_dict["enableAutomaticRedeployment"] = val
+
+    @property
+    def assigned_access_single_mode_user_name(self):
+        """
+        Gets and sets the assignedAccessSingleModeUserName
+        
+        Returns:
+            str:
+                The assignedAccessSingleModeUserName
+        """
+        if "assignedAccessSingleModeUserName" in self._prop_dict:
+            return self._prop_dict["assignedAccessSingleModeUserName"]
+        else:
+            return None
+
+    @assigned_access_single_mode_user_name.setter
+    def assigned_access_single_mode_user_name(self, val):
+        self._prop_dict["assignedAccessSingleModeUserName"] = val
+
+    @property
+    def assigned_access_single_mode_app_user_model_id(self):
+        """
+        Gets and sets the assignedAccessSingleModeAppUserModelId
+        
+        Returns:
+            str:
+                The assignedAccessSingleModeAppUserModelId
+        """
+        if "assignedAccessSingleModeAppUserModelId" in self._prop_dict:
+            return self._prop_dict["assignedAccessSingleModeAppUserModelId"]
+        else:
+            return None
+
+    @assigned_access_single_mode_app_user_model_id.setter
+    def assigned_access_single_mode_app_user_model_id(self, val):
+        self._prop_dict["assignedAccessSingleModeAppUserModelId"] = val
+
+    @property
+    def microsoft_account_sign_in_assistant_settings(self):
+        """
+        Gets and sets the microsoftAccountSignInAssistantSettings
+        
+        Returns: 
+            :class:`SignInAssistantOptions<onedrivesdk.model.sign_in_assistant_options.SignInAssistantOptions>`:
+                The microsoftAccountSignInAssistantSettings
+        """
+        if "microsoftAccountSignInAssistantSettings" in self._prop_dict:
+            if isinstance(self._prop_dict["microsoftAccountSignInAssistantSettings"], OneDriveObjectBase):
+                return self._prop_dict["microsoftAccountSignInAssistantSettings"]
+            else :
+                self._prop_dict["microsoftAccountSignInAssistantSettings"] = SignInAssistantOptions(self._prop_dict["microsoftAccountSignInAssistantSettings"])
+                return self._prop_dict["microsoftAccountSignInAssistantSettings"]
+
+        return None
+
+    @microsoft_account_sign_in_assistant_settings.setter
+    def microsoft_account_sign_in_assistant_settings(self, val):
+        self._prop_dict["microsoftAccountSignInAssistantSettings"] = val
+
+    @property
+    def authentication_allow_secondary_device(self):
+        """
+        Gets and sets the authenticationAllowSecondaryDevice
+        
+        Returns:
+            bool:
+                The authenticationAllowSecondaryDevice
+        """
+        if "authenticationAllowSecondaryDevice" in self._prop_dict:
+            return self._prop_dict["authenticationAllowSecondaryDevice"]
+        else:
+            return None
+
+    @authentication_allow_secondary_device.setter
+    def authentication_allow_secondary_device(self, val):
+        self._prop_dict["authenticationAllowSecondaryDevice"] = val
+
+    @property
+    def authentication_allow_fido_device(self):
+        """
+        Gets and sets the authenticationAllowFIDODevice
+        
+        Returns:
+            bool:
+                The authenticationAllowFIDODevice
+        """
+        if "authenticationAllowFIDODevice" in self._prop_dict:
+            return self._prop_dict["authenticationAllowFIDODevice"]
+        else:
+            return None
+
+    @authentication_allow_fido_device.setter
+    def authentication_allow_fido_device(self, val):
+        self._prop_dict["authenticationAllowFIDODevice"] = val
+
+    @property
+    def cryptography_allow_fips_algorithm_policy(self):
+        """
+        Gets and sets the cryptographyAllowFipsAlgorithmPolicy
+        
+        Returns:
+            bool:
+                The cryptographyAllowFipsAlgorithmPolicy
+        """
+        if "cryptographyAllowFipsAlgorithmPolicy" in self._prop_dict:
+            return self._prop_dict["cryptographyAllowFipsAlgorithmPolicy"]
+        else:
+            return None
+
+    @cryptography_allow_fips_algorithm_policy.setter
+    def cryptography_allow_fips_algorithm_policy(self, val):
+        self._prop_dict["cryptographyAllowFipsAlgorithmPolicy"] = val
+
+    @property
+    def display_app_list_with_gdi_dpi_scaling_turned_on(self):
+        """
+        Gets and sets the displayAppListWithGdiDPIScalingTurnedOn
+        
+        Returns:
+            str:
+                The displayAppListWithGdiDPIScalingTurnedOn
+        """
+        if "displayAppListWithGdiDPIScalingTurnedOn" in self._prop_dict:
+            return self._prop_dict["displayAppListWithGdiDPIScalingTurnedOn"]
+        else:
+            return None
+
+    @display_app_list_with_gdi_dpi_scaling_turned_on.setter
+    def display_app_list_with_gdi_dpi_scaling_turned_on(self, val):
+        self._prop_dict["displayAppListWithGdiDPIScalingTurnedOn"] = val
+
+    @property
+    def display_app_list_with_gdi_dpi_scaling_turned_off(self):
+        """
+        Gets and sets the displayAppListWithGdiDPIScalingTurnedOff
+        
+        Returns:
+            str:
+                The displayAppListWithGdiDPIScalingTurnedOff
+        """
+        if "displayAppListWithGdiDPIScalingTurnedOff" in self._prop_dict:
+            return self._prop_dict["displayAppListWithGdiDPIScalingTurnedOff"]
+        else:
+            return None
+
+    @display_app_list_with_gdi_dpi_scaling_turned_off.setter
+    def display_app_list_with_gdi_dpi_scaling_turned_off(self, val):
+        self._prop_dict["displayAppListWithGdiDPIScalingTurnedOff"] = val
 
     @property
     def enterprise_cloud_print_discovery_end_point(self):
@@ -141,6 +315,114 @@ class Windows10GeneralConfiguration(OneDriveObjectBase):
         self._prop_dict["enterpriseCloudPrintMopriaDiscoveryResourceIdentifier"] = val
 
     @property
+    def messaging_block_sync(self):
+        """
+        Gets and sets the messagingBlockSync
+        
+        Returns:
+            bool:
+                The messagingBlockSync
+        """
+        if "messagingBlockSync" in self._prop_dict:
+            return self._prop_dict["messagingBlockSync"]
+        else:
+            return None
+
+    @messaging_block_sync.setter
+    def messaging_block_sync(self, val):
+        self._prop_dict["messagingBlockSync"] = val
+
+    @property
+    def messaging_block_mms(self):
+        """
+        Gets and sets the messagingBlockMMS
+        
+        Returns:
+            bool:
+                The messagingBlockMMS
+        """
+        if "messagingBlockMMS" in self._prop_dict:
+            return self._prop_dict["messagingBlockMMS"]
+        else:
+            return None
+
+    @messaging_block_mms.setter
+    def messaging_block_mms(self, val):
+        self._prop_dict["messagingBlockMMS"] = val
+
+    @property
+    def messaging_block_rich_communication_services(self):
+        """
+        Gets and sets the messagingBlockRichCommunicationServices
+        
+        Returns:
+            bool:
+                The messagingBlockRichCommunicationServices
+        """
+        if "messagingBlockRichCommunicationServices" in self._prop_dict:
+            return self._prop_dict["messagingBlockRichCommunicationServices"]
+        else:
+            return None
+
+    @messaging_block_rich_communication_services.setter
+    def messaging_block_rich_communication_services(self, val):
+        self._prop_dict["messagingBlockRichCommunicationServices"] = val
+
+    @property
+    def printer_names(self):
+        """
+        Gets and sets the printerNames
+        
+        Returns:
+            str:
+                The printerNames
+        """
+        if "printerNames" in self._prop_dict:
+            return self._prop_dict["printerNames"]
+        else:
+            return None
+
+    @printer_names.setter
+    def printer_names(self, val):
+        self._prop_dict["printerNames"] = val
+
+    @property
+    def printer_default_name(self):
+        """
+        Gets and sets the printerDefaultName
+        
+        Returns:
+            str:
+                The printerDefaultName
+        """
+        if "printerDefaultName" in self._prop_dict:
+            return self._prop_dict["printerDefaultName"]
+        else:
+            return None
+
+    @printer_default_name.setter
+    def printer_default_name(self, val):
+        self._prop_dict["printerDefaultName"] = val
+
+    @property
+    def printer_block_addition(self):
+        """
+        Gets and sets the printerBlockAddition
+        
+        Returns:
+            bool:
+                The printerBlockAddition
+        """
+        if "printerBlockAddition" in self._prop_dict:
+            return self._prop_dict["printerBlockAddition"]
+        else:
+            return None
+
+    @printer_block_addition.setter
+    def printer_block_addition(self, val):
+        self._prop_dict["printerBlockAddition"] = val
+
+    @property
     def search_block_diacritics(self):
         """
         Gets and sets the searchBlockDiacritics
@@ -213,6 +495,24 @@ class Windows10GeneralConfiguration(OneDriveObjectBase):
         self._prop_dict["searchEnableRemoteQueries"] = val
 
     @property
+    def search_disable_use_location(self):
+        """
+        Gets and sets the searchDisableUseLocation
+        
+        Returns:
+            bool:
+                The searchDisableUseLocation
+        """
+        if "searchDisableUseLocation" in self._prop_dict:
+            return self._prop_dict["searchDisableUseLocation"]
+        else:
+            return None
+
+    @search_disable_use_location.setter
+    def search_disable_use_location(self, val):
+        self._prop_dict["searchDisableUseLocation"] = val
+
+    @property
     def search_disable_indexer_backoff(self):
         """
         Gets and sets the searchDisableIndexerBackoff
@@ -267,6 +567,42 @@ class Windows10GeneralConfiguration(OneDriveObjectBase):
         self._prop_dict["searchEnableAutomaticIndexSizeManangement"] = val
 
     @property
+    def search_block_web_results(self):
+        """
+        Gets and sets the searchBlockWebResults
+        
+        Returns:
+            bool:
+                The searchBlockWebResults
+        """
+        if "searchBlockWebResults" in self._prop_dict:
+            return self._prop_dict["searchBlockWebResults"]
+        else:
+            return None
+
+    @search_block_web_results.setter
+    def search_block_web_results(self, val):
+        self._prop_dict["searchBlockWebResults"] = val
+
+    @property
+    def security_block_azure_ad_joined_devices_auto_encryption(self):
+        """
+        Gets and sets the securityBlockAzureADJoinedDevicesAutoEncryption
+        
+        Returns:
+            bool:
+                The securityBlockAzureADJoinedDevicesAutoEncryption
+        """
+        if "securityBlockAzureADJoinedDevicesAutoEncryption" in self._prop_dict:
+            return self._prop_dict["securityBlockAzureADJoinedDevicesAutoEncryption"]
+        else:
+            return None
+
+    @security_block_azure_ad_joined_devices_auto_encryption.setter
+    def security_block_azure_ad_joined_devices_auto_encryption(self, val):
+        self._prop_dict["securityBlockAzureADJoinedDevicesAutoEncryption"] = val
+
+    @property
     def diagnostics_data_submission_mode(self):
         """
         Gets and sets the diagnosticsDataSubmissionMode
@@ -305,6 +641,64 @@ class Windows10GeneralConfiguration(OneDriveObjectBase):
     @one_drive_disable_file_sync.setter
     def one_drive_disable_file_sync(self, val):
         self._prop_dict["oneDriveDisableFileSync"] = val
+
+    @property
+    def system_telemetry_proxy_server(self):
+        """
+        Gets and sets the systemTelemetryProxyServer
+        
+        Returns:
+            str:
+                The systemTelemetryProxyServer
+        """
+        if "systemTelemetryProxyServer" in self._prop_dict:
+            return self._prop_dict["systemTelemetryProxyServer"]
+        else:
+            return None
+
+    @system_telemetry_proxy_server.setter
+    def system_telemetry_proxy_server(self, val):
+        self._prop_dict["systemTelemetryProxyServer"] = val
+
+    @property
+    def ink_workspace_access(self):
+        """
+        Gets and sets the inkWorkspaceAccess
+        
+        Returns: 
+            :class:`InkAccessSetting<onedrivesdk.model.ink_access_setting.InkAccessSetting>`:
+                The inkWorkspaceAccess
+        """
+        if "inkWorkspaceAccess" in self._prop_dict:
+            if isinstance(self._prop_dict["inkWorkspaceAccess"], OneDriveObjectBase):
+                return self._prop_dict["inkWorkspaceAccess"]
+            else :
+                self._prop_dict["inkWorkspaceAccess"] = InkAccessSetting(self._prop_dict["inkWorkspaceAccess"])
+                return self._prop_dict["inkWorkspaceAccess"]
+
+        return None
+
+    @ink_workspace_access.setter
+    def ink_workspace_access(self, val):
+        self._prop_dict["inkWorkspaceAccess"] = val
+
+    @property
+    def ink_workspace_block_suggested_apps(self):
+        """
+        Gets and sets the inkWorkspaceBlockSuggestedApps
+        
+        Returns:
+            bool:
+                The inkWorkspaceBlockSuggestedApps
+        """
+        if "inkWorkspaceBlockSuggestedApps" in self._prop_dict:
+            return self._prop_dict["inkWorkspaceBlockSuggestedApps"]
+        else:
+            return None
+
+    @ink_workspace_block_suggested_apps.setter
+    def ink_workspace_block_suggested_apps(self, val):
+        self._prop_dict["inkWorkspaceBlockSuggestedApps"] = val
 
     @property
     def smart_screen_enable_app_install_control(self):
@@ -725,6 +1119,42 @@ class Windows10GeneralConfiguration(OneDriveObjectBase):
         self._prop_dict["edgeSyncFavoritesWithInternetExplorer"] = val
 
     @property
+    def edge_favorites_list_location(self):
+        """
+        Gets and sets the edgeFavoritesListLocation
+        
+        Returns:
+            str:
+                The edgeFavoritesListLocation
+        """
+        if "edgeFavoritesListLocation" in self._prop_dict:
+            return self._prop_dict["edgeFavoritesListLocation"]
+        else:
+            return None
+
+    @edge_favorites_list_location.setter
+    def edge_favorites_list_location(self, val):
+        self._prop_dict["edgeFavoritesListLocation"] = val
+
+    @property
+    def edge_block_edit_favorites(self):
+        """
+        Gets and sets the edgeBlockEditFavorites
+        
+        Returns:
+            bool:
+                The edgeBlockEditFavorites
+        """
+        if "edgeBlockEditFavorites" in self._prop_dict:
+            return self._prop_dict["edgeBlockEditFavorites"]
+        else:
+            return None
+
+    @edge_block_edit_favorites.setter
+    def edge_block_edit_favorites(self, val):
+        self._prop_dict["edgeBlockEditFavorites"] = val
+
+    @property
     def cellular_block_data_when_roaming(self):
         """
         Gets and sets the cellularBlockDataWhenRoaming
@@ -777,6 +1207,28 @@ class Windows10GeneralConfiguration(OneDriveObjectBase):
     @cellular_block_vpn_when_roaming.setter
     def cellular_block_vpn_when_roaming(self, val):
         self._prop_dict["cellularBlockVpnWhenRoaming"] = val
+
+    @property
+    def cellular_data(self):
+        """
+        Gets and sets the cellularData
+        
+        Returns: 
+            :class:`ConfigurationUsage<onedrivesdk.model.configuration_usage.ConfigurationUsage>`:
+                The cellularData
+        """
+        if "cellularData" in self._prop_dict:
+            if isinstance(self._prop_dict["cellularData"], OneDriveObjectBase):
+                return self._prop_dict["cellularData"]
+            else :
+                self._prop_dict["cellularData"] = ConfigurationUsage(self._prop_dict["cellularData"])
+                return self._prop_dict["cellularData"]
+
+        return None
+
+    @cellular_data.setter
+    def cellular_data(self, val):
+        self._prop_dict["cellularData"] = val
 
     @property
     def defender_block_end_user_access(self):
@@ -933,6 +1385,28 @@ class Windows10GeneralConfiguration(OneDriveObjectBase):
     @defender_monitor_file_activity.setter
     def defender_monitor_file_activity(self, val):
         self._prop_dict["defenderMonitorFileActivity"] = val
+
+    @property
+    def defender_potentially_unwanted_app_action(self):
+        """
+        Gets and sets the defenderPotentiallyUnwantedAppAction
+        
+        Returns: 
+            :class:`DefenderPotentiallyUnwantedAppAction<onedrivesdk.model.defender_potentially_unwanted_app_action.DefenderPotentiallyUnwantedAppAction>`:
+                The defenderPotentiallyUnwantedAppAction
+        """
+        if "defenderPotentiallyUnwantedAppAction" in self._prop_dict:
+            if isinstance(self._prop_dict["defenderPotentiallyUnwantedAppAction"], OneDriveObjectBase):
+                return self._prop_dict["defenderPotentiallyUnwantedAppAction"]
+            else :
+                self._prop_dict["defenderPotentiallyUnwantedAppAction"] = DefenderPotentiallyUnwantedAppAction(self._prop_dict["defenderPotentiallyUnwantedAppAction"])
+                return self._prop_dict["defenderPotentiallyUnwantedAppAction"]
+
+        return None
+
+    @defender_potentially_unwanted_app_action.setter
+    def defender_potentially_unwanted_app_action(self, val):
+        self._prop_dict["defenderPotentiallyUnwantedAppAction"] = val
 
     @property
     def defender_processes_to_exclude(self):
@@ -1279,6 +1753,86 @@ class Windows10GeneralConfiguration(OneDriveObjectBase):
         self._prop_dict["defenderCloudBlockLevel"] = val
 
     @property
+    def defender_cloud_extended_timeout(self):
+        """
+        Gets and sets the defenderCloudExtendedTimeout
+        
+        Returns:
+            int:
+                The defenderCloudExtendedTimeout
+        """
+        if "defenderCloudExtendedTimeout" in self._prop_dict:
+            return self._prop_dict["defenderCloudExtendedTimeout"]
+        else:
+            return None
+
+    @defender_cloud_extended_timeout.setter
+    def defender_cloud_extended_timeout(self, val):
+        self._prop_dict["defenderCloudExtendedTimeout"] = val
+
+    @property
+    def defender_block_on_access_protection(self):
+        """
+        Gets and sets the defenderBlockOnAccessProtection
+        
+        Returns:
+            bool:
+                The defenderBlockOnAccessProtection
+        """
+        if "defenderBlockOnAccessProtection" in self._prop_dict:
+            return self._prop_dict["defenderBlockOnAccessProtection"]
+        else:
+            return None
+
+    @defender_block_on_access_protection.setter
+    def defender_block_on_access_protection(self, val):
+        self._prop_dict["defenderBlockOnAccessProtection"] = val
+
+    @property
+    def defender_schedule_scan_day(self):
+        """
+        Gets and sets the defenderScheduleScanDay
+        
+        Returns: 
+            :class:`DefenderScheduleScanDay<onedrivesdk.model.defender_schedule_scan_day.DefenderScheduleScanDay>`:
+                The defenderScheduleScanDay
+        """
+        if "defenderScheduleScanDay" in self._prop_dict:
+            if isinstance(self._prop_dict["defenderScheduleScanDay"], OneDriveObjectBase):
+                return self._prop_dict["defenderScheduleScanDay"]
+            else :
+                self._prop_dict["defenderScheduleScanDay"] = DefenderScheduleScanDay(self._prop_dict["defenderScheduleScanDay"])
+                return self._prop_dict["defenderScheduleScanDay"]
+
+        return None
+
+    @defender_schedule_scan_day.setter
+    def defender_schedule_scan_day(self, val):
+        self._prop_dict["defenderScheduleScanDay"] = val
+
+    @property
+    def defender_submit_samples_consent_type(self):
+        """
+        Gets and sets the defenderSubmitSamplesConsentType
+        
+        Returns: 
+            :class:`DefenderSubmitSamplesConsentType<onedrivesdk.model.defender_submit_samples_consent_type.DefenderSubmitSamplesConsentType>`:
+                The defenderSubmitSamplesConsentType
+        """
+        if "defenderSubmitSamplesConsentType" in self._prop_dict:
+            if isinstance(self._prop_dict["defenderSubmitSamplesConsentType"], OneDriveObjectBase):
+                return self._prop_dict["defenderSubmitSamplesConsentType"]
+            else :
+                self._prop_dict["defenderSubmitSamplesConsentType"] = DefenderSubmitSamplesConsentType(self._prop_dict["defenderSubmitSamplesConsentType"])
+                return self._prop_dict["defenderSubmitSamplesConsentType"]
+
+        return None
+
+    @defender_submit_samples_consent_type.setter
+    def defender_submit_samples_consent_type(self, val):
+        self._prop_dict["defenderSubmitSamplesConsentType"] = val
+
+    @property
     def lock_screen_allow_timeout_configuration(self):
         """
         Gets and sets the lockScreenAllowTimeoutConfiguration
@@ -1609,6 +2163,42 @@ class Windows10GeneralConfiguration(OneDriveObjectBase):
     @privacy_block_input_personalization.setter
     def privacy_block_input_personalization(self, val):
         self._prop_dict["privacyBlockInputPersonalization"] = val
+
+    @property
+    def privacy_block_publish_user_activities(self):
+        """
+        Gets and sets the privacyBlockPublishUserActivities
+        
+        Returns:
+            bool:
+                The privacyBlockPublishUserActivities
+        """
+        if "privacyBlockPublishUserActivities" in self._prop_dict:
+            return self._prop_dict["privacyBlockPublishUserActivities"]
+        else:
+            return None
+
+    @privacy_block_publish_user_activities.setter
+    def privacy_block_publish_user_activities(self, val):
+        self._prop_dict["privacyBlockPublishUserActivities"] = val
+
+    @property
+    def privacy_block_activity_feed(self):
+        """
+        Gets and sets the privacyBlockActivityFeed
+        
+        Returns:
+            bool:
+                The privacyBlockActivityFeed
+        """
+        if "privacyBlockActivityFeed" in self._prop_dict:
+            return self._prop_dict["privacyBlockActivityFeed"]
+        else:
+            return None
+
+    @privacy_block_activity_feed.setter
+    def privacy_block_activity_feed(self, val):
+        self._prop_dict["privacyBlockActivityFeed"] = val
 
     @property
     def start_block_unpinning_apps_from_taskbar(self):
@@ -3697,4 +4287,30 @@ class Windows10GeneralConfiguration(OneDriveObjectBase):
     @logon_block_fast_user_switching.setter
     def logon_block_fast_user_switching(self, val):
         self._prop_dict["logonBlockFastUserSwitching"] = val
+
+    @property
+    def assigned_access_multi_mode_profiles(self):
+        """Gets and sets the assignedAccessMultiModeProfiles
+        
+        Returns: 
+            :class:`AssignedAccessMultiModeProfilesCollectionPage<onedrivesdk.request.assigned_access_multi_mode_profiles_collection.AssignedAccessMultiModeProfilesCollectionPage>`:
+                The assignedAccessMultiModeProfiles
+        """
+        if "assignedAccessMultiModeProfiles" in self._prop_dict:
+            return AssignedAccessMultiModeProfilesCollectionPage(self._prop_dict["assignedAccessMultiModeProfiles"])
+        else:
+            return None
+
+    @property
+    def privacy_access_controls(self):
+        """Gets and sets the privacyAccessControls
+        
+        Returns: 
+            :class:`PrivacyAccessControlsCollectionPage<onedrivesdk.request.privacy_access_controls_collection.PrivacyAccessControlsCollectionPage>`:
+                The privacyAccessControls
+        """
+        if "privacyAccessControls" in self._prop_dict:
+            return PrivacyAccessControlsCollectionPage(self._prop_dict["privacyAccessControls"])
+        else:
+            return None
 

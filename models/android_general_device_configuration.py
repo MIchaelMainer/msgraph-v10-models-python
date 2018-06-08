@@ -324,6 +324,24 @@ class AndroidGeneralDeviceConfiguration(OneDriveObjectBase):
         self._prop_dict["kioskModeBlockVolumeButtons"] = val
 
     @property
+    def date_and_time_block_changes(self):
+        """
+        Gets and sets the dateAndTimeBlockChanges
+        
+        Returns:
+            bool:
+                The dateAndTimeBlockChanges
+        """
+        if "dateAndTimeBlockChanges" in self._prop_dict:
+            return self._prop_dict["dateAndTimeBlockChanges"]
+        else:
+            return None
+
+    @date_and_time_block_changes.setter
+    def date_and_time_block_changes(self, val):
+        self._prop_dict["dateAndTimeBlockChanges"] = val
+
+    @property
     def kiosk_mode_apps(self):
         """Gets and sets the kioskModeApps
         

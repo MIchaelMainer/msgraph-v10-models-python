@@ -133,3 +133,21 @@ class ManagedIOSLobApp(OneDriveObjectBase):
     def build_number(self, val):
         self._prop_dict["buildNumber"] = val
 
+    @property
+    def identity_version(self):
+        """
+        Gets and sets the identityVersion
+        
+        Returns:
+            str:
+                The identityVersion
+        """
+        if "identityVersion" in self._prop_dict:
+            return self._prop_dict["identityVersion"]
+        else:
+            return None
+
+    @identity_version.setter
+    def identity_version(self, val):
+        self._prop_dict["identityVersion"] = val
+

@@ -134,6 +134,42 @@ class DeviceManagementPartner(OneDriveObjectBase):
         self._prop_dict["isConfigured"] = val
 
     @property
+    def when_partner_devices_will_be_removed(self):
+        """
+        Gets and sets the whenPartnerDevicesWillBeRemoved
+        
+        Returns:
+            datetime:
+                The whenPartnerDevicesWillBeRemoved
+        """
+        if "whenPartnerDevicesWillBeRemoved" in self._prop_dict:
+            return datetime.strptime(self._prop_dict["whenPartnerDevicesWillBeRemoved"].replace("Z", ""), "%Y-%m-%dT%H:%M:%S.%f")
+        else:
+            return None
+
+    @when_partner_devices_will_be_removed.setter
+    def when_partner_devices_will_be_removed(self, val):
+        self._prop_dict["whenPartnerDevicesWillBeRemoved"] = val.isoformat()+"Z"
+
+    @property
+    def when_partner_devices_will_be_marked_as_non_compliant(self):
+        """
+        Gets and sets the whenPartnerDevicesWillBeMarkedAsNonCompliant
+        
+        Returns:
+            datetime:
+                The whenPartnerDevicesWillBeMarkedAsNonCompliant
+        """
+        if "whenPartnerDevicesWillBeMarkedAsNonCompliant" in self._prop_dict:
+            return datetime.strptime(self._prop_dict["whenPartnerDevicesWillBeMarkedAsNonCompliant"].replace("Z", ""), "%Y-%m-%dT%H:%M:%S.%f")
+        else:
+            return None
+
+    @when_partner_devices_will_be_marked_as_non_compliant.setter
+    def when_partner_devices_will_be_marked_as_non_compliant(self, val):
+        self._prop_dict["whenPartnerDevicesWillBeMarkedAsNonCompliant"] = val.isoformat()+"Z"
+
+    @property
     def when_partner_devices_will_be_removed_date_time(self):
         """
         Gets and sets the whenPartnerDevicesWillBeRemovedDateTime

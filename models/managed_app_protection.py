@@ -11,6 +11,7 @@ from ..model.managed_app_data_transfer_level import ManagedAppDataTransferLevel
 from ..model.managed_app_clipboard_sharing_level import ManagedAppClipboardSharingLevel
 from ..model.managed_app_pin_character_set import ManagedAppPinCharacterSet
 from ..model.managed_app_data_storage_location import ManagedAppDataStorageLocation
+from ..model.managed_app_remediation_action import ManagedAppRemediationAction
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -513,4 +514,124 @@ class ManagedAppProtection(OneDriveObjectBase):
     @minimum_warning_app_version.setter
     def minimum_warning_app_version(self, val):
         self._prop_dict["minimumWarningAppVersion"] = val
+
+    @property
+    def minimum_wipe_os_version(self):
+        """
+        Gets and sets the minimumWipeOsVersion
+        
+        Returns:
+            str:
+                The minimumWipeOsVersion
+        """
+        if "minimumWipeOsVersion" in self._prop_dict:
+            return self._prop_dict["minimumWipeOsVersion"]
+        else:
+            return None
+
+    @minimum_wipe_os_version.setter
+    def minimum_wipe_os_version(self, val):
+        self._prop_dict["minimumWipeOsVersion"] = val
+
+    @property
+    def minimum_wipe_app_version(self):
+        """
+        Gets and sets the minimumWipeAppVersion
+        
+        Returns:
+            str:
+                The minimumWipeAppVersion
+        """
+        if "minimumWipeAppVersion" in self._prop_dict:
+            return self._prop_dict["minimumWipeAppVersion"]
+        else:
+            return None
+
+    @minimum_wipe_app_version.setter
+    def minimum_wipe_app_version(self, val):
+        self._prop_dict["minimumWipeAppVersion"] = val
+
+    @property
+    def app_action_if_device_compliance_required(self):
+        """
+        Gets and sets the appActionIfDeviceComplianceRequired
+        
+        Returns: 
+            :class:`ManagedAppRemediationAction<onedrivesdk.model.managed_app_remediation_action.ManagedAppRemediationAction>`:
+                The appActionIfDeviceComplianceRequired
+        """
+        if "appActionIfDeviceComplianceRequired" in self._prop_dict:
+            if isinstance(self._prop_dict["appActionIfDeviceComplianceRequired"], OneDriveObjectBase):
+                return self._prop_dict["appActionIfDeviceComplianceRequired"]
+            else :
+                self._prop_dict["appActionIfDeviceComplianceRequired"] = ManagedAppRemediationAction(self._prop_dict["appActionIfDeviceComplianceRequired"])
+                return self._prop_dict["appActionIfDeviceComplianceRequired"]
+
+        return None
+
+    @app_action_if_device_compliance_required.setter
+    def app_action_if_device_compliance_required(self, val):
+        self._prop_dict["appActionIfDeviceComplianceRequired"] = val
+
+    @property
+    def app_action_if_maximum_pin_retries_exceeded(self):
+        """
+        Gets and sets the appActionIfMaximumPinRetriesExceeded
+        
+        Returns: 
+            :class:`ManagedAppRemediationAction<onedrivesdk.model.managed_app_remediation_action.ManagedAppRemediationAction>`:
+                The appActionIfMaximumPinRetriesExceeded
+        """
+        if "appActionIfMaximumPinRetriesExceeded" in self._prop_dict:
+            if isinstance(self._prop_dict["appActionIfMaximumPinRetriesExceeded"], OneDriveObjectBase):
+                return self._prop_dict["appActionIfMaximumPinRetriesExceeded"]
+            else :
+                self._prop_dict["appActionIfMaximumPinRetriesExceeded"] = ManagedAppRemediationAction(self._prop_dict["appActionIfMaximumPinRetriesExceeded"])
+                return self._prop_dict["appActionIfMaximumPinRetriesExceeded"]
+
+        return None
+
+    @app_action_if_maximum_pin_retries_exceeded.setter
+    def app_action_if_maximum_pin_retries_exceeded(self, val):
+        self._prop_dict["appActionIfMaximumPinRetriesExceeded"] = val
+
+    @property
+    def pin_required_on_launch_instead_of_biometric(self):
+        """
+        Gets and sets the pinRequiredOnLaunchInsteadOfBiometric
+        
+        Returns:
+            bool:
+                The pinRequiredOnLaunchInsteadOfBiometric
+        """
+        if "pinRequiredOnLaunchInsteadOfBiometric" in self._prop_dict:
+            return self._prop_dict["pinRequiredOnLaunchInsteadOfBiometric"]
+        else:
+            return None
+
+    @pin_required_on_launch_instead_of_biometric.setter
+    def pin_required_on_launch_instead_of_biometric(self, val):
+        self._prop_dict["pinRequiredOnLaunchInsteadOfBiometric"] = val
+
+    @property
+    def pin_required_instead_of_biometric_timeout(self):
+        """
+        Gets and sets the pinRequiredInsteadOfBiometricTimeout
+        
+        Returns: 
+            :class:`Duration<onedrivesdk.model.duration.Duration>`:
+                The pinRequiredInsteadOfBiometricTimeout
+        """
+        if "pinRequiredInsteadOfBiometricTimeout" in self._prop_dict:
+            if isinstance(self._prop_dict["pinRequiredInsteadOfBiometricTimeout"], OneDriveObjectBase):
+                return self._prop_dict["pinRequiredInsteadOfBiometricTimeout"]
+            else :
+                self._prop_dict["pinRequiredInsteadOfBiometricTimeout"] = Duration(self._prop_dict["pinRequiredInsteadOfBiometricTimeout"])
+                return self._prop_dict["pinRequiredInsteadOfBiometricTimeout"]
+
+        return None
+
+    @pin_required_instead_of_biometric_timeout.setter
+    def pin_required_instead_of_biometric_timeout(self, val):
+        self._prop_dict["pinRequiredInsteadOfBiometricTimeout"] = val
 

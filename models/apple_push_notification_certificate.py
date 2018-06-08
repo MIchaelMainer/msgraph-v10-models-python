@@ -88,6 +88,42 @@ class ApplePushNotificationCertificate(OneDriveObjectBase):
         self._prop_dict["expirationDateTime"] = val.isoformat()+"Z"
 
     @property
+    def certificate_upload_status(self):
+        """
+        Gets and sets the certificateUploadStatus
+        
+        Returns:
+            str:
+                The certificateUploadStatus
+        """
+        if "certificateUploadStatus" in self._prop_dict:
+            return self._prop_dict["certificateUploadStatus"]
+        else:
+            return None
+
+    @certificate_upload_status.setter
+    def certificate_upload_status(self, val):
+        self._prop_dict["certificateUploadStatus"] = val
+
+    @property
+    def certificate_upload_failure_reason(self):
+        """
+        Gets and sets the certificateUploadFailureReason
+        
+        Returns:
+            str:
+                The certificateUploadFailureReason
+        """
+        if "certificateUploadFailureReason" in self._prop_dict:
+            return self._prop_dict["certificateUploadFailureReason"]
+        else:
+            return None
+
+    @certificate_upload_failure_reason.setter
+    def certificate_upload_failure_reason(self, val):
+        self._prop_dict["certificateUploadFailureReason"] = val
+
+    @property
     def certificate(self):
         """
         Gets and sets the certificate

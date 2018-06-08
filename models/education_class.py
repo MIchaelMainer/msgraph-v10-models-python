@@ -12,6 +12,7 @@ from ..model.education_term import EducationTerm
 from ..model.education_school import EducationSchool
 from ..model.education_user import EducationUser
 from ..model.group import Group
+from ..model.education_assignment import EducationAssignment
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -254,4 +255,17 @@ class EducationClass(OneDriveObjectBase):
     @group.setter
     def group(self, val):
         self._prop_dict["group"] = val
+
+    @property
+    def assignments(self):
+        """Gets and sets the assignments
+        
+        Returns: 
+            :class:`AssignmentsCollectionPage<onedrivesdk.request.assignments_collection.AssignmentsCollectionPage>`:
+                The assignments
+        """
+        if "assignments" in self._prop_dict:
+            return AssignmentsCollectionPage(self._prop_dict["assignments"])
+        else:
+            return None
 

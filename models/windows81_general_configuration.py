@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 from ..model.internet_site_security_level import InternetSiteSecurityLevel
 from ..model.site_security_level import SiteSecurityLevel
 from ..model.required_password_type import RequiredPasswordType
+from ..model.update_classification import UpdateClassification
 from ..model.windows_user_account_control_settings import WindowsUserAccountControlSettings
 from ..one_drive_object_base import OneDriveObjectBase
 
@@ -573,6 +574,28 @@ class Windows81GeneralConfiguration(OneDriveObjectBase):
     @storage_require_device_encryption.setter
     def storage_require_device_encryption(self, val):
         self._prop_dict["storageRequireDeviceEncryption"] = val
+
+    @property
+    def minimum_auto_install_classification(self):
+        """
+        Gets and sets the minimumAutoInstallClassification
+        
+        Returns: 
+            :class:`UpdateClassification<onedrivesdk.model.update_classification.UpdateClassification>`:
+                The minimumAutoInstallClassification
+        """
+        if "minimumAutoInstallClassification" in self._prop_dict:
+            if isinstance(self._prop_dict["minimumAutoInstallClassification"], OneDriveObjectBase):
+                return self._prop_dict["minimumAutoInstallClassification"]
+            else :
+                self._prop_dict["minimumAutoInstallClassification"] = UpdateClassification(self._prop_dict["minimumAutoInstallClassification"])
+                return self._prop_dict["minimumAutoInstallClassification"]
+
+        return None
+
+    @minimum_auto_install_classification.setter
+    def minimum_auto_install_classification(self, val):
+        self._prop_dict["minimumAutoInstallClassification"] = val
 
     @property
     def updates_require_automatic_updates(self):

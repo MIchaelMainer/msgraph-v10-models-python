@@ -8,14 +8,21 @@
 from __future__ import unicode_literals
 from ..model.assigned_license import AssignedLicense
 from ..model.assigned_plan import AssignedPlan
+from ..model.device_key import DeviceKey
+from ..model.on_premises_extension_attributes import OnPremisesExtensionAttributes
+from ..model.on_premises_provisioning_error import OnPremisesProvisioningError
 from ..model.password_profile import PasswordProfile
 from ..model.provisioned_plan import ProvisionedPlan
 from ..model.mailbox_settings import MailboxSettings
-from ..model.directory_object import DirectoryObject
-from ..model.license_details import LicenseDetails
+from ..model.identity_user_risk import IdentityUserRisk
 from ..model.extension import Extension
+from ..model.directory_object import DirectoryObject
+from ..model.scoped_role_membership import ScopedRoleMembership
+from ..model.license_details import LicenseDetails
+from ..model.user_activity import UserActivity
 from ..model.outlook_user import OutlookUser
 from ..model.message import Message
+from ..model.group import Group
 from ..model.mail_folder import MailFolder
 from ..model.calendar import Calendar
 from ..model.calendar_group import CalendarGroup
@@ -26,12 +33,18 @@ from ..model.contact_folder import ContactFolder
 from ..model.inference_classification import InferenceClassification
 from ..model.profile_photo import ProfilePhoto
 from ..model.drive import Drive
+from ..model.office_graph_insights import OfficeGraphInsights
+from ..model.user_settings import UserSettings
 from ..model.planner_user import PlannerUser
 from ..model.onenote import Onenote
 from ..model.managed_device import ManagedDevice
+from ..model.device_enrollment_configuration import DeviceEnrollmentConfiguration
 from ..model.managed_app_registration import ManagedAppRegistration
+from ..model.device import Device
 from ..model.device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
-from ..model.user_activity import UserActivity
+from ..model.mobile_app_intent_and_state import MobileAppIntentAndState
+from ..model.mobile_app_troubleshooting_event import MobileAppTroubleshootingEvent
+from ..model.agreement_acceptance import AgreementAcceptance
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
 
@@ -212,6 +225,19 @@ class User(OneDriveObjectBase):
         self._prop_dict["department"] = val
 
     @property
+    def device_keys(self):
+        """Gets and sets the deviceKeys
+        
+        Returns: 
+            :class:`DeviceKeysCollectionPage<onedrivesdk.request.device_keys_collection.DeviceKeysCollectionPage>`:
+                The deviceKeys
+        """
+        if "deviceKeys" in self._prop_dict:
+            return DeviceKeysCollectionPage(self._prop_dict["deviceKeys"])
+        else:
+            return None
+
+    @property
     def display_name(self):
         """
         Gets and sets the displayName
@@ -228,6 +254,24 @@ class User(OneDriveObjectBase):
     @display_name.setter
     def display_name(self, val):
         self._prop_dict["displayName"] = val
+
+    @property
+    def employee_id(self):
+        """
+        Gets and sets the employeeId
+        
+        Returns:
+            str:
+                The employeeId
+        """
+        if "employeeId" in self._prop_dict:
+            return self._prop_dict["employeeId"]
+        else:
+            return None
+
+    @employee_id.setter
+    def employee_id(self, val):
+        self._prop_dict["employeeId"] = val
 
     @property
     def given_name(self):
@@ -356,6 +400,28 @@ class User(OneDriveObjectBase):
         self._prop_dict["mobilePhone"] = val
 
     @property
+    def on_premises_extension_attributes(self):
+        """
+        Gets and sets the onPremisesExtensionAttributes
+        
+        Returns: 
+            :class:`OnPremisesExtensionAttributes<onedrivesdk.model.on_premises_extension_attributes.OnPremisesExtensionAttributes>`:
+                The onPremisesExtensionAttributes
+        """
+        if "onPremisesExtensionAttributes" in self._prop_dict:
+            if isinstance(self._prop_dict["onPremisesExtensionAttributes"], OneDriveObjectBase):
+                return self._prop_dict["onPremisesExtensionAttributes"]
+            else :
+                self._prop_dict["onPremisesExtensionAttributes"] = OnPremisesExtensionAttributes(self._prop_dict["onPremisesExtensionAttributes"])
+                return self._prop_dict["onPremisesExtensionAttributes"]
+
+        return None
+
+    @on_premises_extension_attributes.setter
+    def on_premises_extension_attributes(self, val):
+        self._prop_dict["onPremisesExtensionAttributes"] = val
+
+    @property
     def on_premises_immutable_id(self):
         """
         Gets and sets the onPremisesImmutableId
@@ -392,6 +458,19 @@ class User(OneDriveObjectBase):
         self._prop_dict["onPremisesLastSyncDateTime"] = val.isoformat()+"Z"
 
     @property
+    def on_premises_provisioning_errors(self):
+        """Gets and sets the onPremisesProvisioningErrors
+        
+        Returns: 
+            :class:`OnPremisesProvisioningErrorsCollectionPage<onedrivesdk.request.on_premises_provisioning_errors_collection.OnPremisesProvisioningErrorsCollectionPage>`:
+                The onPremisesProvisioningErrors
+        """
+        if "onPremisesProvisioningErrors" in self._prop_dict:
+            return OnPremisesProvisioningErrorsCollectionPage(self._prop_dict["onPremisesProvisioningErrors"])
+        else:
+            return None
+
+    @property
     def on_premises_security_identifier(self):
         """
         Gets and sets the onPremisesSecurityIdentifier
@@ -426,6 +505,60 @@ class User(OneDriveObjectBase):
     @on_premises_sync_enabled.setter
     def on_premises_sync_enabled(self, val):
         self._prop_dict["onPremisesSyncEnabled"] = val
+
+    @property
+    def on_premises_domain_name(self):
+        """
+        Gets and sets the onPremisesDomainName
+        
+        Returns:
+            str:
+                The onPremisesDomainName
+        """
+        if "onPremisesDomainName" in self._prop_dict:
+            return self._prop_dict["onPremisesDomainName"]
+        else:
+            return None
+
+    @on_premises_domain_name.setter
+    def on_premises_domain_name(self, val):
+        self._prop_dict["onPremisesDomainName"] = val
+
+    @property
+    def on_premises_sam_account_name(self):
+        """
+        Gets and sets the onPremisesSamAccountName
+        
+        Returns:
+            str:
+                The onPremisesSamAccountName
+        """
+        if "onPremisesSamAccountName" in self._prop_dict:
+            return self._prop_dict["onPremisesSamAccountName"]
+        else:
+            return None
+
+    @on_premises_sam_account_name.setter
+    def on_premises_sam_account_name(self, val):
+        self._prop_dict["onPremisesSamAccountName"] = val
+
+    @property
+    def on_premises_user_principal_name(self):
+        """
+        Gets and sets the onPremisesUserPrincipalName
+        
+        Returns:
+            str:
+                The onPremisesUserPrincipalName
+        """
+        if "onPremisesUserPrincipalName" in self._prop_dict:
+            return self._prop_dict["onPremisesUserPrincipalName"]
+        else:
+            return None
+
+    @on_premises_user_principal_name.setter
+    def on_premises_user_principal_name(self, val):
+        self._prop_dict["onPremisesUserPrincipalName"] = val
 
     @property
     def password_policies(self):
@@ -504,6 +637,24 @@ class User(OneDriveObjectBase):
         self._prop_dict["postalCode"] = val
 
     @property
+    def preferred_data_location(self):
+        """
+        Gets and sets the preferredDataLocation
+        
+        Returns:
+            str:
+                The preferredDataLocation
+        """
+        if "preferredDataLocation" in self._prop_dict:
+            return self._prop_dict["preferredDataLocation"]
+        else:
+            return None
+
+    @preferred_data_location.setter
+    def preferred_data_location(self, val):
+        self._prop_dict["preferredDataLocation"] = val
+
+    @property
     def preferred_language(self):
         """
         Gets and sets the preferredLanguage
@@ -551,6 +702,42 @@ class User(OneDriveObjectBase):
     @proxy_addresses.setter
     def proxy_addresses(self, val):
         self._prop_dict["proxyAddresses"] = val
+
+    @property
+    def refresh_tokens_valid_from_date_time(self):
+        """
+        Gets and sets the refreshTokensValidFromDateTime
+        
+        Returns:
+            datetime:
+                The refreshTokensValidFromDateTime
+        """
+        if "refreshTokensValidFromDateTime" in self._prop_dict:
+            return datetime.strptime(self._prop_dict["refreshTokensValidFromDateTime"].replace("Z", ""), "%Y-%m-%dT%H:%M:%S.%f")
+        else:
+            return None
+
+    @refresh_tokens_valid_from_date_time.setter
+    def refresh_tokens_valid_from_date_time(self, val):
+        self._prop_dict["refreshTokensValidFromDateTime"] = val.isoformat()+"Z"
+
+    @property
+    def show_in_address_list(self):
+        """
+        Gets and sets the showInAddressList
+        
+        Returns:
+            bool:
+                The showInAddressList
+        """
+        if "showInAddressList" in self._prop_dict:
+            return self._prop_dict["showInAddressList"]
+        else:
+            return None
+
+    @show_in_address_list.setter
+    def show_in_address_list(self, val):
+        self._prop_dict["showInAddressList"] = val
 
     @property
     def state(self):
@@ -863,6 +1050,28 @@ class User(OneDriveObjectBase):
         self._prop_dict["skills"] = val
 
     @property
+    def identity_user_risk(self):
+        """
+        Gets and sets the identityUserRisk
+        
+        Returns: 
+            :class:`IdentityUserRisk<onedrivesdk.model.identity_user_risk.IdentityUserRisk>`:
+                The identityUserRisk
+        """
+        if "identityUserRisk" in self._prop_dict:
+            if isinstance(self._prop_dict["identityUserRisk"], OneDriveObjectBase):
+                return self._prop_dict["identityUserRisk"]
+            else :
+                self._prop_dict["identityUserRisk"] = IdentityUserRisk(self._prop_dict["identityUserRisk"])
+                return self._prop_dict["identityUserRisk"]
+
+        return None
+
+    @identity_user_risk.setter
+    def identity_user_risk(self, val):
+        self._prop_dict["identityUserRisk"] = val
+
+    @property
     def device_enrollment_limit(self):
         """
         Gets and sets the deviceEnrollmentLimit
@@ -879,6 +1088,19 @@ class User(OneDriveObjectBase):
     @device_enrollment_limit.setter
     def device_enrollment_limit(self, val):
         self._prop_dict["deviceEnrollmentLimit"] = val
+
+    @property
+    def extensions(self):
+        """Gets and sets the extensions
+        
+        Returns: 
+            :class:`ExtensionsCollectionPage<onedrivesdk.request.extensions_collection.ExtensionsCollectionPage>`:
+                The extensions
+        """
+        if "extensions" in self._prop_dict:
+            return ExtensionsCollectionPage(self._prop_dict["extensions"])
+        else:
+            return None
 
     @property
     def owned_devices(self):
@@ -981,6 +1203,19 @@ class User(OneDriveObjectBase):
             return None
 
     @property
+    def scoped_role_member_of(self):
+        """Gets and sets the scopedRoleMemberOf
+        
+        Returns: 
+            :class:`ScopedRoleMemberOfCollectionPage<onedrivesdk.request.scoped_role_member_of_collection.ScopedRoleMemberOfCollectionPage>`:
+                The scopedRoleMemberOf
+        """
+        if "scopedRoleMemberOf" in self._prop_dict:
+            return ScopedRoleMemberOfCollectionPage(self._prop_dict["scopedRoleMemberOf"])
+        else:
+            return None
+
+    @property
     def license_details(self):
         """Gets and sets the licenseDetails
         
@@ -994,15 +1229,15 @@ class User(OneDriveObjectBase):
             return None
 
     @property
-    def extensions(self):
-        """Gets and sets the extensions
+    def activities(self):
+        """Gets and sets the activities
         
         Returns: 
-            :class:`ExtensionsCollectionPage<onedrivesdk.request.extensions_collection.ExtensionsCollectionPage>`:
-                The extensions
+            :class:`ActivitiesCollectionPage<onedrivesdk.request.activities_collection.ActivitiesCollectionPage>`:
+                The activities
         """
-        if "extensions" in self._prop_dict:
-            return ExtensionsCollectionPage(self._prop_dict["extensions"])
+        if "activities" in self._prop_dict:
+            return ActivitiesCollectionPage(self._prop_dict["activities"])
         else:
             return None
 
@@ -1038,6 +1273,19 @@ class User(OneDriveObjectBase):
         """
         if "messages" in self._prop_dict:
             return MessagesCollectionPage(self._prop_dict["messages"])
+        else:
+            return None
+
+    @property
+    def joined_groups(self):
+        """Gets and sets the joinedGroups
+        
+        Returns: 
+            :class:`JoinedGroupsCollectionPage<onedrivesdk.request.joined_groups_collection.JoinedGroupsCollectionPage>`:
+                The joinedGroups
+        """
+        if "joinedGroups" in self._prop_dict:
+            return JoinedGroupsCollectionPage(self._prop_dict["joinedGroups"])
         else:
             return None
 
@@ -1260,6 +1508,50 @@ class User(OneDriveObjectBase):
             return None
 
     @property
+    def insights(self):
+        """
+        Gets and sets the insights
+        
+        Returns: 
+            :class:`OfficeGraphInsights<onedrivesdk.model.office_graph_insights.OfficeGraphInsights>`:
+                The insights
+        """
+        if "insights" in self._prop_dict:
+            if isinstance(self._prop_dict["insights"], OneDriveObjectBase):
+                return self._prop_dict["insights"]
+            else :
+                self._prop_dict["insights"] = OfficeGraphInsights(self._prop_dict["insights"])
+                return self._prop_dict["insights"]
+
+        return None
+
+    @insights.setter
+    def insights(self, val):
+        self._prop_dict["insights"] = val
+
+    @property
+    def settings(self):
+        """
+        Gets and sets the settings
+        
+        Returns: 
+            :class:`UserSettings<onedrivesdk.model.user_settings.UserSettings>`:
+                The settings
+        """
+        if "settings" in self._prop_dict:
+            if isinstance(self._prop_dict["settings"], OneDriveObjectBase):
+                return self._prop_dict["settings"]
+            else :
+                self._prop_dict["settings"] = UserSettings(self._prop_dict["settings"])
+                return self._prop_dict["settings"]
+
+        return None
+
+    @settings.setter
+    def settings(self, val):
+        self._prop_dict["settings"] = val
+
+    @property
     def planner(self):
         """
         Gets and sets the planner
@@ -1317,6 +1609,19 @@ class User(OneDriveObjectBase):
             return None
 
     @property
+    def device_enrollment_configurations(self):
+        """Gets and sets the deviceEnrollmentConfigurations
+        
+        Returns: 
+            :class:`DeviceEnrollmentConfigurationsCollectionPage<onedrivesdk.request.device_enrollment_configurations_collection.DeviceEnrollmentConfigurationsCollectionPage>`:
+                The deviceEnrollmentConfigurations
+        """
+        if "deviceEnrollmentConfigurations" in self._prop_dict:
+            return DeviceEnrollmentConfigurationsCollectionPage(self._prop_dict["deviceEnrollmentConfigurations"])
+        else:
+            return None
+
+    @property
     def managed_app_registrations(self):
         """Gets and sets the managedAppRegistrations
         
@@ -1326,6 +1631,32 @@ class User(OneDriveObjectBase):
         """
         if "managedAppRegistrations" in self._prop_dict:
             return ManagedAppRegistrationsCollectionPage(self._prop_dict["managedAppRegistrations"])
+        else:
+            return None
+
+    @property
+    def devices(self):
+        """Gets and sets the devices
+        
+        Returns: 
+            :class:`DevicesCollectionPage<onedrivesdk.request.devices_collection.DevicesCollectionPage>`:
+                The devices
+        """
+        if "devices" in self._prop_dict:
+            return DevicesCollectionPage(self._prop_dict["devices"])
+        else:
+            return None
+
+    @property
+    def joined_teams(self):
+        """Gets and sets the joinedTeams
+        
+        Returns: 
+            :class:`JoinedTeamsCollectionPage<onedrivesdk.request.joined_teams_collection.JoinedTeamsCollectionPage>`:
+                The joinedTeams
+        """
+        if "joinedTeams" in self._prop_dict:
+            return JoinedTeamsCollectionPage(self._prop_dict["joinedTeams"])
         else:
             return None
 
@@ -1343,15 +1674,41 @@ class User(OneDriveObjectBase):
             return None
 
     @property
-    def activities(self):
-        """Gets and sets the activities
+    def mobile_app_intent_and_states(self):
+        """Gets and sets the mobileAppIntentAndStates
         
         Returns: 
-            :class:`ActivitiesCollectionPage<onedrivesdk.request.activities_collection.ActivitiesCollectionPage>`:
-                The activities
+            :class:`MobileAppIntentAndStatesCollectionPage<onedrivesdk.request.mobile_app_intent_and_states_collection.MobileAppIntentAndStatesCollectionPage>`:
+                The mobileAppIntentAndStates
         """
-        if "activities" in self._prop_dict:
-            return ActivitiesCollectionPage(self._prop_dict["activities"])
+        if "mobileAppIntentAndStates" in self._prop_dict:
+            return MobileAppIntentAndStatesCollectionPage(self._prop_dict["mobileAppIntentAndStates"])
+        else:
+            return None
+
+    @property
+    def mobile_app_troubleshooting_events(self):
+        """Gets and sets the mobileAppTroubleshootingEvents
+        
+        Returns: 
+            :class:`MobileAppTroubleshootingEventsCollectionPage<onedrivesdk.request.mobile_app_troubleshooting_events_collection.MobileAppTroubleshootingEventsCollectionPage>`:
+                The mobileAppTroubleshootingEvents
+        """
+        if "mobileAppTroubleshootingEvents" in self._prop_dict:
+            return MobileAppTroubleshootingEventsCollectionPage(self._prop_dict["mobileAppTroubleshootingEvents"])
+        else:
+            return None
+
+    @property
+    def agreement_acceptances(self):
+        """Gets and sets the agreementAcceptances
+        
+        Returns: 
+            :class:`AgreementAcceptancesCollectionPage<onedrivesdk.request.agreement_acceptances_collection.AgreementAcceptancesCollectionPage>`:
+                The agreementAcceptances
+        """
+        if "agreementAcceptances" in self._prop_dict:
+            return AgreementAcceptancesCollectionPage(self._prop_dict["agreementAcceptances"])
         else:
             return None
 

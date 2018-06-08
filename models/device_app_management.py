@@ -6,9 +6,14 @@
 '''
 
 from __future__ import unicode_literals
+from ..model.windows_management_app import WindowsManagementApp
 from ..model.mobile_app import MobileApp
 from ..model.mobile_app_category import MobileAppCategory
+from ..model.enterprise_code_signing_certificate import EnterpriseCodeSigningCertificate
+from ..model.ios_lob_app_provisioning_configuration import IosLobAppProvisioningConfiguration
+from ..model.symantec_code_signing_certificate import SymantecCodeSigningCertificate
 from ..model.managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
+from ..model.side_loading_key import SideLoadingKey
 from ..model.vpp_token import VppToken
 from ..model.managed_app_policy import ManagedAppPolicy
 from ..model.ios_managed_app_protection import IosManagedAppProtection
@@ -20,6 +25,7 @@ from ..model.windows_information_protection_policy import WindowsInformationProt
 from ..model.managed_app_registration import ManagedAppRegistration
 from ..model.managed_app_status import ManagedAppStatus
 from ..model.managed_e_book import ManagedEBook
+from ..model.managed_e_book_category import ManagedEBookCategory
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
 
@@ -102,6 +108,28 @@ class DeviceAppManagement(OneDriveObjectBase):
         self._prop_dict["microsoftStoreForBusinessLastCompletedApplicationSyncTime"] = val.isoformat()+"Z"
 
     @property
+    def windows_management_app(self):
+        """
+        Gets and sets the windowsManagementApp
+        
+        Returns: 
+            :class:`WindowsManagementApp<onedrivesdk.model.windows_management_app.WindowsManagementApp>`:
+                The windowsManagementApp
+        """
+        if "windowsManagementApp" in self._prop_dict:
+            if isinstance(self._prop_dict["windowsManagementApp"], OneDriveObjectBase):
+                return self._prop_dict["windowsManagementApp"]
+            else :
+                self._prop_dict["windowsManagementApp"] = WindowsManagementApp(self._prop_dict["windowsManagementApp"])
+                return self._prop_dict["windowsManagementApp"]
+
+        return None
+
+    @windows_management_app.setter
+    def windows_management_app(self, val):
+        self._prop_dict["windowsManagementApp"] = val
+
+    @property
     def mobile_apps(self):
         """Gets and sets the mobileApps
         
@@ -128,6 +156,54 @@ class DeviceAppManagement(OneDriveObjectBase):
             return None
 
     @property
+    def enterprise_code_signing_certificates(self):
+        """Gets and sets the enterpriseCodeSigningCertificates
+        
+        Returns: 
+            :class:`EnterpriseCodeSigningCertificatesCollectionPage<onedrivesdk.request.enterprise_code_signing_certificates_collection.EnterpriseCodeSigningCertificatesCollectionPage>`:
+                The enterpriseCodeSigningCertificates
+        """
+        if "enterpriseCodeSigningCertificates" in self._prop_dict:
+            return EnterpriseCodeSigningCertificatesCollectionPage(self._prop_dict["enterpriseCodeSigningCertificates"])
+        else:
+            return None
+
+    @property
+    def ios_lob_app_provisioning_configurations(self):
+        """Gets and sets the iosLobAppProvisioningConfigurations
+        
+        Returns: 
+            :class:`IosLobAppProvisioningConfigurationsCollectionPage<onedrivesdk.request.ios_lob_app_provisioning_configurations_collection.IosLobAppProvisioningConfigurationsCollectionPage>`:
+                The iosLobAppProvisioningConfigurations
+        """
+        if "iosLobAppProvisioningConfigurations" in self._prop_dict:
+            return IosLobAppProvisioningConfigurationsCollectionPage(self._prop_dict["iosLobAppProvisioningConfigurations"])
+        else:
+            return None
+
+    @property
+    def symantec_code_signing_certificate(self):
+        """
+        Gets and sets the symantecCodeSigningCertificate
+        
+        Returns: 
+            :class:`SymantecCodeSigningCertificate<onedrivesdk.model.symantec_code_signing_certificate.SymantecCodeSigningCertificate>`:
+                The symantecCodeSigningCertificate
+        """
+        if "symantecCodeSigningCertificate" in self._prop_dict:
+            if isinstance(self._prop_dict["symantecCodeSigningCertificate"], OneDriveObjectBase):
+                return self._prop_dict["symantecCodeSigningCertificate"]
+            else :
+                self._prop_dict["symantecCodeSigningCertificate"] = SymantecCodeSigningCertificate(self._prop_dict["symantecCodeSigningCertificate"])
+                return self._prop_dict["symantecCodeSigningCertificate"]
+
+        return None
+
+    @symantec_code_signing_certificate.setter
+    def symantec_code_signing_certificate(self, val):
+        self._prop_dict["symantecCodeSigningCertificate"] = val
+
+    @property
     def mobile_app_configurations(self):
         """Gets and sets the mobileAppConfigurations
         
@@ -137,6 +213,19 @@ class DeviceAppManagement(OneDriveObjectBase):
         """
         if "mobileAppConfigurations" in self._prop_dict:
             return MobileAppConfigurationsCollectionPage(self._prop_dict["mobileAppConfigurations"])
+        else:
+            return None
+
+    @property
+    def side_loading_keys(self):
+        """Gets and sets the sideLoadingKeys
+        
+        Returns: 
+            :class:`SideLoadingKeysCollectionPage<onedrivesdk.request.side_loading_keys_collection.SideLoadingKeysCollectionPage>`:
+                The sideLoadingKeys
+        """
+        if "sideLoadingKeys" in self._prop_dict:
+            return SideLoadingKeysCollectionPage(self._prop_dict["sideLoadingKeys"])
         else:
             return None
 
@@ -280,6 +369,19 @@ class DeviceAppManagement(OneDriveObjectBase):
         """
         if "managedEBooks" in self._prop_dict:
             return ManagedEBooksCollectionPage(self._prop_dict["managedEBooks"])
+        else:
+            return None
+
+    @property
+    def managed_e_book_categories(self):
+        """Gets and sets the managedEBookCategories
+        
+        Returns: 
+            :class:`ManagedEBookCategoriesCollectionPage<onedrivesdk.request.managed_e_book_categories_collection.ManagedEBookCategoriesCollectionPage>`:
+                The managedEBookCategories
+        """
+        if "managedEBookCategories" in self._prop_dict:
+            return ManagedEBookCategoriesCollectionPage(self._prop_dict["managedEBookCategories"])
         else:
             return None
 

@@ -31,3 +31,20 @@ class ContentTypeInfo(OneDriveObjectBase):
     def id(self, val):
         self._prop_dict["id"] = val
 
+    @property
+    def name(self):
+        """Gets and sets the name
+        
+        Returns: 
+            str:
+                The name
+        """
+        if "name" in self._prop_dict:
+            return self._prop_dict["name"]
+        else:
+            return None
+
+    @name.setter
+    def name(self, val):
+        self._prop_dict["name"] = val
+

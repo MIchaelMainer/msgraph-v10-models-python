@@ -6,6 +6,7 @@
 '''
 
 from __future__ import unicode_literals
+from ..model.terms_and_conditions_group_assignment import TermsAndConditionsGroupAssignment
 from ..model.terms_and_conditions_assignment import TermsAndConditionsAssignment
 from ..model.terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
 from datetime import datetime
@@ -34,6 +35,24 @@ class TermsAndConditions(OneDriveObjectBase):
     @created_date_time.setter
     def created_date_time(self, val):
         self._prop_dict["createdDateTime"] = val.isoformat()+"Z"
+
+    @property
+    def modified_date_time(self):
+        """
+        Gets and sets the modifiedDateTime
+        
+        Returns:
+            datetime:
+                The modifiedDateTime
+        """
+        if "modifiedDateTime" in self._prop_dict:
+            return datetime.strptime(self._prop_dict["modifiedDateTime"].replace("Z", ""), "%Y-%m-%dT%H:%M:%S.%f")
+        else:
+            return None
+
+    @modified_date_time.setter
+    def modified_date_time(self, val):
+        self._prop_dict["modifiedDateTime"] = val.isoformat()+"Z"
 
     @property
     def last_modified_date_time(self):
@@ -160,6 +179,19 @@ class TermsAndConditions(OneDriveObjectBase):
     @version.setter
     def version(self, val):
         self._prop_dict["version"] = val
+
+    @property
+    def group_assignments(self):
+        """Gets and sets the groupAssignments
+        
+        Returns: 
+            :class:`GroupAssignmentsCollectionPage<onedrivesdk.request.group_assignments_collection.GroupAssignmentsCollectionPage>`:
+                The groupAssignments
+        """
+        if "groupAssignments" in self._prop_dict:
+            return GroupAssignmentsCollectionPage(self._prop_dict["groupAssignments"])
+        else:
+            return None
 
     @property
     def assignments(self):

@@ -11,6 +11,8 @@ from ..model.prerelease_features import PrereleaseFeatures
 from ..model.automatic_update_mode import AutomaticUpdateMode
 from ..model.windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
 from ..model.windows_update_type import WindowsUpdateType
+from ..model.windows_update_insider_build_control import WindowsUpdateInsiderBuildControl
+from ..model.windows_update_for_business_update_weeks import WindowsUpdateForBusinessUpdateWeeks
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
 
@@ -273,4 +275,66 @@ class WindowsUpdateForBusinessConfiguration(OneDriveObjectBase):
     @business_ready_updates_only.setter
     def business_ready_updates_only(self, val):
         self._prop_dict["businessReadyUpdatesOnly"] = val
+
+    @property
+    def preview_build_setting(self):
+        """
+        Gets and sets the previewBuildSetting
+        
+        Returns: 
+            :class:`WindowsUpdateInsiderBuildControl<onedrivesdk.model.windows_update_insider_build_control.WindowsUpdateInsiderBuildControl>`:
+                The previewBuildSetting
+        """
+        if "previewBuildSetting" in self._prop_dict:
+            if isinstance(self._prop_dict["previewBuildSetting"], OneDriveObjectBase):
+                return self._prop_dict["previewBuildSetting"]
+            else :
+                self._prop_dict["previewBuildSetting"] = WindowsUpdateInsiderBuildControl(self._prop_dict["previewBuildSetting"])
+                return self._prop_dict["previewBuildSetting"]
+
+        return None
+
+    @preview_build_setting.setter
+    def preview_build_setting(self, val):
+        self._prop_dict["previewBuildSetting"] = val
+
+    @property
+    def skip_checks_before_restart(self):
+        """
+        Gets and sets the skipChecksBeforeRestart
+        
+        Returns:
+            bool:
+                The skipChecksBeforeRestart
+        """
+        if "skipChecksBeforeRestart" in self._prop_dict:
+            return self._prop_dict["skipChecksBeforeRestart"]
+        else:
+            return None
+
+    @skip_checks_before_restart.setter
+    def skip_checks_before_restart(self, val):
+        self._prop_dict["skipChecksBeforeRestart"] = val
+
+    @property
+    def update_weeks(self):
+        """
+        Gets and sets the updateWeeks
+        
+        Returns: 
+            :class:`WindowsUpdateForBusinessUpdateWeeks<onedrivesdk.model.windows_update_for_business_update_weeks.WindowsUpdateForBusinessUpdateWeeks>`:
+                The updateWeeks
+        """
+        if "updateWeeks" in self._prop_dict:
+            if isinstance(self._prop_dict["updateWeeks"], OneDriveObjectBase):
+                return self._prop_dict["updateWeeks"]
+            else :
+                self._prop_dict["updateWeeks"] = WindowsUpdateForBusinessUpdateWeeks(self._prop_dict["updateWeeks"])
+                return self._prop_dict["updateWeeks"]
+
+        return None
+
+    @update_weeks.setter
+    def update_weeks(self, val):
+        self._prop_dict["updateWeeks"] = val
 

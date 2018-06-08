@@ -53,6 +53,19 @@ class RoleDefinition(OneDriveObjectBase):
         self._prop_dict["description"] = val
 
     @property
+    def permissions(self):
+        """Gets and sets the permissions
+        
+        Returns: 
+            :class:`PermissionsCollectionPage<onedrivesdk.request.permissions_collection.PermissionsCollectionPage>`:
+                The permissions
+        """
+        if "permissions" in self._prop_dict:
+            return PermissionsCollectionPage(self._prop_dict["permissions"])
+        else:
+            return None
+
+    @property
     def role_permissions(self):
         """Gets and sets the rolePermissions
         
@@ -64,6 +77,24 @@ class RoleDefinition(OneDriveObjectBase):
             return RolePermissionsCollectionPage(self._prop_dict["rolePermissions"])
         else:
             return None
+
+    @property
+    def is_built_in_role_definition(self):
+        """
+        Gets and sets the isBuiltInRoleDefinition
+        
+        Returns:
+            bool:
+                The isBuiltInRoleDefinition
+        """
+        if "isBuiltInRoleDefinition" in self._prop_dict:
+            return self._prop_dict["isBuiltInRoleDefinition"]
+        else:
+            return None
+
+    @is_built_in_role_definition.setter
+    def is_built_in_role_definition(self, val):
+        self._prop_dict["isBuiltInRoleDefinition"] = val
 
     @property
     def is_built_in(self):

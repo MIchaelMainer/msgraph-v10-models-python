@@ -10,12 +10,14 @@ from ..model.internet_message_header import InternetMessageHeader
 from ..model.item_body import ItemBody
 from ..model.importance import Importance
 from ..model.recipient import Recipient
+from ..model.mentions_preview import MentionsPreview
 from ..model.inference_classification_type import InferenceClassificationType
 from ..model.followup_flag import FollowupFlag
 from ..model.attachment import Attachment
 from ..model.extension import Extension
 from ..model.single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 from ..model.multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+from ..model.mention import Mention
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
 
@@ -435,6 +437,28 @@ class Message(OneDriveObjectBase):
         self._prop_dict["webLink"] = val
 
     @property
+    def mentions_preview(self):
+        """
+        Gets and sets the mentionsPreview
+        
+        Returns: 
+            :class:`MentionsPreview<onedrivesdk.model.mentions_preview.MentionsPreview>`:
+                The mentionsPreview
+        """
+        if "mentionsPreview" in self._prop_dict:
+            if isinstance(self._prop_dict["mentionsPreview"], OneDriveObjectBase):
+                return self._prop_dict["mentionsPreview"]
+            else :
+                self._prop_dict["mentionsPreview"] = MentionsPreview(self._prop_dict["mentionsPreview"])
+                return self._prop_dict["mentionsPreview"]
+
+        return None
+
+    @mentions_preview.setter
+    def mentions_preview(self, val):
+        self._prop_dict["mentionsPreview"] = val
+
+    @property
     def inference_classification(self):
         """
         Gets and sets the inferenceClassification
@@ -455,6 +479,42 @@ class Message(OneDriveObjectBase):
     @inference_classification.setter
     def inference_classification(self, val):
         self._prop_dict["inferenceClassification"] = val
+
+    @property
+    def unsubscribe_data(self):
+        """
+        Gets and sets the unsubscribeData
+        
+        Returns:
+            str:
+                The unsubscribeData
+        """
+        if "unsubscribeData" in self._prop_dict:
+            return self._prop_dict["unsubscribeData"]
+        else:
+            return None
+
+    @unsubscribe_data.setter
+    def unsubscribe_data(self, val):
+        self._prop_dict["unsubscribeData"] = val
+
+    @property
+    def unsubscribe_enabled(self):
+        """
+        Gets and sets the unsubscribeEnabled
+        
+        Returns:
+            bool:
+                The unsubscribeEnabled
+        """
+        if "unsubscribeEnabled" in self._prop_dict:
+            return self._prop_dict["unsubscribeEnabled"]
+        else:
+            return None
+
+    @unsubscribe_enabled.setter
+    def unsubscribe_enabled(self, val):
+        self._prop_dict["unsubscribeEnabled"] = val
 
     @property
     def flag(self):
@@ -527,6 +587,19 @@ class Message(OneDriveObjectBase):
         """
         if "multiValueExtendedProperties" in self._prop_dict:
             return MultiValueExtendedPropertiesCollectionPage(self._prop_dict["multiValueExtendedProperties"])
+        else:
+            return None
+
+    @property
+    def mentions(self):
+        """Gets and sets the mentions
+        
+        Returns: 
+            :class:`MentionsCollectionPage<onedrivesdk.request.mentions_collection.MentionsCollectionPage>`:
+                The mentions
+        """
+        if "mentions" in self._prop_dict:
+            return MentionsCollectionPage(self._prop_dict["mentions"])
         else:
             return None
 

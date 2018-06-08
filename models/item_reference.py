@@ -84,6 +84,27 @@ class ItemReference(OneDriveObjectBase):
         self._prop_dict["name"] = val
 
     @property
+    def parent(self):
+        """
+        Gets and sets the parent
+        
+        Returns: 
+            :class:`ItemReference<onedrivesdk.model.item_reference.ItemReference>`:
+                The parent
+        """
+        if "parent" in self._prop_dict:
+            if isinstance(self._prop_dict["parent"], OneDriveObjectBase):
+                return self._prop_dict["parent"]
+            else :
+                self._prop_dict["parent"] = ItemReference(self._prop_dict["parent"])
+                return self._prop_dict["parent"]
+
+        return None
+
+    @parent.setter
+    def parent(self, val):
+        self._prop_dict["parent"] = val
+    @property
     def path(self):
         """Gets and sets the path
         

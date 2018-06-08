@@ -6,6 +6,7 @@
 '''
 
 from __future__ import unicode_literals
+from ..model.role_assignment_scope_type import RoleAssignmentScopeType
 from ..model.role_definition import RoleDefinition
 from ..one_drive_object_base import OneDriveObjectBase
 
@@ -50,6 +51,46 @@ class RoleAssignment(OneDriveObjectBase):
     @description.setter
     def description(self, val):
         self._prop_dict["description"] = val
+
+    @property
+    def scope_members(self):
+        """
+        Gets and sets the scopeMembers
+        
+        Returns:
+            str:
+                The scopeMembers
+        """
+        if "scopeMembers" in self._prop_dict:
+            return self._prop_dict["scopeMembers"]
+        else:
+            return None
+
+    @scope_members.setter
+    def scope_members(self, val):
+        self._prop_dict["scopeMembers"] = val
+
+    @property
+    def scope_type(self):
+        """
+        Gets and sets the scopeType
+        
+        Returns: 
+            :class:`RoleAssignmentScopeType<onedrivesdk.model.role_assignment_scope_type.RoleAssignmentScopeType>`:
+                The scopeType
+        """
+        if "scopeType" in self._prop_dict:
+            if isinstance(self._prop_dict["scopeType"], OneDriveObjectBase):
+                return self._prop_dict["scopeType"]
+            else :
+                self._prop_dict["scopeType"] = RoleAssignmentScopeType(self._prop_dict["scopeType"])
+                return self._prop_dict["scopeType"]
+
+        return None
+
+    @scope_type.setter
+    def scope_type(self, val):
+        self._prop_dict["scopeType"] = val
 
     @property
     def resource_scopes(self):

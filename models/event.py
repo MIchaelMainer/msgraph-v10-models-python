@@ -17,6 +17,7 @@ from ..model.free_busy_status import FreeBusyStatus
 from ..model.event_type import EventType
 from ..model.attendee import Attendee
 from ..model.recipient import Recipient
+from ..model.event_creation_options import EventCreationOptions
 from ..model.calendar import Calendar
 from ..model.extension import Extension
 from ..model.attachment import Attachment
@@ -586,6 +587,28 @@ class Event(OneDriveObjectBase):
     @online_meeting_url.setter
     def online_meeting_url(self, val):
         self._prop_dict["onlineMeetingUrl"] = val
+
+    @property
+    def creation_options(self):
+        """
+        Gets and sets the creationOptions
+        
+        Returns: 
+            :class:`EventCreationOptions<onedrivesdk.model.event_creation_options.EventCreationOptions>`:
+                The creationOptions
+        """
+        if "creationOptions" in self._prop_dict:
+            if isinstance(self._prop_dict["creationOptions"], OneDriveObjectBase):
+                return self._prop_dict["creationOptions"]
+            else :
+                self._prop_dict["creationOptions"] = EventCreationOptions(self._prop_dict["creationOptions"])
+                return self._prop_dict["creationOptions"]
+
+        return None
+
+    @creation_options.setter
+    def creation_options(self, val):
+        self._prop_dict["creationOptions"] = val
 
     @property
     def calendar(self):

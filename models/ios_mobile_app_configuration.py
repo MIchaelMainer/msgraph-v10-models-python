@@ -16,6 +16,24 @@ class IosMobileAppConfiguration(OneDriveObjectBase):
         self._prop_dict = prop_dict
 
     @property
+    def setting_xml(self):
+        """
+        Gets and sets the settingXml
+        
+        Returns:
+            str:
+                The settingXml
+        """
+        if "settingXml" in self._prop_dict:
+            return self._prop_dict["settingXml"]
+        else:
+            return None
+
+    @setting_xml.setter
+    def setting_xml(self, val):
+        self._prop_dict["settingXml"] = val
+
+    @property
     def settings(self):
         """Gets and sets the settings
         

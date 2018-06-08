@@ -7,6 +7,7 @@
 
 from __future__ import unicode_literals
 from ..model.microsoft_store_for_business_license_type import MicrosoftStoreForBusinessLicenseType
+from ..model.mobile_contained_app import MobileContainedApp
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -108,4 +109,17 @@ class MicrosoftStoreForBusinessApp(OneDriveObjectBase):
     @package_identity_name.setter
     def package_identity_name(self, val):
         self._prop_dict["packageIdentityName"] = val
+
+    @property
+    def contained_apps(self):
+        """Gets and sets the containedApps
+        
+        Returns: 
+            :class:`ContainedAppsCollectionPage<onedrivesdk.request.contained_apps_collection.ContainedAppsCollectionPage>`:
+                The containedApps
+        """
+        if "containedApps" in self._prop_dict:
+            return ContainedAppsCollectionPage(self._prop_dict["containedApps"])
+        else:
+            return None
 

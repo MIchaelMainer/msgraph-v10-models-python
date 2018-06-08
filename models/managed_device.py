@@ -6,19 +6,28 @@
 '''
 
 from __future__ import unicode_literals
+from ..model.hardware_information import HardwareInformation
+from ..model.owner_type import OwnerType
 from ..model.managed_device_owner_type import ManagedDeviceOwnerType
 from ..model.device_action_result import DeviceActionResult
+from ..model.management_state import ManagementState
+from ..model.chassis_type import ChassisType
+from ..model.device_type import DeviceType
 from ..model.compliance_state import ComplianceState
 from ..model.management_agent_type import ManagementAgentType
 from ..model.device_enrollment_type import DeviceEnrollmentType
+from ..model.lost_mode_state import LostModeState
 from ..model.device_registration_state import DeviceRegistrationState
 from ..model.device_management_exchange_access_state import DeviceManagementExchangeAccessState
 from ..model.device_management_exchange_access_state_reason import DeviceManagementExchangeAccessStateReason
 from ..model.configuration_manager_client_enabled_features import ConfigurationManagerClientEnabledFeatures
 from ..model.device_health_attestation_state import DeviceHealthAttestationState
 from ..model.managed_device_partner_reported_health_state import ManagedDevicePartnerReportedHealthState
+from ..model.logged_on_user import LoggedOnUser
 from ..model.device_configuration_state import DeviceConfigurationState
+from ..model.detected_app import DetectedApp
 from ..model.device_category import DeviceCategory
+from ..model.windows_protection_state import WindowsProtectionState
 from ..model.device_compliance_policy_state import DeviceCompliancePolicyState
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
@@ -66,6 +75,50 @@ class ManagedDevice(OneDriveObjectBase):
         self._prop_dict["deviceName"] = val
 
     @property
+    def hardware_information(self):
+        """
+        Gets and sets the hardwareInformation
+        
+        Returns: 
+            :class:`HardwareInformation<onedrivesdk.model.hardware_information.HardwareInformation>`:
+                The hardwareInformation
+        """
+        if "hardwareInformation" in self._prop_dict:
+            if isinstance(self._prop_dict["hardwareInformation"], OneDriveObjectBase):
+                return self._prop_dict["hardwareInformation"]
+            else :
+                self._prop_dict["hardwareInformation"] = HardwareInformation(self._prop_dict["hardwareInformation"])
+                return self._prop_dict["hardwareInformation"]
+
+        return None
+
+    @hardware_information.setter
+    def hardware_information(self, val):
+        self._prop_dict["hardwareInformation"] = val
+
+    @property
+    def owner_type(self):
+        """
+        Gets and sets the ownerType
+        
+        Returns: 
+            :class:`OwnerType<onedrivesdk.model.owner_type.OwnerType>`:
+                The ownerType
+        """
+        if "ownerType" in self._prop_dict:
+            if isinstance(self._prop_dict["ownerType"], OneDriveObjectBase):
+                return self._prop_dict["ownerType"]
+            else :
+                self._prop_dict["ownerType"] = OwnerType(self._prop_dict["ownerType"])
+                return self._prop_dict["ownerType"]
+
+        return None
+
+    @owner_type.setter
+    def owner_type(self, val):
+        self._prop_dict["ownerType"] = val
+
+    @property
     def managed_device_owner_type(self):
         """
         Gets and sets the managedDeviceOwnerType
@@ -99,6 +152,28 @@ class ManagedDevice(OneDriveObjectBase):
             return DeviceActionResultsCollectionPage(self._prop_dict["deviceActionResults"])
         else:
             return None
+
+    @property
+    def management_state(self):
+        """
+        Gets and sets the managementState
+        
+        Returns: 
+            :class:`ManagementState<onedrivesdk.model.management_state.ManagementState>`:
+                The managementState
+        """
+        if "managementState" in self._prop_dict:
+            if isinstance(self._prop_dict["managementState"], OneDriveObjectBase):
+                return self._prop_dict["managementState"]
+            else :
+                self._prop_dict["managementState"] = ManagementState(self._prop_dict["managementState"])
+                return self._prop_dict["managementState"]
+
+        return None
+
+    @management_state.setter
+    def management_state(self, val):
+        self._prop_dict["managementState"] = val
 
     @property
     def enrolled_date_time(self):
@@ -137,6 +212,28 @@ class ManagedDevice(OneDriveObjectBase):
         self._prop_dict["lastSyncDateTime"] = val.isoformat()+"Z"
 
     @property
+    def chassis_type(self):
+        """
+        Gets and sets the chassisType
+        
+        Returns: 
+            :class:`ChassisType<onedrivesdk.model.chassis_type.ChassisType>`:
+                The chassisType
+        """
+        if "chassisType" in self._prop_dict:
+            if isinstance(self._prop_dict["chassisType"], OneDriveObjectBase):
+                return self._prop_dict["chassisType"]
+            else :
+                self._prop_dict["chassisType"] = ChassisType(self._prop_dict["chassisType"])
+                return self._prop_dict["chassisType"]
+
+        return None
+
+    @chassis_type.setter
+    def chassis_type(self, val):
+        self._prop_dict["chassisType"] = val
+
+    @property
     def operating_system(self):
         """
         Gets and sets the operatingSystem
@@ -153,6 +250,28 @@ class ManagedDevice(OneDriveObjectBase):
     @operating_system.setter
     def operating_system(self, val):
         self._prop_dict["operatingSystem"] = val
+
+    @property
+    def device_type(self):
+        """
+        Gets and sets the deviceType
+        
+        Returns: 
+            :class:`DeviceType<onedrivesdk.model.device_type.DeviceType>`:
+                The deviceType
+        """
+        if "deviceType" in self._prop_dict:
+            if isinstance(self._prop_dict["deviceType"], OneDriveObjectBase):
+                return self._prop_dict["deviceType"]
+            else :
+                self._prop_dict["deviceType"] = DeviceType(self._prop_dict["deviceType"])
+                return self._prop_dict["deviceType"]
+
+        return None
+
+    @device_type.setter
+    def device_type(self, val):
+        self._prop_dict["deviceType"] = val
 
     @property
     def compliance_state(self):
@@ -289,6 +408,24 @@ class ManagedDevice(OneDriveObjectBase):
         self._prop_dict["easActivationDateTime"] = val.isoformat()+"Z"
 
     @property
+    def aad_registered(self):
+        """
+        Gets and sets the aadRegistered
+        
+        Returns:
+            bool:
+                The aadRegistered
+        """
+        if "aadRegistered" in self._prop_dict:
+            return self._prop_dict["aadRegistered"]
+        else:
+            return None
+
+    @aad_registered.setter
+    def aad_registered(self, val):
+        self._prop_dict["aadRegistered"] = val
+
+    @property
     def azure_ad_registered(self):
         """
         Gets and sets the azureADRegistered
@@ -329,6 +466,28 @@ class ManagedDevice(OneDriveObjectBase):
         self._prop_dict["deviceEnrollmentType"] = val
 
     @property
+    def lost_mode_state(self):
+        """
+        Gets and sets the lostModeState
+        
+        Returns: 
+            :class:`LostModeState<onedrivesdk.model.lost_mode_state.LostModeState>`:
+                The lostModeState
+        """
+        if "lostModeState" in self._prop_dict:
+            if isinstance(self._prop_dict["lostModeState"], OneDriveObjectBase):
+                return self._prop_dict["lostModeState"]
+            else :
+                self._prop_dict["lostModeState"] = LostModeState(self._prop_dict["lostModeState"])
+                return self._prop_dict["lostModeState"]
+
+        return None
+
+    @lost_mode_state.setter
+    def lost_mode_state(self, val):
+        self._prop_dict["lostModeState"] = val
+
+    @property
     def activation_lock_bypass_code(self):
         """
         Gets and sets the activationLockBypassCode
@@ -363,6 +522,24 @@ class ManagedDevice(OneDriveObjectBase):
     @email_address.setter
     def email_address(self, val):
         self._prop_dict["emailAddress"] = val
+
+    @property
+    def azure_active_directory_device_id(self):
+        """
+        Gets and sets the azureActiveDirectoryDeviceId
+        
+        Returns:
+            str:
+                The azureActiveDirectoryDeviceId
+        """
+        if "azureActiveDirectoryDeviceId" in self._prop_dict:
+            return self._prop_dict["azureActiveDirectoryDeviceId"]
+        else:
+            return None
+
+    @azure_active_directory_device_id.setter
+    def azure_active_directory_device_id(self, val):
+        self._prop_dict["azureActiveDirectoryDeviceId"] = val
 
     @property
     def azure_ad_device_id(self):
@@ -519,6 +696,24 @@ class ManagedDevice(OneDriveObjectBase):
     @remote_assistance_session_url.setter
     def remote_assistance_session_url(self, val):
         self._prop_dict["remoteAssistanceSessionUrl"] = val
+
+    @property
+    def remote_assistance_session_error_string(self):
+        """
+        Gets and sets the remoteAssistanceSessionErrorString
+        
+        Returns:
+            str:
+                The remoteAssistanceSessionErrorString
+        """
+        if "remoteAssistanceSessionErrorString" in self._prop_dict:
+            return self._prop_dict["remoteAssistanceSessionErrorString"]
+        else:
+            return None
+
+    @remote_assistance_session_error_string.setter
+    def remote_assistance_session_error_string(self, val):
+        self._prop_dict["remoteAssistanceSessionErrorString"] = val
 
     @property
     def remote_assistance_session_error_details(self):
@@ -893,6 +1088,127 @@ class ManagedDevice(OneDriveObjectBase):
         self._prop_dict["partnerReportedThreatState"] = val
 
     @property
+    def users_logged_on(self):
+        """Gets and sets the usersLoggedOn
+        
+        Returns: 
+            :class:`UsersLoggedOnCollectionPage<onedrivesdk.request.users_logged_on_collection.UsersLoggedOnCollectionPage>`:
+                The usersLoggedOn
+        """
+        if "usersLoggedOn" in self._prop_dict:
+            return UsersLoggedOnCollectionPage(self._prop_dict["usersLoggedOn"])
+        else:
+            return None
+
+    @property
+    def prefer_mdm_over_group_policy_applied_date_time(self):
+        """
+        Gets and sets the preferMdmOverGroupPolicyAppliedDateTime
+        
+        Returns:
+            datetime:
+                The preferMdmOverGroupPolicyAppliedDateTime
+        """
+        if "preferMdmOverGroupPolicyAppliedDateTime" in self._prop_dict:
+            return datetime.strptime(self._prop_dict["preferMdmOverGroupPolicyAppliedDateTime"].replace("Z", ""), "%Y-%m-%dT%H:%M:%S.%f")
+        else:
+            return None
+
+    @prefer_mdm_over_group_policy_applied_date_time.setter
+    def prefer_mdm_over_group_policy_applied_date_time(self, val):
+        self._prop_dict["preferMdmOverGroupPolicyAppliedDateTime"] = val.isoformat()+"Z"
+
+    @property
+    def autopilot_enrolled(self):
+        """
+        Gets and sets the autopilotEnrolled
+        
+        Returns:
+            bool:
+                The autopilotEnrolled
+        """
+        if "autopilotEnrolled" in self._prop_dict:
+            return self._prop_dict["autopilotEnrolled"]
+        else:
+            return None
+
+    @autopilot_enrolled.setter
+    def autopilot_enrolled(self, val):
+        self._prop_dict["autopilotEnrolled"] = val
+
+    @property
+    def require_user_enrollment_approval(self):
+        """
+        Gets and sets the requireUserEnrollmentApproval
+        
+        Returns:
+            bool:
+                The requireUserEnrollmentApproval
+        """
+        if "requireUserEnrollmentApproval" in self._prop_dict:
+            return self._prop_dict["requireUserEnrollmentApproval"]
+        else:
+            return None
+
+    @require_user_enrollment_approval.setter
+    def require_user_enrollment_approval(self, val):
+        self._prop_dict["requireUserEnrollmentApproval"] = val
+
+    @property
+    def management_certificate_expiration_date(self):
+        """
+        Gets and sets the managementCertificateExpirationDate
+        
+        Returns:
+            datetime:
+                The managementCertificateExpirationDate
+        """
+        if "managementCertificateExpirationDate" in self._prop_dict:
+            return datetime.strptime(self._prop_dict["managementCertificateExpirationDate"].replace("Z", ""), "%Y-%m-%dT%H:%M:%S.%f")
+        else:
+            return None
+
+    @management_certificate_expiration_date.setter
+    def management_certificate_expiration_date(self, val):
+        self._prop_dict["managementCertificateExpirationDate"] = val.isoformat()+"Z"
+
+    @property
+    def iccid(self):
+        """
+        Gets and sets the iccid
+        
+        Returns:
+            str:
+                The iccid
+        """
+        if "iccid" in self._prop_dict:
+            return self._prop_dict["iccid"]
+        else:
+            return None
+
+    @iccid.setter
+    def iccid(self, val):
+        self._prop_dict["iccid"] = val
+
+    @property
+    def udid(self):
+        """
+        Gets and sets the udid
+        
+        Returns:
+            str:
+                The udid
+        """
+        if "udid" in self._prop_dict:
+            return self._prop_dict["udid"]
+        else:
+            return None
+
+    @udid.setter
+    def udid(self, val):
+        self._prop_dict["udid"] = val
+
+    @property
     def device_configuration_states(self):
         """Gets and sets the deviceConfigurationStates
         
@@ -902,6 +1218,19 @@ class ManagedDevice(OneDriveObjectBase):
         """
         if "deviceConfigurationStates" in self._prop_dict:
             return DeviceConfigurationStatesCollectionPage(self._prop_dict["deviceConfigurationStates"])
+        else:
+            return None
+
+    @property
+    def detected_apps(self):
+        """Gets and sets the detectedApps
+        
+        Returns: 
+            :class:`DetectedAppsCollectionPage<onedrivesdk.request.detected_apps_collection.DetectedAppsCollectionPage>`:
+                The detectedApps
+        """
+        if "detectedApps" in self._prop_dict:
+            return DetectedAppsCollectionPage(self._prop_dict["detectedApps"])
         else:
             return None
 
@@ -926,6 +1255,28 @@ class ManagedDevice(OneDriveObjectBase):
     @device_category.setter
     def device_category(self, val):
         self._prop_dict["deviceCategory"] = val
+
+    @property
+    def windows_protection_state(self):
+        """
+        Gets and sets the windowsProtectionState
+        
+        Returns: 
+            :class:`WindowsProtectionState<onedrivesdk.model.windows_protection_state.WindowsProtectionState>`:
+                The windowsProtectionState
+        """
+        if "windowsProtectionState" in self._prop_dict:
+            if isinstance(self._prop_dict["windowsProtectionState"], OneDriveObjectBase):
+                return self._prop_dict["windowsProtectionState"]
+            else :
+                self._prop_dict["windowsProtectionState"] = WindowsProtectionState(self._prop_dict["windowsProtectionState"])
+                return self._prop_dict["windowsProtectionState"]
+
+        return None
+
+    @windows_protection_state.setter
+    def windows_protection_state(self, val):
+        self._prop_dict["windowsProtectionState"] = val
 
     @property
     def device_compliance_policy_states(self):

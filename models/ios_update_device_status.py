@@ -148,6 +148,24 @@ class IosUpdateDeviceStatus(OneDriveObjectBase):
         self._prop_dict["deviceModel"] = val
 
     @property
+    def platform(self):
+        """
+        Gets and sets the platform
+        
+        Returns:
+            int:
+                The platform
+        """
+        if "platform" in self._prop_dict:
+            return self._prop_dict["platform"]
+        else:
+            return None
+
+    @platform.setter
+    def platform(self, val):
+        self._prop_dict["platform"] = val
+
+    @property
     def compliance_grace_period_expiration_date_time(self):
         """
         Gets and sets the complianceGracePeriodExpirationDateTime

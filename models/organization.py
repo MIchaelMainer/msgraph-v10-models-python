@@ -11,6 +11,7 @@ from ..model.privacy_profile import PrivacyProfile
 from ..model.provisioned_plan import ProvisionedPlan
 from ..model.verified_domain import VerifiedDomain
 from ..model.mdm_authority import MdmAuthority
+from ..model.certificate_connector_setting import CertificateConnectorSetting
 from ..model.extension import Extension
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
@@ -123,6 +124,24 @@ class Organization(OneDriveObjectBase):
     @display_name.setter
     def display_name(self, val):
         self._prop_dict["displayName"] = val
+
+    @property
+    def is_multiple_data_locations_for_services_enabled(self):
+        """
+        Gets and sets the isMultipleDataLocationsForServicesEnabled
+        
+        Returns:
+            bool:
+                The isMultipleDataLocationsForServicesEnabled
+        """
+        if "isMultipleDataLocationsForServicesEnabled" in self._prop_dict:
+            return self._prop_dict["isMultipleDataLocationsForServicesEnabled"]
+        else:
+            return None
+
+    @is_multiple_data_locations_for_services_enabled.setter
+    def is_multiple_data_locations_for_services_enabled(self, val):
+        self._prop_dict["isMultipleDataLocationsForServicesEnabled"] = val
 
     @property
     def marketing_notification_emails(self):
@@ -373,6 +392,28 @@ class Organization(OneDriveObjectBase):
     @mobile_device_management_authority.setter
     def mobile_device_management_authority(self, val):
         self._prop_dict["mobileDeviceManagementAuthority"] = val
+
+    @property
+    def certificate_connector_setting(self):
+        """
+        Gets and sets the certificateConnectorSetting
+        
+        Returns: 
+            :class:`CertificateConnectorSetting<onedrivesdk.model.certificate_connector_setting.CertificateConnectorSetting>`:
+                The certificateConnectorSetting
+        """
+        if "certificateConnectorSetting" in self._prop_dict:
+            if isinstance(self._prop_dict["certificateConnectorSetting"], OneDriveObjectBase):
+                return self._prop_dict["certificateConnectorSetting"]
+            else :
+                self._prop_dict["certificateConnectorSetting"] = CertificateConnectorSetting(self._prop_dict["certificateConnectorSetting"])
+                return self._prop_dict["certificateConnectorSetting"]
+
+        return None
+
+    @certificate_connector_setting.setter
+    def certificate_connector_setting(self, val):
+        self._prop_dict["certificateConnectorSetting"] = val
 
     @property
     def extensions(self):

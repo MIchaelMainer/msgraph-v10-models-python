@@ -6,6 +6,8 @@
 '''
 
 from __future__ import unicode_literals
+from ..model.key_value_pair import KeyValuePair
+from ..model.managed_app_remediation_action import ManagedAppRemediationAction
 from ..model.managed_mobile_app import ManagedMobileApp
 from ..model.managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
 from ..one_drive_object_base import OneDriveObjectBase
@@ -123,6 +125,77 @@ class AndroidManagedAppProtection(OneDriveObjectBase):
     @minimum_warning_patch_version.setter
     def minimum_warning_patch_version(self, val):
         self._prop_dict["minimumWarningPatchVersion"] = val
+
+    @property
+    def exempted_app_packages(self):
+        """Gets and sets the exemptedAppPackages
+        
+        Returns: 
+            :class:`ExemptedAppPackagesCollectionPage<onedrivesdk.request.exempted_app_packages_collection.ExemptedAppPackagesCollectionPage>`:
+                The exemptedAppPackages
+        """
+        if "exemptedAppPackages" in self._prop_dict:
+            return ExemptedAppPackagesCollectionPage(self._prop_dict["exemptedAppPackages"])
+        else:
+            return None
+
+    @property
+    def minimum_wipe_patch_version(self):
+        """
+        Gets and sets the minimumWipePatchVersion
+        
+        Returns:
+            str:
+                The minimumWipePatchVersion
+        """
+        if "minimumWipePatchVersion" in self._prop_dict:
+            return self._prop_dict["minimumWipePatchVersion"]
+        else:
+            return None
+
+    @minimum_wipe_patch_version.setter
+    def minimum_wipe_patch_version(self, val):
+        self._prop_dict["minimumWipePatchVersion"] = val
+
+    @property
+    def allowed_android_device_manufacturers(self):
+        """
+        Gets and sets the allowedAndroidDeviceManufacturers
+        
+        Returns:
+            str:
+                The allowedAndroidDeviceManufacturers
+        """
+        if "allowedAndroidDeviceManufacturers" in self._prop_dict:
+            return self._prop_dict["allowedAndroidDeviceManufacturers"]
+        else:
+            return None
+
+    @allowed_android_device_manufacturers.setter
+    def allowed_android_device_manufacturers(self, val):
+        self._prop_dict["allowedAndroidDeviceManufacturers"] = val
+
+    @property
+    def app_action_if_android_device_manufacturer_not_allowed(self):
+        """
+        Gets and sets the appActionIfAndroidDeviceManufacturerNotAllowed
+        
+        Returns: 
+            :class:`ManagedAppRemediationAction<onedrivesdk.model.managed_app_remediation_action.ManagedAppRemediationAction>`:
+                The appActionIfAndroidDeviceManufacturerNotAllowed
+        """
+        if "appActionIfAndroidDeviceManufacturerNotAllowed" in self._prop_dict:
+            if isinstance(self._prop_dict["appActionIfAndroidDeviceManufacturerNotAllowed"], OneDriveObjectBase):
+                return self._prop_dict["appActionIfAndroidDeviceManufacturerNotAllowed"]
+            else :
+                self._prop_dict["appActionIfAndroidDeviceManufacturerNotAllowed"] = ManagedAppRemediationAction(self._prop_dict["appActionIfAndroidDeviceManufacturerNotAllowed"])
+                return self._prop_dict["appActionIfAndroidDeviceManufacturerNotAllowed"]
+
+        return None
+
+    @app_action_if_android_device_manufacturer_not_allowed.setter
+    def app_action_if_android_device_manufacturer_not_allowed(self, val):
+        self._prop_dict["appActionIfAndroidDeviceManufacturerNotAllowed"] = val
 
     @property
     def apps(self):

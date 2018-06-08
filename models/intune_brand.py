@@ -250,6 +250,27 @@ class IntuneBrand(OneDriveObjectBase):
         self._prop_dict["showNameNextToLogo"] = val
 
     @property
+    def landing_page_customized_image(self):
+        """
+        Gets and sets the landingPageCustomizedImage
+        
+        Returns: 
+            :class:`MimeContent<onedrivesdk.model.mime_content.MimeContent>`:
+                The landingPageCustomizedImage
+        """
+        if "landingPageCustomizedImage" in self._prop_dict:
+            if isinstance(self._prop_dict["landingPageCustomizedImage"], OneDriveObjectBase):
+                return self._prop_dict["landingPageCustomizedImage"]
+            else :
+                self._prop_dict["landingPageCustomizedImage"] = MimeContent(self._prop_dict["landingPageCustomizedImage"])
+                return self._prop_dict["landingPageCustomizedImage"]
+
+        return None
+
+    @landing_page_customized_image.setter
+    def landing_page_customized_image(self, val):
+        self._prop_dict["landingPageCustomizedImage"] = val
+    @property
     def show_display_name_next_to_logo(self):
         """Gets and sets the showDisplayNameNextToLogo
         

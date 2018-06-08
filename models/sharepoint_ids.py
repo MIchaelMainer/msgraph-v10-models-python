@@ -100,6 +100,23 @@ class SharepointIds(OneDriveObjectBase):
         self._prop_dict["siteUrl"] = val
 
     @property
+    def tenant_id(self):
+        """Gets and sets the tenantId
+        
+        Returns: 
+            str:
+                The tenantId
+        """
+        if "tenantId" in self._prop_dict:
+            return self._prop_dict["tenantId"]
+        else:
+            return None
+
+    @tenant_id.setter
+    def tenant_id(self, val):
+        self._prop_dict["tenantId"] = val
+
+    @property
     def web_id(self):
         """Gets and sets the webId
         

@@ -7,6 +7,8 @@
 
 from __future__ import unicode_literals
 from ..model.required_password_type import RequiredPasswordType
+from ..model.operating_system_version_range import OperatingSystemVersionRange
+from ..model.device_threat_protection_level import DeviceThreatProtectionLevel
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -360,4 +362,165 @@ class Windows10CompliancePolicy(OneDriveObjectBase):
     @storage_require_encryption.setter
     def storage_require_encryption(self, val):
         self._prop_dict["storageRequireEncryption"] = val
+
+    @property
+    def active_firewall_required(self):
+        """
+        Gets and sets the activeFirewallRequired
+        
+        Returns:
+            bool:
+                The activeFirewallRequired
+        """
+        if "activeFirewallRequired" in self._prop_dict:
+            return self._prop_dict["activeFirewallRequired"]
+        else:
+            return None
+
+    @active_firewall_required.setter
+    def active_firewall_required(self, val):
+        self._prop_dict["activeFirewallRequired"] = val
+
+    @property
+    def uac_required(self):
+        """
+        Gets and sets the uacRequired
+        
+        Returns:
+            bool:
+                The uacRequired
+        """
+        if "uacRequired" in self._prop_dict:
+            return self._prop_dict["uacRequired"]
+        else:
+            return None
+
+    @uac_required.setter
+    def uac_required(self, val):
+        self._prop_dict["uacRequired"] = val
+
+    @property
+    def defender_enabled(self):
+        """
+        Gets and sets the defenderEnabled
+        
+        Returns:
+            bool:
+                The defenderEnabled
+        """
+        if "defenderEnabled" in self._prop_dict:
+            return self._prop_dict["defenderEnabled"]
+        else:
+            return None
+
+    @defender_enabled.setter
+    def defender_enabled(self, val):
+        self._prop_dict["defenderEnabled"] = val
+
+    @property
+    def defender_version(self):
+        """
+        Gets and sets the defenderVersion
+        
+        Returns:
+            str:
+                The defenderVersion
+        """
+        if "defenderVersion" in self._prop_dict:
+            return self._prop_dict["defenderVersion"]
+        else:
+            return None
+
+    @defender_version.setter
+    def defender_version(self, val):
+        self._prop_dict["defenderVersion"] = val
+
+    @property
+    def signature_out_of_date(self):
+        """
+        Gets and sets the signatureOutOfDate
+        
+        Returns:
+            bool:
+                The signatureOutOfDate
+        """
+        if "signatureOutOfDate" in self._prop_dict:
+            return self._prop_dict["signatureOutOfDate"]
+        else:
+            return None
+
+    @signature_out_of_date.setter
+    def signature_out_of_date(self, val):
+        self._prop_dict["signatureOutOfDate"] = val
+
+    @property
+    def rtp_enabled(self):
+        """
+        Gets and sets the rtpEnabled
+        
+        Returns:
+            bool:
+                The rtpEnabled
+        """
+        if "rtpEnabled" in self._prop_dict:
+            return self._prop_dict["rtpEnabled"]
+        else:
+            return None
+
+    @rtp_enabled.setter
+    def rtp_enabled(self, val):
+        self._prop_dict["rtpEnabled"] = val
+
+    @property
+    def valid_operating_system_build_ranges(self):
+        """Gets and sets the validOperatingSystemBuildRanges
+        
+        Returns: 
+            :class:`ValidOperatingSystemBuildRangesCollectionPage<onedrivesdk.request.valid_operating_system_build_ranges_collection.ValidOperatingSystemBuildRangesCollectionPage>`:
+                The validOperatingSystemBuildRanges
+        """
+        if "validOperatingSystemBuildRanges" in self._prop_dict:
+            return ValidOperatingSystemBuildRangesCollectionPage(self._prop_dict["validOperatingSystemBuildRanges"])
+        else:
+            return None
+
+    @property
+    def device_threat_protection_enabled(self):
+        """
+        Gets and sets the deviceThreatProtectionEnabled
+        
+        Returns:
+            bool:
+                The deviceThreatProtectionEnabled
+        """
+        if "deviceThreatProtectionEnabled" in self._prop_dict:
+            return self._prop_dict["deviceThreatProtectionEnabled"]
+        else:
+            return None
+
+    @device_threat_protection_enabled.setter
+    def device_threat_protection_enabled(self, val):
+        self._prop_dict["deviceThreatProtectionEnabled"] = val
+
+    @property
+    def device_threat_protection_required_security_level(self):
+        """
+        Gets and sets the deviceThreatProtectionRequiredSecurityLevel
+        
+        Returns: 
+            :class:`DeviceThreatProtectionLevel<onedrivesdk.model.device_threat_protection_level.DeviceThreatProtectionLevel>`:
+                The deviceThreatProtectionRequiredSecurityLevel
+        """
+        if "deviceThreatProtectionRequiredSecurityLevel" in self._prop_dict:
+            if isinstance(self._prop_dict["deviceThreatProtectionRequiredSecurityLevel"], OneDriveObjectBase):
+                return self._prop_dict["deviceThreatProtectionRequiredSecurityLevel"]
+            else :
+                self._prop_dict["deviceThreatProtectionRequiredSecurityLevel"] = DeviceThreatProtectionLevel(self._prop_dict["deviceThreatProtectionRequiredSecurityLevel"])
+                return self._prop_dict["deviceThreatProtectionRequiredSecurityLevel"]
+
+        return None
+
+    @device_threat_protection_required_security_level.setter
+    def device_threat_protection_required_security_level(self, val):
+        self._prop_dict["deviceThreatProtectionRequiredSecurityLevel"] = val
 

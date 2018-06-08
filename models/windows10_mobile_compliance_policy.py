@@ -7,6 +7,7 @@
 
 from __future__ import unicode_literals
 from ..model.required_password_type import RequiredPasswordType
+from ..model.operating_system_version_range import OperatingSystemVersionRange
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -306,4 +307,53 @@ class Windows10MobileCompliancePolicy(OneDriveObjectBase):
     @storage_require_encryption.setter
     def storage_require_encryption(self, val):
         self._prop_dict["storageRequireEncryption"] = val
+
+    @property
+    def active_firewall_required(self):
+        """
+        Gets and sets the activeFirewallRequired
+        
+        Returns:
+            bool:
+                The activeFirewallRequired
+        """
+        if "activeFirewallRequired" in self._prop_dict:
+            return self._prop_dict["activeFirewallRequired"]
+        else:
+            return None
+
+    @active_firewall_required.setter
+    def active_firewall_required(self, val):
+        self._prop_dict["activeFirewallRequired"] = val
+
+    @property
+    def uac_required(self):
+        """
+        Gets and sets the uacRequired
+        
+        Returns:
+            bool:
+                The uacRequired
+        """
+        if "uacRequired" in self._prop_dict:
+            return self._prop_dict["uacRequired"]
+        else:
+            return None
+
+    @uac_required.setter
+    def uac_required(self, val):
+        self._prop_dict["uacRequired"] = val
+
+    @property
+    def valid_operating_system_build_ranges(self):
+        """Gets and sets the validOperatingSystemBuildRanges
+        
+        Returns: 
+            :class:`ValidOperatingSystemBuildRangesCollectionPage<onedrivesdk.request.valid_operating_system_build_ranges_collection.ValidOperatingSystemBuildRangesCollectionPage>`:
+                The validOperatingSystemBuildRanges
+        """
+        if "validOperatingSystemBuildRanges" in self._prop_dict:
+            return ValidOperatingSystemBuildRangesCollectionPage(self._prop_dict["validOperatingSystemBuildRanges"])
+        else:
+            return None
 

@@ -8,10 +8,12 @@
 from __future__ import unicode_literals
 from ..model.item_body import ItemBody
 from ..model.recipient import Recipient
+from ..model.importance import Importance
 from ..model.extension import Extension
 from ..model.attachment import Attachment
 from ..model.single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 from ..model.multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+from ..model.mention import Mention
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
 
@@ -173,6 +175,28 @@ class Post(OneDriveObjectBase):
         self._prop_dict["conversationId"] = val
 
     @property
+    def importance(self):
+        """
+        Gets and sets the importance
+        
+        Returns: 
+            :class:`Importance<onedrivesdk.model.importance.Importance>`:
+                The importance
+        """
+        if "importance" in self._prop_dict:
+            if isinstance(self._prop_dict["importance"], OneDriveObjectBase):
+                return self._prop_dict["importance"]
+            else :
+                self._prop_dict["importance"] = Importance(self._prop_dict["importance"])
+                return self._prop_dict["importance"]
+
+        return None
+
+    @importance.setter
+    def importance(self, val):
+        self._prop_dict["importance"] = val
+
+    @property
     def extensions(self):
         """Gets and sets the extensions
         
@@ -243,6 +267,19 @@ class Post(OneDriveObjectBase):
         """
         if "multiValueExtendedProperties" in self._prop_dict:
             return MultiValueExtendedPropertiesCollectionPage(self._prop_dict["multiValueExtendedProperties"])
+        else:
+            return None
+
+    @property
+    def mentions(self):
+        """Gets and sets the mentions
+        
+        Returns: 
+            :class:`MentionsCollectionPage<onedrivesdk.request.mentions_collection.MentionsCollectionPage>`:
+                The mentions
+        """
+        if "mentions" in self._prop_dict:
+            return MentionsCollectionPage(self._prop_dict["mentions"])
         else:
             return None
 

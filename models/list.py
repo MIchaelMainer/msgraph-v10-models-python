@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 from ..model.list_info import ListInfo
 from ..model.sharepoint_ids import SharepointIds
 from ..model.system_facet import SystemFacet
+from ..model.item_activity import ItemActivity
 from ..model.column_definition import ColumnDefinition
 from ..model.content_type import ContentType
 from ..model.drive import Drive
@@ -104,6 +105,19 @@ class List(OneDriveObjectBase):
     @system.setter
     def system(self, val):
         self._prop_dict["system"] = val
+
+    @property
+    def activities(self):
+        """Gets and sets the activities
+        
+        Returns: 
+            :class:`ActivitiesCollectionPage<onedrivesdk.request.activities_collection.ActivitiesCollectionPage>`:
+                The activities
+        """
+        if "activities" in self._prop_dict:
+            return ActivitiesCollectionPage(self._prop_dict["activities"])
+        else:
+            return None
 
     @property
     def columns(self):

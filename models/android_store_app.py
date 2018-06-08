@@ -34,6 +34,24 @@ class AndroidStoreApp(OneDriveObjectBase):
         self._prop_dict["packageId"] = val
 
     @property
+    def app_identifier(self):
+        """
+        Gets and sets the appIdentifier
+        
+        Returns:
+            str:
+                The appIdentifier
+        """
+        if "appIdentifier" in self._prop_dict:
+            return self._prop_dict["appIdentifier"]
+        else:
+            return None
+
+    @app_identifier.setter
+    def app_identifier(self, val):
+        self._prop_dict["appIdentifier"] = val
+
+    @property
     def app_store_url(self):
         """
         Gets and sets the appStoreUrl

@@ -23,11 +23,13 @@ from ..model.shared import Shared
 from ..model.sharepoint_ids import SharepointIds
 from ..model.special_folder import SpecialFolder
 from ..model.video import Video
+from ..model.workbook import Workbook
+from ..model.item_activity import ItemActivity
 from ..model.list_item import ListItem
 from ..model.permission import Permission
+from ..model.subscription import Subscription
 from ..model.thumbnail_set import ThumbnailSet
 from ..model.drive_item_version import DriveItemVersion
-from ..model.workbook import Workbook
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -465,6 +467,41 @@ class DriveItem(OneDriveObjectBase):
         self._prop_dict["webDavUrl"] = val
 
     @property
+    def workbook(self):
+        """
+        Gets and sets the workbook
+        
+        Returns: 
+            :class:`Workbook<onedrivesdk.model.workbook.Workbook>`:
+                The workbook
+        """
+        if "workbook" in self._prop_dict:
+            if isinstance(self._prop_dict["workbook"], OneDriveObjectBase):
+                return self._prop_dict["workbook"]
+            else :
+                self._prop_dict["workbook"] = Workbook(self._prop_dict["workbook"])
+                return self._prop_dict["workbook"]
+
+        return None
+
+    @workbook.setter
+    def workbook(self, val):
+        self._prop_dict["workbook"] = val
+
+    @property
+    def activities(self):
+        """Gets and sets the activities
+        
+        Returns: 
+            :class:`ActivitiesCollectionPage<onedrivesdk.request.activities_collection.ActivitiesCollectionPage>`:
+                The activities
+        """
+        if "activities" in self._prop_dict:
+            return ActivitiesCollectionPage(self._prop_dict["activities"])
+        else:
+            return None
+
+    @property
     def children(self):
         """Gets and sets the children
         
@@ -513,6 +550,19 @@ class DriveItem(OneDriveObjectBase):
             return None
 
     @property
+    def subscriptions(self):
+        """Gets and sets the subscriptions
+        
+        Returns: 
+            :class:`SubscriptionsCollectionPage<onedrivesdk.request.subscriptions_collection.SubscriptionsCollectionPage>`:
+                The subscriptions
+        """
+        if "subscriptions" in self._prop_dict:
+            return SubscriptionsCollectionPage(self._prop_dict["subscriptions"])
+        else:
+            return None
+
+    @property
     def thumbnails(self):
         """Gets and sets the thumbnails
         
@@ -537,26 +587,4 @@ class DriveItem(OneDriveObjectBase):
             return VersionsCollectionPage(self._prop_dict["versions"])
         else:
             return None
-
-    @property
-    def workbook(self):
-        """
-        Gets and sets the workbook
-        
-        Returns: 
-            :class:`Workbook<onedrivesdk.model.workbook.Workbook>`:
-                The workbook
-        """
-        if "workbook" in self._prop_dict:
-            if isinstance(self._prop_dict["workbook"], OneDriveObjectBase):
-                return self._prop_dict["workbook"]
-            else :
-                self._prop_dict["workbook"] = Workbook(self._prop_dict["workbook"])
-                return self._prop_dict["workbook"]
-
-        return None
-
-    @workbook.setter
-    def workbook(self, val):
-        self._prop_dict["workbook"] = val
 

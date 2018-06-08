@@ -12,7 +12,6 @@ from ..model.physical_address import PhysicalAddress
 from ..model.education_student import EducationStudent
 from ..model.education_teacher import EducationTeacher
 from ..model.identity_set import IdentitySet
-from ..model.education_related_contact import EducationRelatedContact
 from ..model.assigned_license import AssignedLicense
 from ..model.assigned_plan import AssignedPlan
 from ..model.password_profile import PasswordProfile
@@ -20,6 +19,7 @@ from ..model.provisioned_plan import ProvisionedPlan
 from ..model.education_school import EducationSchool
 from ..model.education_class import EducationClass
 from ..model.user import User
+from ..model.education_assignment import EducationAssignment
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
 
@@ -200,19 +200,6 @@ class EducationUser(OneDriveObjectBase):
     @created_by.setter
     def created_by(self, val):
         self._prop_dict["createdBy"] = val
-
-    @property
-    def related_contacts(self):
-        """Gets and sets the relatedContacts
-        
-        Returns: 
-            :class:`RelatedContactsCollectionPage<onedrivesdk.request.related_contacts_collection.RelatedContactsCollectionPage>`:
-                The relatedContacts
-        """
-        if "relatedContacts" in self._prop_dict:
-            return RelatedContactsCollectionPage(self._prop_dict["relatedContacts"])
-        else:
-            return None
 
     @property
     def account_enabled(self):
@@ -628,4 +615,17 @@ class EducationUser(OneDriveObjectBase):
     @user.setter
     def user(self, val):
         self._prop_dict["user"] = val
+
+    @property
+    def assignments(self):
+        """Gets and sets the assignments
+        
+        Returns: 
+            :class:`AssignmentsCollectionPage<onedrivesdk.request.assignments_collection.AssignmentsCollectionPage>`:
+                The assignments
+        """
+        if "assignments" in self._prop_dict:
+            return AssignmentsCollectionPage(self._prop_dict["assignments"])
+        else:
+            return None
 

@@ -8,6 +8,7 @@
 from __future__ import unicode_literals
 from ..model.managed_app_data_encryption_type import ManagedAppDataEncryptionType
 from ..model.key_value_pair import KeyValuePair
+from ..model.managed_app_remediation_action import ManagedAppRemediationAction
 from ..model.managed_mobile_app import ManagedMobileApp
 from ..model.managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
 from ..one_drive_object_base import OneDriveObjectBase
@@ -180,6 +181,32 @@ class DefaultManagedAppProtection(OneDriveObjectBase):
         self._prop_dict["minimumWarningPatchVersion"] = val
 
     @property
+    def exempted_app_protocols(self):
+        """Gets and sets the exemptedAppProtocols
+        
+        Returns: 
+            :class:`ExemptedAppProtocolsCollectionPage<onedrivesdk.request.exempted_app_protocols_collection.ExemptedAppProtocolsCollectionPage>`:
+                The exemptedAppProtocols
+        """
+        if "exemptedAppProtocols" in self._prop_dict:
+            return ExemptedAppProtocolsCollectionPage(self._prop_dict["exemptedAppProtocols"])
+        else:
+            return None
+
+    @property
+    def exempted_app_packages(self):
+        """Gets and sets the exemptedAppPackages
+        
+        Returns: 
+            :class:`ExemptedAppPackagesCollectionPage<onedrivesdk.request.exempted_app_packages_collection.ExemptedAppPackagesCollectionPage>`:
+                The exemptedAppPackages
+        """
+        if "exemptedAppPackages" in self._prop_dict:
+            return ExemptedAppPackagesCollectionPage(self._prop_dict["exemptedAppPackages"])
+        else:
+            return None
+
+    @property
     def face_id_blocked(self):
         """
         Gets and sets the faceIdBlocked
@@ -196,6 +223,158 @@ class DefaultManagedAppProtection(OneDriveObjectBase):
     @face_id_blocked.setter
     def face_id_blocked(self, val):
         self._prop_dict["faceIdBlocked"] = val
+
+    @property
+    def minimum_wipe_sdk_version(self):
+        """
+        Gets and sets the minimumWipeSdkVersion
+        
+        Returns:
+            str:
+                The minimumWipeSdkVersion
+        """
+        if "minimumWipeSdkVersion" in self._prop_dict:
+            return self._prop_dict["minimumWipeSdkVersion"]
+        else:
+            return None
+
+    @minimum_wipe_sdk_version.setter
+    def minimum_wipe_sdk_version(self, val):
+        self._prop_dict["minimumWipeSdkVersion"] = val
+
+    @property
+    def minimum_wipe_patch_version(self):
+        """
+        Gets and sets the minimumWipePatchVersion
+        
+        Returns:
+            str:
+                The minimumWipePatchVersion
+        """
+        if "minimumWipePatchVersion" in self._prop_dict:
+            return self._prop_dict["minimumWipePatchVersion"]
+        else:
+            return None
+
+    @minimum_wipe_patch_version.setter
+    def minimum_wipe_patch_version(self, val):
+        self._prop_dict["minimumWipePatchVersion"] = val
+
+    @property
+    def allowed_ios_device_models(self):
+        """
+        Gets and sets the allowedIosDeviceModels
+        
+        Returns:
+            str:
+                The allowedIosDeviceModels
+        """
+        if "allowedIosDeviceModels" in self._prop_dict:
+            return self._prop_dict["allowedIosDeviceModels"]
+        else:
+            return None
+
+    @allowed_ios_device_models.setter
+    def allowed_ios_device_models(self, val):
+        self._prop_dict["allowedIosDeviceModels"] = val
+
+    @property
+    def app_action_if_ios_device_model_not_allowed(self):
+        """
+        Gets and sets the appActionIfIosDeviceModelNotAllowed
+        
+        Returns: 
+            :class:`ManagedAppRemediationAction<onedrivesdk.model.managed_app_remediation_action.ManagedAppRemediationAction>`:
+                The appActionIfIosDeviceModelNotAllowed
+        """
+        if "appActionIfIosDeviceModelNotAllowed" in self._prop_dict:
+            if isinstance(self._prop_dict["appActionIfIosDeviceModelNotAllowed"], OneDriveObjectBase):
+                return self._prop_dict["appActionIfIosDeviceModelNotAllowed"]
+            else :
+                self._prop_dict["appActionIfIosDeviceModelNotAllowed"] = ManagedAppRemediationAction(self._prop_dict["appActionIfIosDeviceModelNotAllowed"])
+                return self._prop_dict["appActionIfIosDeviceModelNotAllowed"]
+
+        return None
+
+    @app_action_if_ios_device_model_not_allowed.setter
+    def app_action_if_ios_device_model_not_allowed(self, val):
+        self._prop_dict["appActionIfIosDeviceModelNotAllowed"] = val
+
+    @property
+    def allowed_android_device_manufacturers(self):
+        """
+        Gets and sets the allowedAndroidDeviceManufacturers
+        
+        Returns:
+            str:
+                The allowedAndroidDeviceManufacturers
+        """
+        if "allowedAndroidDeviceManufacturers" in self._prop_dict:
+            return self._prop_dict["allowedAndroidDeviceManufacturers"]
+        else:
+            return None
+
+    @allowed_android_device_manufacturers.setter
+    def allowed_android_device_manufacturers(self, val):
+        self._prop_dict["allowedAndroidDeviceManufacturers"] = val
+
+    @property
+    def app_action_if_android_device_manufacturer_not_allowed(self):
+        """
+        Gets and sets the appActionIfAndroidDeviceManufacturerNotAllowed
+        
+        Returns: 
+            :class:`ManagedAppRemediationAction<onedrivesdk.model.managed_app_remediation_action.ManagedAppRemediationAction>`:
+                The appActionIfAndroidDeviceManufacturerNotAllowed
+        """
+        if "appActionIfAndroidDeviceManufacturerNotAllowed" in self._prop_dict:
+            if isinstance(self._prop_dict["appActionIfAndroidDeviceManufacturerNotAllowed"], OneDriveObjectBase):
+                return self._prop_dict["appActionIfAndroidDeviceManufacturerNotAllowed"]
+            else :
+                self._prop_dict["appActionIfAndroidDeviceManufacturerNotAllowed"] = ManagedAppRemediationAction(self._prop_dict["appActionIfAndroidDeviceManufacturerNotAllowed"])
+                return self._prop_dict["appActionIfAndroidDeviceManufacturerNotAllowed"]
+
+        return None
+
+    @app_action_if_android_device_manufacturer_not_allowed.setter
+    def app_action_if_android_device_manufacturer_not_allowed(self, val):
+        self._prop_dict["appActionIfAndroidDeviceManufacturerNotAllowed"] = val
+
+    @property
+    def third_party_keyboards_blocked(self):
+        """
+        Gets and sets the thirdPartyKeyboardsBlocked
+        
+        Returns:
+            bool:
+                The thirdPartyKeyboardsBlocked
+        """
+        if "thirdPartyKeyboardsBlocked" in self._prop_dict:
+            return self._prop_dict["thirdPartyKeyboardsBlocked"]
+        else:
+            return None
+
+    @third_party_keyboards_blocked.setter
+    def third_party_keyboards_blocked(self, val):
+        self._prop_dict["thirdPartyKeyboardsBlocked"] = val
+
+    @property
+    def filter_open_in_to_only_managed_apps(self):
+        """
+        Gets and sets the filterOpenInToOnlyManagedApps
+        
+        Returns:
+            bool:
+                The filterOpenInToOnlyManagedApps
+        """
+        if "filterOpenInToOnlyManagedApps" in self._prop_dict:
+            return self._prop_dict["filterOpenInToOnlyManagedApps"]
+        else:
+            return None
+
+    @filter_open_in_to_only_managed_apps.setter
+    def filter_open_in_to_only_managed_apps(self, val):
+        self._prop_dict["filterOpenInToOnlyManagedApps"] = val
 
     @property
     def apps(self):

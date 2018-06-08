@@ -65,3 +65,37 @@ class DeviceManagementSettings(OneDriveObjectBase):
     def secure_by_default(self, val):
         self._prop_dict["secureByDefault"] = val
 
+    @property
+    def enhanced_jail_break(self):
+        """Gets and sets the enhancedJailBreak
+        
+        Returns: 
+            bool:
+                The enhancedJailBreak
+        """
+        if "enhancedJailBreak" in self._prop_dict:
+            return self._prop_dict["enhancedJailBreak"]
+        else:
+            return None
+
+    @enhanced_jail_break.setter
+    def enhanced_jail_break(self, val):
+        self._prop_dict["enhancedJailBreak"] = val
+
+    @property
+    def device_inactivity_before_retirement_in_day(self):
+        """Gets and sets the deviceInactivityBeforeRetirementInDay
+        
+        Returns: 
+            int:
+                The deviceInactivityBeforeRetirementInDay
+        """
+        if "deviceInactivityBeforeRetirementInDay" in self._prop_dict:
+            return self._prop_dict["deviceInactivityBeforeRetirementInDay"]
+        else:
+            return None
+
+    @device_inactivity_before_retirement_in_day.setter
+    def device_inactivity_before_retirement_in_day(self, val):
+        self._prop_dict["deviceInactivityBeforeRetirementInDay"] = val
+

@@ -164,6 +164,42 @@ class ManagedAppRegistration(OneDriveObjectBase):
         self._prop_dict["deviceName"] = val
 
     @property
+    def managed_device_id(self):
+        """
+        Gets and sets the managedDeviceId
+        
+        Returns:
+            str:
+                The managedDeviceId
+        """
+        if "managedDeviceId" in self._prop_dict:
+            return self._prop_dict["managedDeviceId"]
+        else:
+            return None
+
+    @managed_device_id.setter
+    def managed_device_id(self, val):
+        self._prop_dict["managedDeviceId"] = val
+
+    @property
+    def azure_ad_device_id(self):
+        """
+        Gets and sets the azureADDeviceId
+        
+        Returns:
+            str:
+                The azureADDeviceId
+        """
+        if "azureADDeviceId" in self._prop_dict:
+            return self._prop_dict["azureADDeviceId"]
+        else:
+            return None
+
+    @azure_ad_device_id.setter
+    def azure_ad_device_id(self, val):
+        self._prop_dict["azureADDeviceId"] = val
+
+    @property
     def flagged_reasons(self):
         """Gets and sets the flaggedReasons
         

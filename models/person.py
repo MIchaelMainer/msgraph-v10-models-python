@@ -6,11 +6,11 @@
 '''
 
 from __future__ import unicode_literals
-from ..model.scored_email_address import ScoredEmailAddress
+from ..model.ranked_email_address import RankedEmailAddress
 from ..model.phone import Phone
 from ..model.location import Location
 from ..model.website import Website
-from ..model.person_type import PersonType
+from ..model.person_data_source import PersonDataSource
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -128,15 +128,15 @@ class Person(OneDriveObjectBase):
         self._prop_dict["isFavorite"] = val
 
     @property
-    def scored_email_addresses(self):
-        """Gets and sets the scoredEmailAddresses
+    def email_addresses(self):
+        """Gets and sets the emailAddresses
         
         Returns: 
-            :class:`ScoredEmailAddressesCollectionPage<onedrivesdk.request.scored_email_addresses_collection.ScoredEmailAddressesCollectionPage>`:
-                The scoredEmailAddresses
+            :class:`EmailAddressesCollectionPage<onedrivesdk.request.email_addresses_collection.EmailAddressesCollectionPage>`:
+                The emailAddresses
         """
-        if "scoredEmailAddresses" in self._prop_dict:
-            return ScoredEmailAddressesCollectionPage(self._prop_dict["scoredEmailAddresses"])
+        if "emailAddresses" in self._prop_dict:
+            return EmailAddressesCollectionPage(self._prop_dict["emailAddresses"])
         else:
             return None
 
@@ -180,22 +180,22 @@ class Person(OneDriveObjectBase):
             return None
 
     @property
-    def job_title(self):
+    def title(self):
         """
-        Gets and sets the jobTitle
+        Gets and sets the title
         
         Returns:
             str:
-                The jobTitle
+                The title
         """
-        if "jobTitle" in self._prop_dict:
-            return self._prop_dict["jobTitle"]
+        if "title" in self._prop_dict:
+            return self._prop_dict["title"]
         else:
             return None
 
-    @job_title.setter
-    def job_title(self, val):
-        self._prop_dict["jobTitle"] = val
+    @title.setter
+    def title(self, val):
+        self._prop_dict["title"] = val
 
     @property
     def company_name(self):
@@ -288,22 +288,49 @@ class Person(OneDriveObjectBase):
         self._prop_dict["profession"] = val
 
     @property
+    def sources(self):
+        """Gets and sets the sources
+        
+        Returns: 
+            :class:`SourcesCollectionPage<onedrivesdk.request.sources_collection.SourcesCollectionPage>`:
+                The sources
+        """
+        if "sources" in self._prop_dict:
+            return SourcesCollectionPage(self._prop_dict["sources"])
+        else:
+            return None
+
+    @property
+    def mailbox_type(self):
+        """
+        Gets and sets the mailboxType
+        
+        Returns:
+            str:
+                The mailboxType
+        """
+        if "mailboxType" in self._prop_dict:
+            return self._prop_dict["mailboxType"]
+        else:
+            return None
+
+    @mailbox_type.setter
+    def mailbox_type(self, val):
+        self._prop_dict["mailboxType"] = val
+
+    @property
     def person_type(self):
         """
         Gets and sets the personType
         
-        Returns: 
-            :class:`PersonType<onedrivesdk.model.person_type.PersonType>`:
+        Returns:
+            str:
                 The personType
         """
         if "personType" in self._prop_dict:
-            if isinstance(self._prop_dict["personType"], OneDriveObjectBase):
-                return self._prop_dict["personType"]
-            else :
-                self._prop_dict["personType"] = PersonType(self._prop_dict["personType"])
-                return self._prop_dict["personType"]
-
-        return None
+            return self._prop_dict["personType"]
+        else:
+            return None
 
     @person_type.setter
     def person_type(self, val):
@@ -326,22 +353,4 @@ class Person(OneDriveObjectBase):
     @user_principal_name.setter
     def user_principal_name(self, val):
         self._prop_dict["userPrincipalName"] = val
-
-    @property
-    def im_address(self):
-        """
-        Gets and sets the imAddress
-        
-        Returns:
-            str:
-                The imAddress
-        """
-        if "imAddress" in self._prop_dict:
-            return self._prop_dict["imAddress"]
-        else:
-            return None
-
-    @im_address.setter
-    def im_address(self, val):
-        self._prop_dict["imAddress"] = val
 

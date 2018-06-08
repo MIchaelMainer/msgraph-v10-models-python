@@ -8,6 +8,7 @@
 from __future__ import unicode_literals
 from ..model.vpp_token_account_type import VppTokenAccountType
 from ..model.vpp_token_state import VppTokenState
+from ..model.vpp_token_action_result import VppTokenActionResult
 from ..model.vpp_token_sync_status import VppTokenSyncStatus
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
@@ -171,6 +172,19 @@ class VppToken(OneDriveObjectBase):
         self._prop_dict["state"] = val
 
     @property
+    def token_action_results(self):
+        """Gets and sets the tokenActionResults
+        
+        Returns: 
+            :class:`TokenActionResultsCollectionPage<onedrivesdk.request.token_action_results_collection.TokenActionResultsCollectionPage>`:
+                The tokenActionResults
+        """
+        if "tokenActionResults" in self._prop_dict:
+            return TokenActionResultsCollectionPage(self._prop_dict["tokenActionResults"])
+        else:
+            return None
+
+    @property
     def last_sync_status(self):
         """
         Gets and sets the lastSyncStatus
@@ -227,4 +241,22 @@ class VppToken(OneDriveObjectBase):
     @country_or_region.setter
     def country_or_region(self, val):
         self._prop_dict["countryOrRegion"] = val
+
+    @property
+    def data_sharing_consent_granted(self):
+        """
+        Gets and sets the dataSharingConsentGranted
+        
+        Returns:
+            bool:
+                The dataSharingConsentGranted
+        """
+        if "dataSharingConsentGranted" in self._prop_dict:
+            return self._prop_dict["dataSharingConsentGranted"]
+        else:
+            return None
+
+    @data_sharing_consent_granted.setter
+    def data_sharing_consent_granted(self, val):
+        self._prop_dict["dataSharingConsentGranted"] = val
 

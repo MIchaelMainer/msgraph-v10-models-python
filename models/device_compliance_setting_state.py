@@ -6,6 +6,7 @@
 '''
 
 from __future__ import unicode_literals
+from ..model.device_type import DeviceType
 from ..model.compliance_status import ComplianceStatus
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
@@ -15,6 +16,28 @@ class DeviceComplianceSettingState(OneDriveObjectBase):
 
     def __init__(self, prop_dict={}):
         self._prop_dict = prop_dict
+
+    @property
+    def platform_type(self):
+        """
+        Gets and sets the platformType
+        
+        Returns: 
+            :class:`DeviceType<onedrivesdk.model.device_type.DeviceType>`:
+                The platformType
+        """
+        if "platformType" in self._prop_dict:
+            if isinstance(self._prop_dict["platformType"], OneDriveObjectBase):
+                return self._prop_dict["platformType"]
+            else :
+                self._prop_dict["platformType"] = DeviceType(self._prop_dict["platformType"])
+                return self._prop_dict["platformType"]
+
+        return None
+
+    @platform_type.setter
+    def platform_type(self, val):
+        self._prop_dict["platformType"] = val
 
     @property
     def setting(self):

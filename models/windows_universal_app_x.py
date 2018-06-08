@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 from ..model.windows_architecture import WindowsArchitecture
 from ..model.windows_device_type import WindowsDeviceType
 from ..model.windows_minimum_operating_system import WindowsMinimumOperatingSystem
+from ..model.mobile_contained_app import MobileContainedApp
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -172,4 +173,17 @@ class WindowsUniversalAppX(OneDriveObjectBase):
     @identity_version.setter
     def identity_version(self, val):
         self._prop_dict["identityVersion"] = val
+
+    @property
+    def committed_contained_apps(self):
+        """Gets and sets the committedContainedApps
+        
+        Returns: 
+            :class:`CommittedContainedAppsCollectionPage<onedrivesdk.request.committed_contained_apps_collection.CommittedContainedAppsCollectionPage>`:
+                The committedContainedApps
+        """
+        if "committedContainedApps" in self._prop_dict:
+            return CommittedContainedAppsCollectionPage(self._prop_dict["committedContainedApps"])
+        else:
+            return None
 

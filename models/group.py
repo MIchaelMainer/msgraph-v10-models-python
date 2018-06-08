@@ -6,9 +6,12 @@
 '''
 
 from __future__ import unicode_literals
-from ..model.directory_object import DirectoryObject
-from ..model.group_setting import GroupSetting
+from ..model.on_premises_provisioning_error import OnPremisesProvisioningError
+from ..model.group_access_type import GroupAccessType
 from ..model.extension import Extension
+from ..model.directory_object import DirectoryObject
+from ..model.directory_setting import DirectorySetting
+from ..model.endpoint import Endpoint
 from ..model.conversation_thread import ConversationThread
 from ..model.calendar import Calendar
 from ..model.event import Event
@@ -18,6 +21,8 @@ from ..model.drive import Drive
 from ..model.site import Site
 from ..model.planner_group import PlannerGroup
 from ..model.onenote import Onenote
+from ..model.team import Team
+from ..model.channel import Channel
 from ..model.group_lifecycle_policy import GroupLifecyclePolicy
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
@@ -173,6 +178,42 @@ class Group(OneDriveObjectBase):
         self._prop_dict["mailNickname"] = val
 
     @property
+    def membership_rule(self):
+        """
+        Gets and sets the membershipRule
+        
+        Returns:
+            str:
+                The membershipRule
+        """
+        if "membershipRule" in self._prop_dict:
+            return self._prop_dict["membershipRule"]
+        else:
+            return None
+
+    @membership_rule.setter
+    def membership_rule(self, val):
+        self._prop_dict["membershipRule"] = val
+
+    @property
+    def membership_rule_processing_state(self):
+        """
+        Gets and sets the membershipRuleProcessingState
+        
+        Returns:
+            str:
+                The membershipRuleProcessingState
+        """
+        if "membershipRuleProcessingState" in self._prop_dict:
+            return self._prop_dict["membershipRuleProcessingState"]
+        else:
+            return None
+
+    @membership_rule_processing_state.setter
+    def membership_rule_processing_state(self, val):
+        self._prop_dict["membershipRuleProcessingState"] = val
+
+    @property
     def on_premises_last_sync_date_time(self):
         """
         Gets and sets the onPremisesLastSyncDateTime
@@ -189,6 +230,19 @@ class Group(OneDriveObjectBase):
     @on_premises_last_sync_date_time.setter
     def on_premises_last_sync_date_time(self, val):
         self._prop_dict["onPremisesLastSyncDateTime"] = val.isoformat()+"Z"
+
+    @property
+    def on_premises_provisioning_errors(self):
+        """Gets and sets the onPremisesProvisioningErrors
+        
+        Returns: 
+            :class:`OnPremisesProvisioningErrorsCollectionPage<onedrivesdk.request.on_premises_provisioning_errors_collection.OnPremisesProvisioningErrorsCollectionPage>`:
+                The onPremisesProvisioningErrors
+        """
+        if "onPremisesProvisioningErrors" in self._prop_dict:
+            return OnPremisesProvisioningErrorsCollectionPage(self._prop_dict["onPremisesProvisioningErrors"])
+        else:
+            return None
 
     @property
     def on_premises_security_identifier(self):
@@ -227,6 +281,24 @@ class Group(OneDriveObjectBase):
         self._prop_dict["onPremisesSyncEnabled"] = val
 
     @property
+    def preferred_language(self):
+        """
+        Gets and sets the preferredLanguage
+        
+        Returns:
+            str:
+                The preferredLanguage
+        """
+        if "preferredLanguage" in self._prop_dict:
+            return self._prop_dict["preferredLanguage"]
+        else:
+            return None
+
+    @preferred_language.setter
+    def preferred_language(self, val):
+        self._prop_dict["preferredLanguage"] = val
+
+    @property
     def proxy_addresses(self):
         """
         Gets and sets the proxyAddresses
@@ -263,6 +335,42 @@ class Group(OneDriveObjectBase):
         self._prop_dict["renewedDateTime"] = val.isoformat()+"Z"
 
     @property
+    def resource_behavior_options(self):
+        """
+        Gets and sets the resourceBehaviorOptions
+        
+        Returns:
+            str:
+                The resourceBehaviorOptions
+        """
+        if "resourceBehaviorOptions" in self._prop_dict:
+            return self._prop_dict["resourceBehaviorOptions"]
+        else:
+            return None
+
+    @resource_behavior_options.setter
+    def resource_behavior_options(self, val):
+        self._prop_dict["resourceBehaviorOptions"] = val
+
+    @property
+    def resource_provisioning_options(self):
+        """
+        Gets and sets the resourceProvisioningOptions
+        
+        Returns:
+            str:
+                The resourceProvisioningOptions
+        """
+        if "resourceProvisioningOptions" in self._prop_dict:
+            return self._prop_dict["resourceProvisioningOptions"]
+        else:
+            return None
+
+    @resource_provisioning_options.setter
+    def resource_provisioning_options(self, val):
+        self._prop_dict["resourceProvisioningOptions"] = val
+
+    @property
     def security_enabled(self):
         """
         Gets and sets the securityEnabled
@@ -281,6 +389,24 @@ class Group(OneDriveObjectBase):
         self._prop_dict["securityEnabled"] = val
 
     @property
+    def theme(self):
+        """
+        Gets and sets the theme
+        
+        Returns:
+            str:
+                The theme
+        """
+        if "theme" in self._prop_dict:
+            return self._prop_dict["theme"]
+        else:
+            return None
+
+    @theme.setter
+    def theme(self, val):
+        self._prop_dict["theme"] = val
+
+    @property
     def visibility(self):
         """
         Gets and sets the visibility
@@ -297,6 +423,28 @@ class Group(OneDriveObjectBase):
     @visibility.setter
     def visibility(self, val):
         self._prop_dict["visibility"] = val
+
+    @property
+    def access_type(self):
+        """
+        Gets and sets the accessType
+        
+        Returns: 
+            :class:`GroupAccessType<onedrivesdk.model.group_access_type.GroupAccessType>`:
+                The accessType
+        """
+        if "accessType" in self._prop_dict:
+            if isinstance(self._prop_dict["accessType"], OneDriveObjectBase):
+                return self._prop_dict["accessType"]
+            else :
+                self._prop_dict["accessType"] = GroupAccessType(self._prop_dict["accessType"])
+                return self._prop_dict["accessType"]
+
+        return None
+
+    @access_type.setter
+    def access_type(self, val):
+        self._prop_dict["accessType"] = val
 
     @property
     def allow_external_senders(self):
@@ -335,6 +483,24 @@ class Group(OneDriveObjectBase):
         self._prop_dict["autoSubscribeNewMembers"] = val
 
     @property
+    def is_favorite(self):
+        """
+        Gets and sets the isFavorite
+        
+        Returns:
+            bool:
+                The isFavorite
+        """
+        if "isFavorite" in self._prop_dict:
+            return self._prop_dict["isFavorite"]
+        else:
+            return None
+
+    @is_favorite.setter
+    def is_favorite(self, val):
+        self._prop_dict["isFavorite"] = val
+
+    @property
     def is_subscribed_by_mail(self):
         """
         Gets and sets the isSubscribedByMail
@@ -369,6 +535,55 @@ class Group(OneDriveObjectBase):
     @unseen_count.setter
     def unseen_count(self, val):
         self._prop_dict["unseenCount"] = val
+
+    @property
+    def unseen_conversations_count(self):
+        """
+        Gets and sets the unseenConversationsCount
+        
+        Returns:
+            int:
+                The unseenConversationsCount
+        """
+        if "unseenConversationsCount" in self._prop_dict:
+            return self._prop_dict["unseenConversationsCount"]
+        else:
+            return None
+
+    @unseen_conversations_count.setter
+    def unseen_conversations_count(self, val):
+        self._prop_dict["unseenConversationsCount"] = val
+
+    @property
+    def unseen_messages_count(self):
+        """
+        Gets and sets the unseenMessagesCount
+        
+        Returns:
+            int:
+                The unseenMessagesCount
+        """
+        if "unseenMessagesCount" in self._prop_dict:
+            return self._prop_dict["unseenMessagesCount"]
+        else:
+            return None
+
+    @unseen_messages_count.setter
+    def unseen_messages_count(self, val):
+        self._prop_dict["unseenMessagesCount"] = val
+
+    @property
+    def extensions(self):
+        """Gets and sets the extensions
+        
+        Returns: 
+            :class:`ExtensionsCollectionPage<onedrivesdk.request.extensions_collection.ExtensionsCollectionPage>`:
+                The extensions
+        """
+        if "extensions" in self._prop_dict:
+            return ExtensionsCollectionPage(self._prop_dict["extensions"])
+        else:
+            return None
 
     @property
     def members(self):
@@ -445,15 +660,15 @@ class Group(OneDriveObjectBase):
             return None
 
     @property
-    def extensions(self):
-        """Gets and sets the extensions
+    def endpoints(self):
+        """Gets and sets the endpoints
         
         Returns: 
-            :class:`ExtensionsCollectionPage<onedrivesdk.request.extensions_collection.ExtensionsCollectionPage>`:
-                The extensions
+            :class:`EndpointsCollectionPage<onedrivesdk.request.endpoints_collection.EndpointsCollectionPage>`:
+                The endpoints
         """
-        if "extensions" in self._prop_dict:
-            return ExtensionsCollectionPage(self._prop_dict["extensions"])
+        if "endpoints" in self._prop_dict:
+            return EndpointsCollectionPage(self._prop_dict["endpoints"])
         else:
             return None
 
@@ -683,6 +898,41 @@ class Group(OneDriveObjectBase):
     @onenote.setter
     def onenote(self, val):
         self._prop_dict["onenote"] = val
+
+    @property
+    def team(self):
+        """
+        Gets and sets the team
+        
+        Returns: 
+            :class:`Team<onedrivesdk.model.team.Team>`:
+                The team
+        """
+        if "team" in self._prop_dict:
+            if isinstance(self._prop_dict["team"], OneDriveObjectBase):
+                return self._prop_dict["team"]
+            else :
+                self._prop_dict["team"] = Team(self._prop_dict["team"])
+                return self._prop_dict["team"]
+
+        return None
+
+    @team.setter
+    def team(self, val):
+        self._prop_dict["team"] = val
+
+    @property
+    def channels(self):
+        """Gets and sets the channels
+        
+        Returns: 
+            :class:`ChannelsCollectionPage<onedrivesdk.request.channels_collection.ChannelsCollectionPage>`:
+                The channels
+        """
+        if "channels" in self._prop_dict:
+            return ChannelsCollectionPage(self._prop_dict["channels"])
+        else:
+            return None
 
     @property
     def group_lifecycle_policies(self):

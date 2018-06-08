@@ -53,37 +53,3 @@ class Phone(OneDriveObjectBase):
     def number(self, val):
         self._prop_dict["number"] = val
 
-    @property
-    def region(self):
-        """Gets and sets the region
-        
-        Returns: 
-            str:
-                The region
-        """
-        if "region" in self._prop_dict:
-            return self._prop_dict["region"]
-        else:
-            return None
-
-    @region.setter
-    def region(self, val):
-        self._prop_dict["region"] = val
-
-    @property
-    def language(self):
-        """Gets and sets the language
-        
-        Returns: 
-            str:
-                The language
-        """
-        if "language" in self._prop_dict:
-            return self._prop_dict["language"]
-        else:
-            return None
-
-    @language.setter
-    def language(self, val):
-        self._prop_dict["language"] = val
-

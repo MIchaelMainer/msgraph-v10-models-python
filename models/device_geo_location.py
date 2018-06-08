@@ -16,6 +16,23 @@ class DeviceGeoLocation(OneDriveObjectBase):
         self._prop_dict = prop_dict
 
     @property
+    def last_collected_date_time_utc(self):
+        """Gets and sets the lastCollectedDateTimeUtc
+        
+        Returns: 
+            datetime:
+                The lastCollectedDateTimeUtc
+        """
+        if "lastCollectedDateTimeUtc" in self._prop_dict:
+            return datetime.strptime(self._prop_dict["lastCollectedDateTimeUtc"].replace("Z", ""), "%Y-%m-%dT%H:%M:%S.%f")
+        else:
+            return None
+
+    @last_collected_date_time_utc.setter
+    def last_collected_date_time_utc(self, val):
+        self._prop_dict["lastCollectedDateTimeUtc"] = val.isoformat()+"Z"
+
+    @property
     def last_collected_date_time(self):
         """Gets and sets the lastCollectedDateTime
         

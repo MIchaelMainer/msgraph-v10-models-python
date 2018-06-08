@@ -54,6 +54,24 @@ class ContactFolder(OneDriveObjectBase):
         self._prop_dict["displayName"] = val
 
     @property
+    def well_known_name(self):
+        """
+        Gets and sets the wellKnownName
+        
+        Returns:
+            str:
+                The wellKnownName
+        """
+        if "wellKnownName" in self._prop_dict:
+            return self._prop_dict["wellKnownName"]
+        else:
+            return None
+
+    @well_known_name.setter
+    def well_known_name(self, val):
+        self._prop_dict["wellKnownName"] = val
+
+    @property
     def contacts(self):
         """Gets and sets the contacts
         

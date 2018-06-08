@@ -10,6 +10,9 @@ from ..model.mime_content import MimeContent
 from ..model.mobile_app_publishing_state import MobileAppPublishingState
 from ..model.mobile_app_category import MobileAppCategory
 from ..model.mobile_app_assignment import MobileAppAssignment
+from ..model.mobile_app_install_summary import MobileAppInstallSummary
+from ..model.mobile_app_install_status import MobileAppInstallStatus
+from ..model.user_app_install_status import UserAppInstallStatus
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
 
@@ -240,6 +243,24 @@ class MobileApp(OneDriveObjectBase):
         self._prop_dict["notes"] = val
 
     @property
+    def upload_state(self):
+        """
+        Gets and sets the uploadState
+        
+        Returns:
+            int:
+                The uploadState
+        """
+        if "uploadState" in self._prop_dict:
+            return self._prop_dict["uploadState"]
+        else:
+            return None
+
+    @upload_state.setter
+    def upload_state(self, val):
+        self._prop_dict["uploadState"] = val
+
+    @property
     def publishing_state(self):
         """
         Gets and sets the publishingState
@@ -284,6 +305,54 @@ class MobileApp(OneDriveObjectBase):
         """
         if "assignments" in self._prop_dict:
             return AssignmentsCollectionPage(self._prop_dict["assignments"])
+        else:
+            return None
+
+    @property
+    def install_summary(self):
+        """
+        Gets and sets the installSummary
+        
+        Returns: 
+            :class:`MobileAppInstallSummary<onedrivesdk.model.mobile_app_install_summary.MobileAppInstallSummary>`:
+                The installSummary
+        """
+        if "installSummary" in self._prop_dict:
+            if isinstance(self._prop_dict["installSummary"], OneDriveObjectBase):
+                return self._prop_dict["installSummary"]
+            else :
+                self._prop_dict["installSummary"] = MobileAppInstallSummary(self._prop_dict["installSummary"])
+                return self._prop_dict["installSummary"]
+
+        return None
+
+    @install_summary.setter
+    def install_summary(self, val):
+        self._prop_dict["installSummary"] = val
+
+    @property
+    def device_statuses(self):
+        """Gets and sets the deviceStatuses
+        
+        Returns: 
+            :class:`DeviceStatusesCollectionPage<onedrivesdk.request.device_statuses_collection.DeviceStatusesCollectionPage>`:
+                The deviceStatuses
+        """
+        if "deviceStatuses" in self._prop_dict:
+            return DeviceStatusesCollectionPage(self._prop_dict["deviceStatuses"])
+        else:
+            return None
+
+    @property
+    def user_statuses(self):
+        """Gets and sets the userStatuses
+        
+        Returns: 
+            :class:`UserStatusesCollectionPage<onedrivesdk.request.user_statuses_collection.UserStatusesCollectionPage>`:
+                The userStatuses
+        """
+        if "userStatuses" in self._prop_dict:
+            return UserStatusesCollectionPage(self._prop_dict["userStatuses"])
         else:
             return None
 

@@ -106,6 +106,24 @@ class ManagedDeviceMobileAppConfigurationUserSummary(OneDriveObjectBase):
         self._prop_dict["failedCount"] = val
 
     @property
+    def conflict_count(self):
+        """
+        Gets and sets the conflictCount
+        
+        Returns:
+            int:
+                The conflictCount
+        """
+        if "conflictCount" in self._prop_dict:
+            return self._prop_dict["conflictCount"]
+        else:
+            return None
+
+    @conflict_count.setter
+    def conflict_count(self, val):
+        self._prop_dict["conflictCount"] = val
+
+    @property
     def last_update_date_time(self):
         """
         Gets and sets the lastUpdateDateTime

@@ -37,6 +37,23 @@ class SharingLink(OneDriveObjectBase):
     def application(self, val):
         self._prop_dict["application"] = val
     @property
+    def configurator_url(self):
+        """Gets and sets the configuratorUrl
+        
+        Returns: 
+            str:
+                The configuratorUrl
+        """
+        if "configuratorUrl" in self._prop_dict:
+            return self._prop_dict["configuratorUrl"]
+        else:
+            return None
+
+    @configurator_url.setter
+    def configurator_url(self, val):
+        self._prop_dict["configuratorUrl"] = val
+
+    @property
     def scope(self):
         """Gets and sets the scope
         
@@ -69,6 +86,23 @@ class SharingLink(OneDriveObjectBase):
     @type.setter
     def type(self, val):
         self._prop_dict["type"] = val
+
+    @property
+    def web_html(self):
+        """Gets and sets the webHtml
+        
+        Returns: 
+            str:
+                The webHtml
+        """
+        if "webHtml" in self._prop_dict:
+            return self._prop_dict["webHtml"]
+        else:
+            return None
+
+    @web_html.setter
+    def web_html(self, val):
+        self._prop_dict["webHtml"] = val
 
     @property
     def web_url(self):

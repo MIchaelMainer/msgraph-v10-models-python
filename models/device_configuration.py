@@ -6,6 +6,7 @@
 '''
 
 from __future__ import unicode_literals
+from ..model.device_configuration_group_assignment import DeviceConfigurationGroupAssignment
 from ..model.device_configuration_assignment import DeviceConfigurationAssignment
 from ..model.device_configuration_device_status import DeviceConfigurationDeviceStatus
 from ..model.device_configuration_user_status import DeviceConfigurationUserStatus
@@ -110,6 +111,19 @@ class DeviceConfiguration(OneDriveObjectBase):
     @version.setter
     def version(self, val):
         self._prop_dict["version"] = val
+
+    @property
+    def group_assignments(self):
+        """Gets and sets the groupAssignments
+        
+        Returns: 
+            :class:`GroupAssignmentsCollectionPage<onedrivesdk.request.group_assignments_collection.GroupAssignmentsCollectionPage>`:
+                The groupAssignments
+        """
+        if "groupAssignments" in self._prop_dict:
+            return GroupAssignmentsCollectionPage(self._prop_dict["groupAssignments"])
+        else:
+            return None
 
     @property
     def assignments(self):

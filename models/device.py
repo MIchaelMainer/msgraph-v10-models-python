@@ -7,8 +7,9 @@
 
 from __future__ import unicode_literals
 from ..model.alternative_security_id import AlternativeSecurityId
-from ..model.directory_object import DirectoryObject
 from ..model.extension import Extension
+from ..model.directory_object import DirectoryObject
+from ..model.command import Command
 from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
 
@@ -284,6 +285,127 @@ class Device(OneDriveObjectBase):
         self._prop_dict["trustType"] = val
 
     @property
+    def name(self):
+        """
+        Gets and sets the Name
+        
+        Returns:
+            str:
+                The Name
+        """
+        if "Name" in self._prop_dict:
+            return self._prop_dict["Name"]
+        else:
+            return None
+
+    @name.setter
+    def name(self, val):
+        self._prop_dict["Name"] = val
+
+    @property
+    def manufacturer(self):
+        """
+        Gets and sets the Manufacturer
+        
+        Returns:
+            str:
+                The Manufacturer
+        """
+        if "Manufacturer" in self._prop_dict:
+            return self._prop_dict["Manufacturer"]
+        else:
+            return None
+
+    @manufacturer.setter
+    def manufacturer(self, val):
+        self._prop_dict["Manufacturer"] = val
+
+    @property
+    def model(self):
+        """
+        Gets and sets the Model
+        
+        Returns:
+            str:
+                The Model
+        """
+        if "Model" in self._prop_dict:
+            return self._prop_dict["Model"]
+        else:
+            return None
+
+    @model.setter
+    def model(self, val):
+        self._prop_dict["Model"] = val
+
+    @property
+    def kind(self):
+        """
+        Gets and sets the Kind
+        
+        Returns:
+            str:
+                The Kind
+        """
+        if "Kind" in self._prop_dict:
+            return self._prop_dict["Kind"]
+        else:
+            return None
+
+    @kind.setter
+    def kind(self, val):
+        self._prop_dict["Kind"] = val
+
+    @property
+    def status(self):
+        """
+        Gets and sets the Status
+        
+        Returns:
+            str:
+                The Status
+        """
+        if "Status" in self._prop_dict:
+            return self._prop_dict["Status"]
+        else:
+            return None
+
+    @status.setter
+    def status(self, val):
+        self._prop_dict["Status"] = val
+
+    @property
+    def platform(self):
+        """
+        Gets and sets the Platform
+        
+        Returns:
+            str:
+                The Platform
+        """
+        if "Platform" in self._prop_dict:
+            return self._prop_dict["Platform"]
+        else:
+            return None
+
+    @platform.setter
+    def platform(self, val):
+        self._prop_dict["Platform"] = val
+
+    @property
+    def extensions(self):
+        """Gets and sets the extensions
+        
+        Returns: 
+            :class:`ExtensionsCollectionPage<onedrivesdk.request.extensions_collection.ExtensionsCollectionPage>`:
+                The extensions
+        """
+        if "extensions" in self._prop_dict:
+            return ExtensionsCollectionPage(self._prop_dict["extensions"])
+        else:
+            return None
+
+    @property
     def registered_owners(self):
         """Gets and sets the registeredOwners
         
@@ -310,15 +432,15 @@ class Device(OneDriveObjectBase):
             return None
 
     @property
-    def extensions(self):
-        """Gets and sets the extensions
+    def commands(self):
+        """Gets and sets the commands
         
         Returns: 
-            :class:`ExtensionsCollectionPage<onedrivesdk.request.extensions_collection.ExtensionsCollectionPage>`:
-                The extensions
+            :class:`CommandsCollectionPage<onedrivesdk.request.commands_collection.CommandsCollectionPage>`:
+                The commands
         """
-        if "extensions" in self._prop_dict:
-            return ExtensionsCollectionPage(self._prop_dict["extensions"])
+        if "commands" in self._prop_dict:
+            return CommandsCollectionPage(self._prop_dict["commands"])
         else:
             return None
 

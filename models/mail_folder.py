@@ -8,6 +8,7 @@
 from __future__ import unicode_literals
 from ..model.message import Message
 from ..model.message_rule import MessageRule
+from ..model.user_configuration import UserConfiguration
 from ..model.single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 from ..model.multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
 from ..one_drive_object_base import OneDriveObjectBase
@@ -109,6 +110,24 @@ class MailFolder(OneDriveObjectBase):
         self._prop_dict["totalItemCount"] = val
 
     @property
+    def well_known_name(self):
+        """
+        Gets and sets the wellKnownName
+        
+        Returns:
+            str:
+                The wellKnownName
+        """
+        if "wellKnownName" in self._prop_dict:
+            return self._prop_dict["wellKnownName"]
+        else:
+            return None
+
+    @well_known_name.setter
+    def well_known_name(self, val):
+        self._prop_dict["wellKnownName"] = val
+
+    @property
     def messages(self):
         """Gets and sets the messages
         
@@ -144,6 +163,19 @@ class MailFolder(OneDriveObjectBase):
         """
         if "childFolders" in self._prop_dict:
             return ChildFoldersCollectionPage(self._prop_dict["childFolders"])
+        else:
+            return None
+
+    @property
+    def user_configurations(self):
+        """Gets and sets the userConfigurations
+        
+        Returns: 
+            :class:`UserConfigurationsCollectionPage<onedrivesdk.request.user_configurations_collection.UserConfigurationsCollectionPage>`:
+                The userConfigurations
+        """
+        if "userConfigurations" in self._prop_dict:
+            return UserConfigurationsCollectionPage(self._prop_dict["userConfigurations"])
         else:
             return None
 

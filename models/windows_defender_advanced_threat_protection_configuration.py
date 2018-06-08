@@ -15,6 +15,42 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(OneDriveObjectBase):
         self._prop_dict = prop_dict
 
     @property
+    def advanced_threat_protection_onboarding_blob(self):
+        """
+        Gets and sets the advancedThreatProtectionOnboardingBlob
+        
+        Returns:
+            str:
+                The advancedThreatProtectionOnboardingBlob
+        """
+        if "advancedThreatProtectionOnboardingBlob" in self._prop_dict:
+            return self._prop_dict["advancedThreatProtectionOnboardingBlob"]
+        else:
+            return None
+
+    @advanced_threat_protection_onboarding_blob.setter
+    def advanced_threat_protection_onboarding_blob(self, val):
+        self._prop_dict["advancedThreatProtectionOnboardingBlob"] = val
+
+    @property
+    def advanced_threat_protection_onboarding_filename(self):
+        """
+        Gets and sets the advancedThreatProtectionOnboardingFilename
+        
+        Returns:
+            str:
+                The advancedThreatProtectionOnboardingFilename
+        """
+        if "advancedThreatProtectionOnboardingFilename" in self._prop_dict:
+            return self._prop_dict["advancedThreatProtectionOnboardingFilename"]
+        else:
+            return None
+
+    @advanced_threat_protection_onboarding_filename.setter
+    def advanced_threat_protection_onboarding_filename(self, val):
+        self._prop_dict["advancedThreatProtectionOnboardingFilename"] = val
+
+    @property
     def allow_sample_sharing(self):
         """
         Gets and sets the allowSampleSharing
@@ -49,4 +85,40 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(OneDriveObjectBase):
     @enable_expedited_telemetry_reporting.setter
     def enable_expedited_telemetry_reporting(self, val):
         self._prop_dict["enableExpeditedTelemetryReporting"] = val
+
+    @property
+    def advanced_threat_protection_offboarding_blob(self):
+        """
+        Gets and sets the advancedThreatProtectionOffboardingBlob
+        
+        Returns:
+            str:
+                The advancedThreatProtectionOffboardingBlob
+        """
+        if "advancedThreatProtectionOffboardingBlob" in self._prop_dict:
+            return self._prop_dict["advancedThreatProtectionOffboardingBlob"]
+        else:
+            return None
+
+    @advanced_threat_protection_offboarding_blob.setter
+    def advanced_threat_protection_offboarding_blob(self, val):
+        self._prop_dict["advancedThreatProtectionOffboardingBlob"] = val
+
+    @property
+    def advanced_threat_protection_offboarding_filename(self):
+        """
+        Gets and sets the advancedThreatProtectionOffboardingFilename
+        
+        Returns:
+            str:
+                The advancedThreatProtectionOffboardingFilename
+        """
+        if "advancedThreatProtectionOffboardingFilename" in self._prop_dict:
+            return self._prop_dict["advancedThreatProtectionOffboardingFilename"]
+        else:
+            return None
+
+    @advanced_threat_protection_offboarding_filename.setter
+    def advanced_threat_protection_offboarding_filename(self, val):
+        self._prop_dict["advancedThreatProtectionOffboardingFilename"] = val
 

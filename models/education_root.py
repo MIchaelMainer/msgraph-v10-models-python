@@ -6,6 +6,7 @@
 '''
 
 from __future__ import unicode_literals
+from ..model.education_synchronization_profile import EducationSynchronizationProfile
 from ..model.education_class import EducationClass
 from ..model.education_school import EducationSchool
 from ..model.education_user import EducationUser
@@ -16,6 +17,19 @@ class EducationRoot(OneDriveObjectBase):
 
     def __init__(self, prop_dict={}):
         self._prop_dict = prop_dict
+
+    @property
+    def synchronization_profiles(self):
+        """Gets and sets the synchronizationProfiles
+        
+        Returns: 
+            :class:`SynchronizationProfilesCollectionPage<onedrivesdk.request.synchronization_profiles_collection.SynchronizationProfilesCollectionPage>`:
+                The synchronizationProfiles
+        """
+        if "synchronizationProfiles" in self._prop_dict:
+            return SynchronizationProfilesCollectionPage(self._prop_dict["synchronizationProfiles"])
+        else:
+            return None
 
     @property
     def classes(self):

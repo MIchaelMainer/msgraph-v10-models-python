@@ -7,6 +7,7 @@
 
 from __future__ import unicode_literals
 from ..model.directory_object import DirectoryObject
+from ..model.scoped_role_membership import ScopedRoleMembership
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -79,6 +80,19 @@ class DirectoryRole(OneDriveObjectBase):
         """
         if "members" in self._prop_dict:
             return MembersCollectionPage(self._prop_dict["members"])
+        else:
+            return None
+
+    @property
+    def scoped_members(self):
+        """Gets and sets the scopedMembers
+        
+        Returns: 
+            :class:`ScopedMembersCollectionPage<onedrivesdk.request.scoped_members_collection.ScopedMembersCollectionPage>`:
+                The scopedMembers
+        """
+        if "scopedMembers" in self._prop_dict:
+            return ScopedMembersCollectionPage(self._prop_dict["scopedMembers"])
         else:
             return None
 

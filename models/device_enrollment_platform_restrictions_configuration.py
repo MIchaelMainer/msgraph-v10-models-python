@@ -104,6 +104,50 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(OneDriveObjectBase):
         self._prop_dict["androidRestriction"] = val
 
     @property
+    def android_for_work_restriction(self):
+        """
+        Gets and sets the androidForWorkRestriction
+        
+        Returns: 
+            :class:`DeviceEnrollmentPlatformRestriction<onedrivesdk.model.device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction>`:
+                The androidForWorkRestriction
+        """
+        if "androidForWorkRestriction" in self._prop_dict:
+            if isinstance(self._prop_dict["androidForWorkRestriction"], OneDriveObjectBase):
+                return self._prop_dict["androidForWorkRestriction"]
+            else :
+                self._prop_dict["androidForWorkRestriction"] = DeviceEnrollmentPlatformRestriction(self._prop_dict["androidForWorkRestriction"])
+                return self._prop_dict["androidForWorkRestriction"]
+
+        return None
+
+    @android_for_work_restriction.setter
+    def android_for_work_restriction(self, val):
+        self._prop_dict["androidForWorkRestriction"] = val
+
+    @property
+    def mac_restriction(self):
+        """
+        Gets and sets the macRestriction
+        
+        Returns: 
+            :class:`DeviceEnrollmentPlatformRestriction<onedrivesdk.model.device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction>`:
+                The macRestriction
+        """
+        if "macRestriction" in self._prop_dict:
+            if isinstance(self._prop_dict["macRestriction"], OneDriveObjectBase):
+                return self._prop_dict["macRestriction"]
+            else :
+                self._prop_dict["macRestriction"] = DeviceEnrollmentPlatformRestriction(self._prop_dict["macRestriction"])
+                return self._prop_dict["macRestriction"]
+
+        return None
+
+    @mac_restriction.setter
+    def mac_restriction(self, val):
+        self._prop_dict["macRestriction"] = val
+
+    @property
     def mac_os_restriction(self):
         """
         Gets and sets the macOSRestriction

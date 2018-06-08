@@ -10,6 +10,7 @@ from ..model.identity_set import IdentitySet
 from ..model.item_reference import ItemReference
 from ..model.sharing_invitation import SharingInvitation
 from ..model.sharing_link import SharingLink
+from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -17,6 +18,24 @@ class Permission(OneDriveObjectBase):
 
     def __init__(self, prop_dict={}):
         self._prop_dict = prop_dict
+
+    @property
+    def expiration_date_time(self):
+        """
+        Gets and sets the expirationDateTime
+        
+        Returns:
+            datetime:
+                The expirationDateTime
+        """
+        if "expirationDateTime" in self._prop_dict:
+            return datetime.strptime(self._prop_dict["expirationDateTime"].replace("Z", ""), "%Y-%m-%dT%H:%M:%S.%f")
+        else:
+            return None
+
+    @expiration_date_time.setter
+    def expiration_date_time(self, val):
+        self._prop_dict["expirationDateTime"] = val.isoformat()+"Z"
 
     @property
     def granted_to(self):
@@ -39,6 +58,19 @@ class Permission(OneDriveObjectBase):
     @granted_to.setter
     def granted_to(self, val):
         self._prop_dict["grantedTo"] = val
+
+    @property
+    def granted_to_identities(self):
+        """Gets and sets the grantedToIdentities
+        
+        Returns: 
+            :class:`GrantedToIdentitiesCollectionPage<onedrivesdk.request.granted_to_identities_collection.GrantedToIdentitiesCollectionPage>`:
+                The grantedToIdentities
+        """
+        if "grantedToIdentities" in self._prop_dict:
+            return GrantedToIdentitiesCollectionPage(self._prop_dict["grantedToIdentities"])
+        else:
+            return None
 
     @property
     def inherited_from(self):

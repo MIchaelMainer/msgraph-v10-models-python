@@ -17,6 +17,24 @@ class IosUpdateConfiguration(OneDriveObjectBase):
         self._prop_dict = prop_dict
 
     @property
+    def is_enabled(self):
+        """
+        Gets and sets the isEnabled
+        
+        Returns:
+            bool:
+                The isEnabled
+        """
+        if "isEnabled" in self._prop_dict:
+            return self._prop_dict["isEnabled"]
+        else:
+            return None
+
+    @is_enabled.setter
+    def is_enabled(self, val):
+        self._prop_dict["isEnabled"] = val
+
+    @property
     def active_hours_start(self):
         """
         Gets and sets the activeHoursStart

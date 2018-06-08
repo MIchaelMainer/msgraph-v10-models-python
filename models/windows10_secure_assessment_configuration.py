@@ -6,6 +6,7 @@
 '''
 
 from __future__ import unicode_literals
+from ..model.secure_assessment_account_type import SecureAssessmentAccountType
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -49,6 +50,28 @@ class Windows10SecureAssessmentConfiguration(OneDriveObjectBase):
     @configuration_account.setter
     def configuration_account(self, val):
         self._prop_dict["configurationAccount"] = val
+
+    @property
+    def configuration_account_type(self):
+        """
+        Gets and sets the configurationAccountType
+        
+        Returns: 
+            :class:`SecureAssessmentAccountType<onedrivesdk.model.secure_assessment_account_type.SecureAssessmentAccountType>`:
+                The configurationAccountType
+        """
+        if "configurationAccountType" in self._prop_dict:
+            if isinstance(self._prop_dict["configurationAccountType"], OneDriveObjectBase):
+                return self._prop_dict["configurationAccountType"]
+            else :
+                self._prop_dict["configurationAccountType"] = SecureAssessmentAccountType(self._prop_dict["configurationAccountType"])
+                return self._prop_dict["configurationAccountType"]
+
+        return None
+
+    @configuration_account_type.setter
+    def configuration_account_type(self, val):
+        self._prop_dict["configurationAccountType"] = val
 
     @property
     def allow_printing(self):

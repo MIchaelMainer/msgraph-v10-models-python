@@ -52,6 +52,24 @@ class DeviceConfigurationDeviceOverview(OneDriveObjectBase):
         self._prop_dict["notApplicableCount"] = val
 
     @property
+    def not_applicable_platform_count(self):
+        """
+        Gets and sets the notApplicablePlatformCount
+        
+        Returns:
+            int:
+                The notApplicablePlatformCount
+        """
+        if "notApplicablePlatformCount" in self._prop_dict:
+            return self._prop_dict["notApplicablePlatformCount"]
+        else:
+            return None
+
+    @not_applicable_platform_count.setter
+    def not_applicable_platform_count(self, val):
+        self._prop_dict["notApplicablePlatformCount"] = val
+
+    @property
     def success_count(self):
         """
         Gets and sets the successCount
@@ -104,6 +122,24 @@ class DeviceConfigurationDeviceOverview(OneDriveObjectBase):
     @failed_count.setter
     def failed_count(self, val):
         self._prop_dict["failedCount"] = val
+
+    @property
+    def conflict_count(self):
+        """
+        Gets and sets the conflictCount
+        
+        Returns:
+            int:
+                The conflictCount
+        """
+        if "conflictCount" in self._prop_dict:
+            return self._prop_dict["conflictCount"]
+        else:
+            return None
+
+    @conflict_count.setter
+    def conflict_count(self, val):
+        self._prop_dict["conflictCount"] = val
 
     @property
     def last_update_date_time(self):

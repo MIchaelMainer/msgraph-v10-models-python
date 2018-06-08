@@ -15,23 +15,6 @@ class Identity(OneDriveObjectBase):
         self._prop_dict = prop_dict
 
     @property
-    def display_name(self):
-        """Gets and sets the displayName
-        
-        Returns: 
-            str:
-                The displayName
-        """
-        if "displayName" in self._prop_dict:
-            return self._prop_dict["displayName"]
-        else:
-            return None
-
-    @display_name.setter
-    def display_name(self, val):
-        self._prop_dict["displayName"] = val
-
-    @property
     def id(self):
         """Gets and sets the id
         
@@ -47,4 +30,21 @@ class Identity(OneDriveObjectBase):
     @id.setter
     def id(self, val):
         self._prop_dict["id"] = val
+
+    @property
+    def display_name(self):
+        """Gets and sets the displayName
+        
+        Returns: 
+            str:
+                The displayName
+        """
+        if "displayName" in self._prop_dict:
+            return self._prop_dict["displayName"]
+        else:
+            return None
+
+    @display_name.setter
+    def display_name(self, val):
+        self._prop_dict["displayName"] = val
 

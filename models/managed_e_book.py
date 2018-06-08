@@ -7,6 +7,7 @@
 
 from __future__ import unicode_literals
 from ..model.mime_content import MimeContent
+from ..model.managed_e_book_category import ManagedEBookCategory
 from ..model.managed_e_book_assignment import ManagedEBookAssignment
 from ..model.e_book_install_summary import EBookInstallSummary
 from ..model.device_install_state import DeviceInstallState
@@ -185,6 +186,19 @@ class ManagedEBook(OneDriveObjectBase):
     @privacy_information_url.setter
     def privacy_information_url(self, val):
         self._prop_dict["privacyInformationUrl"] = val
+
+    @property
+    def categories(self):
+        """Gets and sets the categories
+        
+        Returns: 
+            :class:`CategoriesCollectionPage<onedrivesdk.request.categories_collection.CategoriesCollectionPage>`:
+                The categories
+        """
+        if "categories" in self._prop_dict:
+            return CategoriesCollectionPage(self._prop_dict["categories"])
+        else:
+            return None
 
     @property
     def assignments(self):

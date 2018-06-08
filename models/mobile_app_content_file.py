@@ -164,3 +164,39 @@ class MobileAppContentFile(OneDriveObjectBase):
     def upload_state(self, val):
         self._prop_dict["uploadState"] = val
 
+    @property
+    def is_framework_file(self):
+        """
+        Gets and sets the isFrameworkFile
+        
+        Returns:
+            bool:
+                The isFrameworkFile
+        """
+        if "isFrameworkFile" in self._prop_dict:
+            return self._prop_dict["isFrameworkFile"]
+        else:
+            return None
+
+    @is_framework_file.setter
+    def is_framework_file(self, val):
+        self._prop_dict["isFrameworkFile"] = val
+
+    @property
+    def is_dependency(self):
+        """
+        Gets and sets the isDependency
+        
+        Returns:
+            bool:
+                The isDependency
+        """
+        if "isDependency" in self._prop_dict:
+            return self._prop_dict["isDependency"]
+        else:
+            return None
+
+    @is_dependency.setter
+    def is_dependency(self, val):
+        self._prop_dict["isDependency"] = val
+

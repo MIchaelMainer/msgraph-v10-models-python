@@ -93,6 +93,42 @@ class MobileThreatDefenseConnector(OneDriveObjectBase):
         self._prop_dict["iosEnabled"] = val
 
     @property
+    def windows_enabled(self):
+        """
+        Gets and sets the windowsEnabled
+        
+        Returns:
+            bool:
+                The windowsEnabled
+        """
+        if "windowsEnabled" in self._prop_dict:
+            return self._prop_dict["windowsEnabled"]
+        else:
+            return None
+
+    @windows_enabled.setter
+    def windows_enabled(self, val):
+        self._prop_dict["windowsEnabled"] = val
+
+    @property
+    def mac_enabled(self):
+        """
+        Gets and sets the macEnabled
+        
+        Returns:
+            bool:
+                The macEnabled
+        """
+        if "macEnabled" in self._prop_dict:
+            return self._prop_dict["macEnabled"]
+        else:
+            return None
+
+    @mac_enabled.setter
+    def mac_enabled(self, val):
+        self._prop_dict["macEnabled"] = val
+
+    @property
     def android_device_blocked_on_missing_partner_data(self):
         """
         Gets and sets the androidDeviceBlockedOnMissingPartnerData
@@ -129,6 +165,42 @@ class MobileThreatDefenseConnector(OneDriveObjectBase):
         self._prop_dict["iosDeviceBlockedOnMissingPartnerData"] = val
 
     @property
+    def windows_device_blocked_on_missing_partner_data(self):
+        """
+        Gets and sets the windowsDeviceBlockedOnMissingPartnerData
+        
+        Returns:
+            bool:
+                The windowsDeviceBlockedOnMissingPartnerData
+        """
+        if "windowsDeviceBlockedOnMissingPartnerData" in self._prop_dict:
+            return self._prop_dict["windowsDeviceBlockedOnMissingPartnerData"]
+        else:
+            return None
+
+    @windows_device_blocked_on_missing_partner_data.setter
+    def windows_device_blocked_on_missing_partner_data(self, val):
+        self._prop_dict["windowsDeviceBlockedOnMissingPartnerData"] = val
+
+    @property
+    def mac_device_blocked_on_missing_partner_data(self):
+        """
+        Gets and sets the macDeviceBlockedOnMissingPartnerData
+        
+        Returns:
+            bool:
+                The macDeviceBlockedOnMissingPartnerData
+        """
+        if "macDeviceBlockedOnMissingPartnerData" in self._prop_dict:
+            return self._prop_dict["macDeviceBlockedOnMissingPartnerData"]
+        else:
+            return None
+
+    @mac_device_blocked_on_missing_partner_data.setter
+    def mac_device_blocked_on_missing_partner_data(self, val):
+        self._prop_dict["macDeviceBlockedOnMissingPartnerData"] = val
+
+    @property
     def partner_unsupported_os_version_blocked(self):
         """
         Gets and sets the partnerUnsupportedOsVersionBlocked
@@ -163,4 +235,22 @@ class MobileThreatDefenseConnector(OneDriveObjectBase):
     @partner_unresponsiveness_threshold_in_days.setter
     def partner_unresponsiveness_threshold_in_days(self, val):
         self._prop_dict["partnerUnresponsivenessThresholdInDays"] = val
+
+    @property
+    def allow_partner_to_collect_ios_application_metadata(self):
+        """
+        Gets and sets the allowPartnerToCollectIOSApplicationMetadata
+        
+        Returns:
+            bool:
+                The allowPartnerToCollectIOSApplicationMetadata
+        """
+        if "allowPartnerToCollectIOSApplicationMetadata" in self._prop_dict:
+            return self._prop_dict["allowPartnerToCollectIOSApplicationMetadata"]
+        else:
+            return None
+
+    @allow_partner_to_collect_ios_application_metadata.setter
+    def allow_partner_to_collect_ios_application_metadata(self, val):
+        self._prop_dict["allowPartnerToCollectIOSApplicationMetadata"] = val
 

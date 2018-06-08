@@ -86,3 +86,39 @@ class WindowsMobileMSI(OneDriveObjectBase):
     def ignore_version_detection(self, val):
         self._prop_dict["ignoreVersionDetection"] = val
 
+    @property
+    def identity_version(self):
+        """
+        Gets and sets the identityVersion
+        
+        Returns:
+            str:
+                The identityVersion
+        """
+        if "identityVersion" in self._prop_dict:
+            return self._prop_dict["identityVersion"]
+        else:
+            return None
+
+    @identity_version.setter
+    def identity_version(self, val):
+        self._prop_dict["identityVersion"] = val
+
+    @property
+    def use_device_context(self):
+        """
+        Gets and sets the useDeviceContext
+        
+        Returns:
+            bool:
+                The useDeviceContext
+        """
+        if "useDeviceContext" in self._prop_dict:
+            return self._prop_dict["useDeviceContext"]
+        else:
+            return None
+
+    @use_device_context.setter
+    def use_device_context(self, val):
+        self._prop_dict["useDeviceContext"] = val
+

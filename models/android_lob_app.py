@@ -34,6 +34,24 @@ class AndroidLobApp(OneDriveObjectBase):
         self._prop_dict["packageId"] = val
 
     @property
+    def identity_name(self):
+        """
+        Gets and sets the identityName
+        
+        Returns:
+            str:
+                The identityName
+        """
+        if "identityName" in self._prop_dict:
+            return self._prop_dict["identityName"]
+        else:
+            return None
+
+    @identity_name.setter
+    def identity_name(self, val):
+        self._prop_dict["identityName"] = val
+
+    @property
     def minimum_supported_operating_system(self):
         """
         Gets and sets the minimumSupportedOperatingSystem
@@ -90,4 +108,22 @@ class AndroidLobApp(OneDriveObjectBase):
     @version_code.setter
     def version_code(self, val):
         self._prop_dict["versionCode"] = val
+
+    @property
+    def identity_version(self):
+        """
+        Gets and sets the identityVersion
+        
+        Returns:
+            str:
+                The identityVersion
+        """
+        if "identityVersion" in self._prop_dict:
+            return self._prop_dict["identityVersion"]
+        else:
+            return None
+
+    @identity_version.setter
+    def identity_version(self, val):
+        self._prop_dict["identityVersion"] = val
 

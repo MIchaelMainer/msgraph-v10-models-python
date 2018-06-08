@@ -402,3 +402,21 @@ class AndroidCompliancePolicy(OneDriveObjectBase):
     def security_require_company_portal_app_integrity(self, val):
         self._prop_dict["securityRequireCompanyPortalAppIntegrity"] = val
 
+    @property
+    def condition_statement_id(self):
+        """
+        Gets and sets the conditionStatementId
+        
+        Returns:
+            str:
+                The conditionStatementId
+        """
+        if "conditionStatementId" in self._prop_dict:
+            return self._prop_dict["conditionStatementId"]
+        else:
+            return None
+
+    @condition_statement_id.setter
+    def condition_statement_id(self, val):
+        self._prop_dict["conditionStatementId"] = val
+

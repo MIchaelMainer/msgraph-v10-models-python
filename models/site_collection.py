@@ -16,6 +16,23 @@ class SiteCollection(OneDriveObjectBase):
         self._prop_dict = prop_dict
 
     @property
+    def data_location_code(self):
+        """Gets and sets the dataLocationCode
+        
+        Returns: 
+            str:
+                The dataLocationCode
+        """
+        if "dataLocationCode" in self._prop_dict:
+            return self._prop_dict["dataLocationCode"]
+        else:
+            return None
+
+    @data_location_code.setter
+    def data_location_code(self, val):
+        self._prop_dict["dataLocationCode"] = val
+
+    @property
     def hostname(self):
         """Gets and sets the hostname
         

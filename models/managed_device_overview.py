@@ -8,6 +8,8 @@
 from __future__ import unicode_literals
 from ..model.device_operating_system_summary import DeviceOperatingSystemSummary
 from ..model.device_exchange_access_state_summary import DeviceExchangeAccessStateSummary
+from ..model.managed_device_models_and_manufacturers import ManagedDeviceModelsAndManufacturers
+from datetime import datetime
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -113,4 +115,44 @@ class ManagedDeviceOverview(OneDriveObjectBase):
     @device_exchange_access_state_summary.setter
     def device_exchange_access_state_summary(self, val):
         self._prop_dict["deviceExchangeAccessStateSummary"] = val
+
+    @property
+    def managed_device_models_and_manufacturers(self):
+        """
+        Gets and sets the managedDeviceModelsAndManufacturers
+        
+        Returns: 
+            :class:`ManagedDeviceModelsAndManufacturers<onedrivesdk.model.managed_device_models_and_manufacturers.ManagedDeviceModelsAndManufacturers>`:
+                The managedDeviceModelsAndManufacturers
+        """
+        if "managedDeviceModelsAndManufacturers" in self._prop_dict:
+            if isinstance(self._prop_dict["managedDeviceModelsAndManufacturers"], OneDriveObjectBase):
+                return self._prop_dict["managedDeviceModelsAndManufacturers"]
+            else :
+                self._prop_dict["managedDeviceModelsAndManufacturers"] = ManagedDeviceModelsAndManufacturers(self._prop_dict["managedDeviceModelsAndManufacturers"])
+                return self._prop_dict["managedDeviceModelsAndManufacturers"]
+
+        return None
+
+    @managed_device_models_and_manufacturers.setter
+    def managed_device_models_and_manufacturers(self, val):
+        self._prop_dict["managedDeviceModelsAndManufacturers"] = val
+
+    @property
+    def last_modified_date_time(self):
+        """
+        Gets and sets the lastModifiedDateTime
+        
+        Returns:
+            datetime:
+                The lastModifiedDateTime
+        """
+        if "lastModifiedDateTime" in self._prop_dict:
+            return datetime.strptime(self._prop_dict["lastModifiedDateTime"].replace("Z", ""), "%Y-%m-%dT%H:%M:%S.%f")
+        else:
+            return None
+
+    @last_modified_date_time.setter
+    def last_modified_date_time(self, val):
+        self._prop_dict["lastModifiedDateTime"] = val.isoformat()+"Z"
 

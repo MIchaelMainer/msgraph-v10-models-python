@@ -10,6 +10,7 @@ from ..model.identity_set import IdentitySet
 from ..model.physical_address import PhysicalAddress
 from ..model.education_class import EducationClass
 from ..model.education_user import EducationUser
+from ..model.administrative_unit import AdministrativeUnit
 from ..one_drive_object_base import OneDriveObjectBase
 
 
@@ -249,4 +250,26 @@ class EducationSchool(OneDriveObjectBase):
             return UsersCollectionPage(self._prop_dict["users"])
         else:
             return None
+
+    @property
+    def administrative_unit(self):
+        """
+        Gets and sets the administrativeUnit
+        
+        Returns: 
+            :class:`AdministrativeUnit<onedrivesdk.model.administrative_unit.AdministrativeUnit>`:
+                The administrativeUnit
+        """
+        if "administrativeUnit" in self._prop_dict:
+            if isinstance(self._prop_dict["administrativeUnit"], OneDriveObjectBase):
+                return self._prop_dict["administrativeUnit"]
+            else :
+                self._prop_dict["administrativeUnit"] = AdministrativeUnit(self._prop_dict["administrativeUnit"])
+                return self._prop_dict["administrativeUnit"]
+
+        return None
+
+    @administrative_unit.setter
+    def administrative_unit(self, val):
+        self._prop_dict["administrativeUnit"] = val
 

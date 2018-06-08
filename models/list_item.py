@@ -8,6 +8,7 @@
 from __future__ import unicode_literals
 from ..model.content_type_info import ContentTypeInfo
 from ..model.sharepoint_ids import SharepointIds
+from ..model.item_activity import ItemActivity
 from ..model.drive_item import DriveItem
 from ..model.field_value_set import FieldValueSet
 from ..model.list_item_version import ListItemVersion
@@ -62,6 +63,19 @@ class ListItem(OneDriveObjectBase):
     @sharepoint_ids.setter
     def sharepoint_ids(self, val):
         self._prop_dict["sharepointIds"] = val
+
+    @property
+    def activities(self):
+        """Gets and sets the activities
+        
+        Returns: 
+            :class:`ActivitiesCollectionPage<onedrivesdk.request.activities_collection.ActivitiesCollectionPage>`:
+                The activities
+        """
+        if "activities" in self._prop_dict:
+            return ActivitiesCollectionPage(self._prop_dict["activities"])
+        else:
+            return None
 
     @property
     def drive_item(self):
